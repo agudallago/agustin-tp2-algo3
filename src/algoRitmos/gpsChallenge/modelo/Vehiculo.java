@@ -19,6 +19,10 @@ public class Vehiculo {
 		mMovimientos++;
 	}
 	
+	public Esquina getUbicacion() {
+		return mUbicacion;
+	}
+	
 	private Esquina mUbicacion;
 	private ITipoVehiculo mTipo;
 	private int mMovimientos;
