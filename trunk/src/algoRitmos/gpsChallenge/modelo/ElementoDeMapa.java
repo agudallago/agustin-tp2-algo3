@@ -1,4 +1,4 @@
-package modelo;
+package algoRitmos.gpsChallenge.modelo;
 
 public abstract class ElementoDeMapa {
 //Clase abstracta de ElementoDeMapa

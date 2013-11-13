@@ -1,4 +1,4 @@
-package modelo;
+package algoRitmos.gpsChallenge.modelo;
 import java.util.ArrayList;
 
 import ejercicioMatriz.Entero;
