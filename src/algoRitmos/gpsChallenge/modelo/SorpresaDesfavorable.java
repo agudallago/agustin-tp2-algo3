@@ -1,4 +1,4 @@
-package Modelo;
+package algoRitmos.gpsChallenge.modelo;
 
 public class SorpresaDesfavorable extends Sorpresa{
 

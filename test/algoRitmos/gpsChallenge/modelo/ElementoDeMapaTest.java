@@ -1,6 +1,6 @@
-package Modelo;
+package algoRitmos.gpsChallenge.modelo;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class ElementoDeMapaTest {
