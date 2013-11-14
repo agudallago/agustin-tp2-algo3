@@ -2,7 +2,7 @@
 package algoRitmos.gpsChallenge.modelo;
 
 
-public class Esquina {
+public class EsquinaVersionGaston {
 
 	private Coordenada coordenada;
 	private ElementoDeMapa elementoEnEsquina;

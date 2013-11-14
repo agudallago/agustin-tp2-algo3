@@ -3,9 +3,9 @@ package algoRitmos.gpsChallenge.modelo;
 public class SorpresaDesfavorable extends Sorpresa{
 
 		public SorpresaDesfavorable(){
-			
-			porcentaje = 0.25;		
-			
-		}	
 
+			this.setPorcentaje(0.25);
+					
+		}
+		
 }
