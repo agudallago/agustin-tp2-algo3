@@ -4,7 +4,7 @@ public class SorpresaFavorable extends Sorpresa{
 
 	public SorpresaFavorable(){
 		
-		porcentaje = -0.2;		
+		this.setPorcentaje(-0.2);		
 		
 	}	
 }

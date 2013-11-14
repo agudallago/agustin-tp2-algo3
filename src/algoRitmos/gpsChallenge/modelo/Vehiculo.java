@@ -1,6 +1,10 @@
 package algoRitmos.gpsChallenge.modelo;
 
 public class Vehiculo {
+
+	private Esquina mUbicacion;
+	private ITipoVehiculo mTipo;
+	private double mMovimientos;
 	
 	public Vehiculo() {
 		this.mUbicacion = new Esquina();
@@ -23,7 +27,12 @@ public class Vehiculo {
 		return mUbicacion;
 	}
 	
-	private Esquina mUbicacion;
-	private ITipoVehiculo mTipo;
-	private int mMovimientos;
+	public double getMovimientos () {
+		return mMovimientos;
+	}
+
+	public void addMovimientos(double cantidadDeMovimientos) {
+
+		this.mMovimientos += cantidadDeMovimientos;
+	}
 }

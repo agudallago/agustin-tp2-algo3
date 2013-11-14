@@ -1,8 +1,12 @@
 package algoRitmos.gpsChallenge.modelo;
 
 public class Jugador {
+		
+	private Vehiculo mVehiculo;
+    private String mNombre;
+    private float mPuntaje;
 	
-    public Jugador(String nombre, Vehiculo vehiculo) {
+	public Jugador(String nombre, Vehiculo vehiculo) {
         this.mNombre = nombre;
         this.mVehiculo = vehiculo;
         this.mPuntaje = 0;
@@ -12,7 +16,7 @@ public class Jugador {
 		return mNombre;
 	}
     
-    public int getPuntaje() {
+    public float getPuntaje() {
 		return mPuntaje;
 	}
         
@@ -20,7 +24,5 @@ public class Jugador {
     	this.mVehiculo.moverA(direccion);
     }
     
-    private Vehiculo mVehiculo;
-    private String mNombre;
-    private int mPuntaje;
+    
 }
