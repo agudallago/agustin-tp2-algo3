@@ -28,7 +28,7 @@ public class EsquinaTest {
 	public void crearEsquinaYAsociarlaConEsquinaNorte() {
 		Esquina esquina = new Esquina();
 		Esquina esquinaNorte = new Esquina();
-		
+				
 		esquina.setEsquinaAl(new Norte(), esquinaNorte);
 		Assert.assertNotNull(esquina.getEsquinaAl(new Norte()));
 	}

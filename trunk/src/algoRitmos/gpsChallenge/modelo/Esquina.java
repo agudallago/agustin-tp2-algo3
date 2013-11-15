@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 public class Esquina {
 	
+	private HashMap<Direccion, Esquina> mEsquinasProximas;
+	private ElementoDeMapa mElementoEnEsquina;
+	
 	public Esquina() {
 		this.mEsquinasProximas = new HashMap<Direccion, Esquina>();		
 	};
@@ -14,7 +17,6 @@ public class Esquina {
 	
 	public Esquina getEsquinaAl(Direccion direccion) {
 		return this.mEsquinasProximas.get(direccion);
-	};
+	};	
 	
-	private HashMap<Direccion, Esquina> mEsquinasProximas;	
 }
