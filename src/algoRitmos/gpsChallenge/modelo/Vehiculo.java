@@ -4,13 +4,7 @@ public class Vehiculo {
 
 	private Esquina mUbicacion;
 	private ITipoVehiculo mTipo;
-	private double mMovimientos;
-	
-	public Vehiculo() {
-		this.mUbicacion = new Esquina();
-		this.mTipo = new Auto();
-		this.mMovimientos = 0;
-	}
+	private int mMovimientos;
 	
 	public Vehiculo(Esquina ubicacion, ITipoVehiculo tipo) {
 		this.mUbicacion = ubicacion;
@@ -32,7 +26,14 @@ public class Vehiculo {
 	}
 
 	public void addMovimientos(double cantidadDeMovimientos) {
-
 		this.mMovimientos += cantidadDeMovimientos;
+	}
+	
+	public void cambiarVehiculo() {
+		// TODO: Do stuff	
+	}
+	
+	private Vehiculo() {
+		// no usar!
 	}
 }

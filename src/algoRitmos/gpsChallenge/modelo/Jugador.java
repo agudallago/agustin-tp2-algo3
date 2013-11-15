@@ -24,5 +24,9 @@ public class Jugador {
     	this.mVehiculo.moverA(direccion);
     }
     
+    public Esquina getUbicacionVehiculo() {
+    	return mVehiculo.getUbicacion();
+    }
+    
     
 }

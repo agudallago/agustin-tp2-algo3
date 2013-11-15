@@ -5,20 +5,20 @@ public abstract class ElementoDeMapa {
 	
 private Esquina posicion;
 
-	private ElementoDeMapa (){
+	private ElementoDeMapa() {
 		//Constructor de Elemento de Mapa
 		posicion = null.
 	}
 	
 //-------------------------------------------------------------
 	
-	public Esquina getPosicion(){
+	public Esquina getPosicion() {
 		return posicion;
 	}
 	
 //-------------------------------------------------------------
 	
-	public Esquina setPosicion(unaEsquina){
+	public Esquina setPosicion(unaEsquina) {
 		posicion = unaEsquina;
 	}
 

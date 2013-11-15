@@ -6,4 +6,8 @@ public class Auto implements ITipoVehiculo {
 		
 	}
 	
+	public void cambiar() {
+		// TODO: Do stuff
+	}
+	
 }

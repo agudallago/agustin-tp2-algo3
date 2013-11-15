@@ -1,8 +1,7 @@
 package algoRitmos.gpsChallenge.modelo;
 
-public abstract class ElementoDeInteraccion extends ElementoDeMapa{
+public abstract class ElementoDeInteraccion extends ElementoDeMapa {
 
-	public void aplicarA(unVehiculo);
-	
+	public void aplicarA(unVehiculo);	
 	
 }
