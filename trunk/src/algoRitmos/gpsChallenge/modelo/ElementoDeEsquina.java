@@ -1,12 +1,14 @@
 package algoRitmos.gpsChallenge.modelo;
 
-public abstract class ElementoDeMapa {
-//Clase abstracta de ElementoDeMapa
-	
-private Esquina posicion;
+public abstract class ElementoDeEsquina {
 
-	private ElementoDeMapa() {
-		//Constructor de Elemento de Mapa
+	public void aplicarA(Vehiculo vehiculo) {
+		
+	}
+	
+	/*private Esquina posicion;
+
+	private ElementoDeEsquina() {
 		posicion = null.
 	}
 	
@@ -20,9 +22,8 @@ private Esquina posicion;
 	
 	public Esquina setPosicion(unaEsquina) {
 		posicion = unaEsquina;
-	}
+	}*/
 
-//Fin de la clase
 }
 
 

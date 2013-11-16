@@ -19,6 +19,15 @@ public class Jugador {
     public float getPuntaje() {
 		return mPuntaje;
 	}
+    
+    public void actualizar() {
+    	this.mVehiculo.actualizar();
+    	this.actualizarPuntaje();
+    }
+    
+    private void actualizarPuntaje() {
+    	this.mPuntaje = mVehiculo.getMovimientos() + mVehiculo.getMovimientosBonus();
+    }
         
     public void moverVehiculoA(Direccion direccion) {
     	this.mVehiculo.moverA(direccion);
