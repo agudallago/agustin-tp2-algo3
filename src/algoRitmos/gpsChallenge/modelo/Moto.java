@@ -1,9 +1,9 @@
 package algoRitmos.gpsChallenge.modelo;
 
-public class Auto implements ITipoVehiculo {
-	
+public class Moto implements ITipoVehiculo {
+
 	public ITipoVehiculo cambiar() {
-		return new CuatroPorCuatro();
+		return new Auto();
 	}
-	
+
 }

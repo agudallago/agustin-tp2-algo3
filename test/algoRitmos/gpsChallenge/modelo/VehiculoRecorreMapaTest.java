@@ -6,8 +6,8 @@ import org.junit.Test;
 public class VehiculoRecorreMapaTest {
 
 	@Test
-	public void recorrerMapaConVehiculo(){
-        Mapa mapa = new Mapa();
+	public void recorrerMapaConVehiculo() {
+        Mapa mapa = new Mapa(1, null);
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
         
         Direccion sur = new Sur();

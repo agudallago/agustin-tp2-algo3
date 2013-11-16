@@ -5,11 +5,13 @@ public class Vehiculo {
 	private Esquina mUbicacion;
 	private ITipoVehiculo mTipo;
 	private int mMovimientos;
+	private float mMovimientosBonus;
 	
 	public Vehiculo(Esquina ubicacion, ITipoVehiculo tipo) {
 		this.mUbicacion = ubicacion;
 		this.mTipo = tipo;
 		this.mMovimientos = 0;
+		this.mMovimientosBonus = 0;
 	}
 	
 	public void moverA(Direccion direccion) {
@@ -21,16 +23,27 @@ public class Vehiculo {
 		return mUbicacion;
 	}
 	
-	public double getMovimientos () {
+	public int getMovimientos() {
 		return mMovimientos;
 	}
+	
+	public float getMovimientosBonus() {
+		return mMovimientosBonus;
+	}
 
-	public void addMovimientos(double cantidadDeMovimientos) {
-		this.mMovimientos += cantidadDeMovimientos;
+	public void addMovimientosBonus(float cantidadDeMovimientos) {
+		this.mMovimientosBonus += cantidadDeMovimientos;
 	}
 	
-	public void cambiarVehiculo() {
-		// TODO: Do stuff	
+	public void cambiar() {
+		this.mTipo = mTipo.cambiar();	
+	}
+	
+	public void actualizar() {
+		ElementoDeEsquina elemento = this.mUbicacion.getElementoEnEsquina();
+		if (elemento != null) {
+			elemento.aplicarA(this);
+		}
 	}
 	
 	private Vehiculo() {

@@ -1,18 +1,22 @@
 package algoRitmos.gpsChallenge.modelo;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class SorpresaDesfavorableTest {
 
-	Vehiculo unVehiculo = new Auto;
-	Jugador unJugador = new Jugador;
-	SorpresaDesfavorable unaSorpresa = new SorpresaDesfavorable;
-	float movimientos = new float;
-	
-	unJugador.addVehiculo(unVehiculo);
-	
-	unVehiculo.aplicarSorpresa(unaSorpresa);
-	
-	//String result = foo.doFoo();
-	//Assert.assertEquals("Foo", result);
+	// Esto no es prueba unitaria. la paso un poco mejor a pruebas de integracion.
+	// Hay que ver de hacer un par de unitarias
+	// Agustin
+	/*
+    @Test
+	public void aplicarSorpresaEnVehiculo() {
+		Vehiculo vehiculo = new Vehiculo(new Esquina(), new Auto());
+		SorpresaDesfavorable sorpresa = new SorpresaDesfavorable();
 		
-	
+		sorpresa.aplicarA(vehiculo);
+	    
+	    Assert.assertEquals(posicionFinalVehiculo, vehiculo.getMo());
+	}*/
+
 }
