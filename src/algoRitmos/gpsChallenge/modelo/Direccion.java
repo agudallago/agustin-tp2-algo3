@@ -8,6 +8,7 @@ public abstract class Direccion {
 		return mDireccion;
 	}
 	
+	/*
 	public boolean equals(Direccion otraDireccion) {
 		if(this.mDireccion.equals(otraDireccion.toString())) {
 			return true;
@@ -15,5 +16,5 @@ public abstract class Direccion {
 		else {
 			return false;
 		}
-	}	
+	}*/	
 }
