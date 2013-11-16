@@ -1,10 +1,8 @@
 package algoRitmos.gpsChallenge.modelo;
 
-public class SorpresaFavorable extends Sorpresa{
+public class SorpresaFavorable extends SorpresaDePuntaje {
 
-	protected final float porcentaje;
-	private float movTotal;
-
+		
 	public void AplicarA(Vehiculo unVehiculo) {
 		movTotal = unVehiculo.getMovimientos();
 		movTotal = movTotal * porcentaje;

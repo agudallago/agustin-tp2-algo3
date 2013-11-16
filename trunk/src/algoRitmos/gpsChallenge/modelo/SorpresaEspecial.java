@@ -1,5 +1,7 @@
 package algoRitmos.gpsChallenge.modelo;
 
-public class SorpresaEspecial {
+public class SorpresaEspecial implements ISorpresa {
 
+	
+	
 }
