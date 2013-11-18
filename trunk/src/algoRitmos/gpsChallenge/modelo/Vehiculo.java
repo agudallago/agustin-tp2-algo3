@@ -46,7 +46,19 @@ public class Vehiculo {
 		}
 	}
 	
+	public void atravesarPozo(int penalizacionPozo) {
+		this.mMovimientos += mTipo.atravesarPozo(penalizacionPozo);
+		
+	}
+
+	public void atravesarControlPolicial(int penalizacionControlPolicial) {
+		this.mMovimientos += mTipo.atravesarControlPolicial(penalizacionControlPolicial);
+		
+	}
+
 	private Vehiculo() {
 		// no usar!
 	}
+
+	
 }

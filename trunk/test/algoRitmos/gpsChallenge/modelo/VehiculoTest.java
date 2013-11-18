@@ -1,6 +1,6 @@
 package algoRitmos.gpsChallenge.modelo;
 
-import junit.framework.Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class VehiculoTest {
@@ -33,7 +33,7 @@ public class VehiculoTest {
 		Esquina unaEsquinaNull = null;
 		unaEsquina.setEsquinaAl(new Norte(), unaEsquinaNull);
 		int movimientos;
-		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
+		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());
 	
 		movimientos = unVehiculo.getMovimientos();
 		unVehiculo.moverA(new Norte());
