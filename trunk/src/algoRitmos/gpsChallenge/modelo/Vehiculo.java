@@ -46,7 +46,7 @@ public class Vehiculo {
 		}
 	}
 	
-	private Vehiculo() {
+/*	private Vehiculo() {
 		// no usar!
-	}
+	}*/
 }
