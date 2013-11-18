@@ -19,4 +19,19 @@ public class VehiculoTest {
 		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquinaNorte);
 		
 	}
+	
+	@Test
+	public void testVehiculoMoverADireccionEsquinaNull() {
+	//Al mover el vehículo hacia una esquina Null, debería quedarse en la misma posición actual
+		Esquina unaEsquina = new Esquina();
+		Esquina unaEsquinaNull = null;
+		unaEsquina.setEsquinaAl(new Norte(), unaEsquinaNull);
+		
+		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
+		
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquina);
+		unVehiculo.moverA(new Norte());
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquina);
+		
+	}
 }
