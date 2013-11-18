@@ -7,7 +7,8 @@ public class VehiculoTest {
 
 	@Test
 	public void testVehiculoMover() {
-	//Prueba que el vehículo se mueva a la nueva esquina y que se incremente el contador de movimientos
+	//Prueba que el vehículo se mueva a la nueva esquina y que se incremente 
+	//el contador de movimientos
 		Esquina unaEsquina = new Esquina();
 		Esquina unaEsquinaNorte = new Esquina();
 		unaEsquina.setEsquinaAl(new Norte(), unaEsquinaNorte);
@@ -41,6 +42,21 @@ public class VehiculoTest {
 		
 	}
 	
-	
+	public void testVehiculoCambiarTipo() {
+		//Prueba que el vehículo cambie su tipo
+			Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
+			string tipoVehiculo = null;
+			
+			unVehiculo.getTipo();
+			Assert.assertEquals(unVehiculo.getTipo(), 'Auto');
+			
+			unVehiculo.cambiar();
+			Assert.assertEquals(unVehiculo.getTipo(), 'CuatroPorCuatro');
+			
+			unVehiculo.cambiar();
+			Assert.assertEquals(unVehiculo.getTipo(), 'Moto');
+			
+			unVehiculo.cambiar();
+			Assert.assertEquals(unVehiculo.getTipo(), 'Auto');
 	
 }
