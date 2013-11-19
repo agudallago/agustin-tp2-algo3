@@ -21,7 +21,6 @@ public class Jugador {
 	}
     
     public void actualizar() {
-    	this.mVehiculo.actualizar();
     	this.actualizarPuntaje();
     }
     
@@ -30,12 +29,23 @@ public class Jugador {
     }
         
     public void moverVehiculoA(Direccion direccion) {
-    	this.mVehiculo.moverA(direccion);
+    	if (direccion != null) {
+    	
+    		this.mVehiculo.moverA(direccion);
+    	}
     }
     
     public Esquina getUbicacionVehiculo() {
     	return mVehiculo.getUbicacion();
     }
+    
+    public String getTipoDeVehiculo() {
+    	return this.mVehiculo.getTipoDeVehiculoAsString();
+    }
+
+	public boolean juegoTerminado() {
+		return this.mVehiculo.estaEnLaMeta();
+	}
     
     
 }

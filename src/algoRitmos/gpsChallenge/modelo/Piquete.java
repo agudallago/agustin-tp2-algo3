@@ -6,7 +6,8 @@ public class Piquete extends Obstaculo {
 		this.mMovimientosDePenalizacion = 2;				
 	}
 	
-	
-	
+	public void aplicarA(Vehiculo vehiculo) {
+		vehiculo.atravesarPiquete(mMovimientosDePenalizacion);
+	}	
 	
 }

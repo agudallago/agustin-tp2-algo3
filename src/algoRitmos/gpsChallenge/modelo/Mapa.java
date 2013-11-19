@@ -5,7 +5,7 @@ public class Mapa {
 
 	private ArrayList<Esquina> mEsquinas;	
 
-	public Mapa(int numeroDeMapa, Sorpresa sorpresa) {
+	public Mapa(int numeroDeMapa, ElementoDeEsquina elemento) {
 		mEsquinas = new ArrayList<Esquina>();
 		
 		switch (numeroDeMapa) {	
@@ -13,8 +13,9 @@ public class Mapa {
 				this.generarMapa3por3Vacio();
 				break;
 			case 2:
-				this.generarMapa3por3SorpresaAlFinal(sorpresa);
+				this.generarMapa3por3ElementoAlFinal(elemento);
 				break;
+			
 		}
 	}
 	
@@ -24,6 +25,10 @@ public class Mapa {
 	
 	public Esquina getEsquinaFinal() {
 		return mEsquinas.get(mEsquinas.size()-1); 	// la ultima esquina en la lista es la final
+	}
+	
+	public Esquina getEsquinaAlOesteDeLaFinal() {
+		return mEsquinas.get(mEsquinas.size()-2); 	// la anteultima esquina en la lista está ubicada al Oeste de la final.
 	}
 	
 	private void generarMapa3por3Vacio() {
@@ -73,15 +78,17 @@ public class Mapa {
 		esquina32.setEsquinaAl(este, esquina33);
 		
 		esquina33.setEsquinaAl(norte, esquina23);
-		esquina33.setEsquinaAl(oeste, esquina32);		
+		esquina33.setEsquinaAl(oeste, esquina32);
+		
 	}
 	
-	private void generarMapa3por3SorpresaAlFinal(Sorpresa sorpresa) {
+	private void generarMapa3por3ElementoAlFinal(ElementoDeEsquina elemento) {
 		this.generarMapa3por3Vacio();
 		
-		this.getEsquinaFinal().addElementoEnEsquina(sorpresa);
+		this.getEsquinaFinal().addElementoEnEsquina(elemento);
 	}
 	
+		
 	private Esquina addEsquina() {
 		Esquina esquina = new Esquina();
 		this.mEsquinas.add(esquina);
