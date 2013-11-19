@@ -3,7 +3,7 @@ import java.lang.Math;
 
 public class Moto implements ITipoVehiculo {
 
-	public String ToString() {
+	public String toString() {
 		return "Moto";
 	}
 	

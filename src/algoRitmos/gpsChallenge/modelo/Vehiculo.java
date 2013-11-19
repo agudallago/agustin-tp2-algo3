@@ -42,7 +42,7 @@ public class Vehiculo {
 	}
 
 	public String getTipoDeVehiculoAsString() {
-		return this.mTipo.ToString();
+		return this.mTipo.toString();
 	}
 	
 	public boolean estaEnLaMeta() {
@@ -70,42 +70,31 @@ public class Vehiculo {
 		ElementoDeEsquina elemento = this.mUbicacion.getElementoEnEsquina();
 		
 		if (elemento != null) {
-			elemento.aplicarA(this);
-	
+			elemento.aplicarA(this);	
 		}
 	}
 	
-	public void atravesarPozo(int penalizacionPozo) {
-		
-		if (this.mTipo.aplicaPozo()) {
-		
+	public void atravesarPozo(int penalizacionPozo) {		
+		if (this.mTipo.aplicaPozo()) {		
 			this.mMovimientos += penalizacionPozo;
 		}
 	}
 
-	public void atravesarControlPolicial(int penalizacionControlPolicial) {
-		
-		if (this.mTipo.aplicaControlPolicial()) {
-			
+	public void atravesarControlPolicial(int penalizacionControlPolicial) {		
+		if (this.mTipo.aplicaControlPolicial()) {			
 			this.mMovimientos += penalizacionControlPolicial;
 		}
 	}
 
 	public void atravesarPiquete(int penalizacionPiquete) {
-
-		if (this.mTipo.aplicaPiquete()) {
-			
+		if (this.mTipo.aplicaPiquete()) {			
 			//En este caso, como el piquete impedirá el paso, con lo cual la ubicación del Vehículo
-			//será su ubicación previa ("pega la vuelta")
-			
+			//será su ubicación previa ("pega la vuelta")			
 			this.mUbicacion = this.mUbicacionPrevia;
-		}
-		
-			else {
-			
-					this.mMovimientos += penalizacionPiquete;
-			}
-		
+		}		
+		else {			
+				this.mMovimientos += penalizacionPiquete;
+		}		
 	}
 	
 	private Vehiculo() {
