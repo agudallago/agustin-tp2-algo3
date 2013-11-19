@@ -5,7 +5,7 @@ public abstract class Direccion {
 	/////////// Atributos /////////////
 	protected String mDireccion;
 	
-	/////////// Metodos //////////////
+	/////////// Metodos ///////////////
 	
 	public String toString() {
 		return mDireccion;
