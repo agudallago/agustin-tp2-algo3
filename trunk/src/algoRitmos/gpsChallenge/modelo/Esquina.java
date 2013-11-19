@@ -33,4 +33,8 @@ public class Esquina {
 		this.mElementoEnEsquina = elemento;
 	}
 	
+	public boolean tieneEsquinaEnLaDireccion(Direccion direccion) {
+		return this.mEsquinasProximas.containsKey(direccion);
+	}
+	
 }

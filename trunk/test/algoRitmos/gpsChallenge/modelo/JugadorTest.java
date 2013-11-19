@@ -9,9 +9,9 @@ public class JugadorTest {
 
 	@Test
 	public void crearJugadorYObtenerNombre(){
-        Jugador unJugador = new Jugador("Pepe", new Vehiculo(null, null));
+		Jugador unJugador = new Jugador("Pepe", new Vehiculo(null,null));
         String nombre = unJugador.getNombre();
         Assert.assertEquals("Pepe", nombre);
-	}
+	} 
 	
 }
