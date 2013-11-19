@@ -2,7 +2,7 @@ package algoRitmos.gpsChallenge.modelo;
 
 public interface ITipoVehiculo {
 		
-	public String ToString();
+	public String toString();
 	public ITipoVehiculo cambiar();
 	public boolean aplicaPozo();
 	public boolean aplicaControlPolicial();
