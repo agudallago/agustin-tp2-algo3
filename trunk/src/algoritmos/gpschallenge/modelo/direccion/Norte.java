@@ -1,4 +1,4 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.direccion;
 
 public class Norte extends Direccion {
 

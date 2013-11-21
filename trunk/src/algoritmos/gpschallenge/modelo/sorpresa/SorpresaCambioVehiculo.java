@@ -1,4 +1,6 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.sorpresa;
+
+import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 public class SorpresaCambioVehiculo extends Sorpresa {
 

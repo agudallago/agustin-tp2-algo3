@@ -1,4 +1,4 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.direccion;
 
 public abstract class Direccion {
 

@@ -1,4 +1,4 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.sorpresa;
 
 public class SorpresaFavorable extends SorpresaDePuntaje {
 

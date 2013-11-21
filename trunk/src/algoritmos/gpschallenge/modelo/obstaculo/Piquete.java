@@ -1,4 +1,6 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.obstaculo;
+
+import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 public class Piquete extends Obstaculo {
 

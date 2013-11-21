@@ -1,5 +1,12 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.juego;
 import java.util.ArrayList;
+
+import algoritmos.gpschallenge.modelo.direccion.Direccion;
+import algoritmos.gpschallenge.modelo.direccion.Este;
+import algoritmos.gpschallenge.modelo.direccion.Norte;
+import algoritmos.gpschallenge.modelo.direccion.Oeste;
+import algoritmos.gpschallenge.modelo.direccion.Sur;
+
 
 public class Mapa {
 

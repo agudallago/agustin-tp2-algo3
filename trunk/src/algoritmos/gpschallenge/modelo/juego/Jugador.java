@@ -1,4 +1,7 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.juego;
+
+import algoritmos.gpschallenge.modelo.direccion.Direccion;
+import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 public class Jugador {
 		
