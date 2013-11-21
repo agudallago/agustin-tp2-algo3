@@ -1,11 +1,17 @@
-package algoRitmos.gpsChallenge.modelo;
+package algoritmos.gpschallenge.modelo.juego;
 
 import java.util.HashMap;
 
+import algoritmos.gpschallenge.modelo.direccion.Direccion;
+import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
+
 public class Esquina {
 	
+	////////////////////// Atributos ////////////////////////////
 	private HashMap<Direccion, Esquina> mEsquinasProximas;
 	private ElementoDeEsquina mElementoEnEsquina;	
+	
+	////////////////// Metodos Publicos /////////////////////////
 	
 	public Esquina() {
 		this.mEsquinasProximas = new HashMap<Direccion, Esquina>();
@@ -35,6 +41,12 @@ public class Esquina {
 	
 	public boolean tieneEsquinaEnLaDireccion(Direccion direccion) {
 		return this.mEsquinasProximas.containsKey(direccion);
+	}
+	
+	public void aplicarElementosA(Vehiculo vehiculo) {
+		if (this.mElementoEnEsquina != null) {
+			mElementoEnEsquina.aplicarA(vehiculo);	
+		}
 	}
 	
 }
