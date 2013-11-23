@@ -57,23 +57,17 @@ public class VehiculoRecorreMapaYTocaSorpresaTest {
         
         // Hasta acá ya tiene 20 movimientos y esta en posicion inicial
         	
+        jugador.moverVehiculoA(sur);
         jugador.moverVehiculoA(este);
-        jugador.moverVehiculoA(sur);
-        jugador.moverVehiculoA(sur);
-        jugador.moverVehiculoA(norte);
-        jugador.moverVehiculoA(sur);
-        jugador.moverVehiculoA(norte);
-        jugador.moverVehiculoA(sur);        
-        jugador.moverVehiculoA(norte);
         jugador.moverVehiculoA(sur);
         jugador.moverVehiculoA(este);
         
-        // llegó a posicion final, donde esta la sorpresa con 30 movs.
-        // La sorpresa favorable lo dejaria en 30 x 0.8 = 24
-        
-       jugador.actualizar();
-              
-       Assert.assertTrue(jugador.getPuntaje() == 24);
+        // llegó a posicion final, donde esta la sorpresa con 24 movs.
+        // La sorpresa favorable lo dejaria en 24 x 0.8 = 19.2
+       
+        jugador.actualizar();
+       
+        Assert.assertEquals(jugador.getPuntaje(), 19.2, 0.1);
 	}
 
 	

@@ -5,11 +5,15 @@ import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 public class Jugador {
 		
+		//////////////////// Atributos //////////////////////
+	
 	private Vehiculo mVehiculo;
     private String mNombre;
     private float mPuntaje;
 	
-	public Jugador(String nombre, Vehiculo vehiculo) {
+    	///////////////// Métodos Publicos ///////////////////
+	
+    public Jugador(String nombre, Vehiculo vehiculo) {
         this.mNombre = nombre;
         this.mVehiculo = vehiculo;
         this.mPuntaje = 0;
@@ -21,16 +25,12 @@ public class Jugador {
     
     public float getPuntaje() {
 		return mPuntaje;
-	}
+	}  
     
     public void actualizar() {
     	this.actualizarPuntaje();
     }
-    
-    private void actualizarPuntaje() {
-    	this.mPuntaje = mVehiculo.getMovimientos() + mVehiculo.getMovimientosBonus();
-    }
-        
+           
     public void moverVehiculoA(Direccion direccion) {
     	if (direccion != null) {
     	
@@ -50,5 +50,14 @@ public class Jugador {
 		return this.mVehiculo.estaEnLaMeta();
 	}
     
+		///////////////// Metodos Privados ///////////////////
     
+	private void actualizarPuntaje() {
+    	this.mPuntaje = mVehiculo.getMovimientos() + mVehiculo.getMovimientosBonus();
+    }
+	
+	@SuppressWarnings("unused")
+	private Jugador() {
+		// no usar!
+	}
 }
