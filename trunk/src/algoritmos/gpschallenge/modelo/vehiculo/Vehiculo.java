@@ -14,7 +14,7 @@ public class Vehiculo {
 	private float mMovimientosBonus;
 	private boolean mAlcanzoMeta;
 	
-	///////////////// Metodos Publicos ///////////////////
+	///////////////// Métodos Publicos ///////////////////
 	
 	public Vehiculo(Esquina ubicacion, ITipoVehiculo tipo) {
 		this.mUbicacionPrevia = null;
