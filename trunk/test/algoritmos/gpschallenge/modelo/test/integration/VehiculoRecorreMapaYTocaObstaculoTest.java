@@ -12,7 +12,7 @@ public class VehiculoRecorreMapaYTocaObstaculoTest {
 	 
 	
 	@Test
-	public void aplicarPozoEnMoto() {	
+	public void testAplicarPozoEnMoto() {	
         Mapa mapa = new Mapa(2, new Pozo());
         
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Moto()));
@@ -35,7 +35,7 @@ public class VehiculoRecorreMapaYTocaObstaculoTest {
 	}
 
 	@Test
-	public void aplicarPozoEnAuto() {	
+	public void testAplicarPozoEnAuto() {	
         Mapa mapa = new Mapa(2, new Pozo());
         
         Jugador jugador = new Jugador("Juan", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
@@ -58,7 +58,7 @@ public class VehiculoRecorreMapaYTocaObstaculoTest {
 	}
 	
 	@Test
-	public void aplicarPozoEnCuatroPorCuatro() {	
+	public void testAplicarPozoEnCuatroPorCuatro() {	
         Mapa mapa = new Mapa(2, new Pozo());
         
         Jugador jugador = new Jugador("Marito", new Vehiculo(mapa.getEsquinaInicial(), new CuatroPorCuatro()));
@@ -81,7 +81,7 @@ public class VehiculoRecorreMapaYTocaObstaculoTest {
 	}
 	
 	@Test
-	public void aplicarPiqueteEnMoto() {	
+	public void testAplicarPiqueteEnMoto() {	
         Mapa mapa = new Mapa(2, new Piquete());
         
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Moto()));
@@ -107,7 +107,7 @@ public class VehiculoRecorreMapaYTocaObstaculoTest {
 	}
 
 	@Test
-	public void aplicarPiqueteEnAuto() {	
+	public void testAplicarPiqueteEnAuto() {	
         Mapa mapa = new Mapa(2, new Piquete());
         
         Jugador jugador = new Jugador("Juan", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
@@ -129,7 +129,7 @@ public class VehiculoRecorreMapaYTocaObstaculoTest {
 	}
 	
 	@Test
-	public void aplicarPiqueteEnCuatroPorCuatro() {	
+	public void testAplicarPiqueteEnCuatroPorCuatro() {	
         Mapa mapa = new Mapa(2, new Piquete());
         
         Jugador jugador = new Jugador("Marito", new Vehiculo(mapa.getEsquinaInicial(), new CuatroPorCuatro()));

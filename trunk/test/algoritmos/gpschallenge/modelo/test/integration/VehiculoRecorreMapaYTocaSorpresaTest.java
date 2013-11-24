@@ -12,7 +12,7 @@ public class VehiculoRecorreMapaYTocaSorpresaTest {
 	 
 	
 	@Test
-	public void aplicarSorpresaDesfavorableEnVehiculo() {	
+	public void testAplicarSorpresaDesfavorableEnVehiculo() {	
         Mapa mapa = new Mapa(2, new SorpresaDesfavorable());
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
         
@@ -42,7 +42,7 @@ public class VehiculoRecorreMapaYTocaSorpresaTest {
 
 	
 	@Test
-	public void aplicarSorpresaFavorableEnVehiculo() {	
+	public void testAplicarSorpresaFavorableEnVehiculo() {	
         Mapa mapa = new Mapa(2, new SorpresaFavorable());
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
         
@@ -72,7 +72,7 @@ public class VehiculoRecorreMapaYTocaSorpresaTest {
 
 	
 	@Test
-	public void aplicarSorpresaCambioVehiculo() {	
+	public void testAplicarSorpresaCambioVehiculo() {	
         Mapa mapa = new Mapa(2, new SorpresaCambioVehiculo());
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
         
