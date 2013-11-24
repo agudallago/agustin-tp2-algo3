@@ -8,7 +8,7 @@ import algoritmos.gpschallenge.modelo.direccion.*;
 public class DireccionTest {
 	
 	@Test
-	public void crearNorteNoNuloYToStringRetornaDireccion() {
+	public void testCrearNorteNoNuloYToStringRetornaDireccion() {
 		Direccion direccion = new Norte();
 		
 		Assert.assertNotNull(direccion);
@@ -16,7 +16,7 @@ public class DireccionTest {
 	}
 	
 	@Test
-	public void crearDosNortesYDebenSerIguales() {
+	public void testCrearDosNortesYDebenSerIguales() {
 		Direccion norte1 = new Norte();
 		Direccion norte2 = new Norte();
 		
@@ -24,7 +24,7 @@ public class DireccionTest {
 	}
 	
 	@Test
-	public void verificarHascodeNorte() {
+	public void testVerificarHascodeNorte() {
 		Direccion unNorte = new Norte();
 		String stringNorte = "norte";
 				

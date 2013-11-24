@@ -10,7 +10,7 @@ import algoritmos.gpschallenge.modelo.vehiculo.*;
 public class VehiculoRecorreMapaTest {
 
 	@Test
-	public void recorrerMapaConVehiculo() {
+	public void testRecorrerMapaConVehiculo() {
         Mapa mapa = new Mapa(1, null);
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
         
@@ -27,7 +27,7 @@ public class VehiculoRecorreMapaTest {
 	}
 
 		@Test
-	public void VehiculoIntentaIrseFueraDeMapaLuegoDeLlegarALaEsquinaFinal() {
+	public void testVehiculoIntentaIrseFueraDeMapaLuegoDeLlegarALaEsquinaFinal() {
         Mapa mapa = new Mapa(1, null);
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Auto()));
         

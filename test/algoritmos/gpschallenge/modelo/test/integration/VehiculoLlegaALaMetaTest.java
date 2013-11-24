@@ -10,7 +10,7 @@ import algoritmos.gpschallenge.modelo.vehiculo.*;
 public class VehiculoLlegaALaMetaTest {
 	
 	@Test
-	public void vehiculoLlegaALaMeta() {	
+	public void testVehiculoLlegaALaMeta() {	
         Mapa mapa = new Mapa(2, new Meta());
         
         Jugador jugador = new Jugador("Pepe", new Vehiculo(mapa.getEsquinaInicial(), new Moto()));

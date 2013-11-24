@@ -8,7 +8,7 @@ import algoritmos.gpschallenge.modelo.vehiculo.Auto;
 public class AutoTest {
 	
 	@Test
-	public void crearAutoNoNulo() {
+	public void testCrearAutoNoNulo() {
 		Auto auto = new Auto();
 		Assert.assertNotNull(auto);		
 	}

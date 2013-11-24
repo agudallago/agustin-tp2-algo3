@@ -9,14 +9,14 @@ import algoritmos.gpschallenge.modelo.direccion.*;
 public class EsquinaTest {
 	
 	@Test
-	public void crearEsquinaNoNula() {
+	public void testCrearEsquinaNoNula() {
 		Esquina esquina = new Esquina();
 		
 		Assert.assertNotNull(esquina);
 	}
 	
 	@Test
-	public void crearEsquinaYChequearQueEsteAislada() {
+	public void testCrearEsquinaYChequearQueEsteAislada() {
 		Esquina esquina = new Esquina();
 		
 		Assert.assertNull(esquina.getEsquinaAl(new Norte()));
@@ -26,7 +26,7 @@ public class EsquinaTest {
 	}
 	
 	@Test
-	public void crearEsquinaYAsociarlaConEsquinaNorte() {
+	public void testCrearEsquinaYAsociarlaConEsquinaNorte() {
 		Esquina esquina = new Esquina();
 		Esquina esquinaNorte = new Esquina();
 				
