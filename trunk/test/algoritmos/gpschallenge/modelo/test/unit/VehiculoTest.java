@@ -48,4 +48,46 @@ public class VehiculoTest {
 			Assert.assertEquals(unVehiculo.getTipoDeVehiculoAsString(), "Auto");
 	
 	}
+	
+	@Test
+	public void testVehiculoMoverNorteyVolverAEsquinaInicial() {
+		Esquina unaEsquinaInicial = new Esquina();
+		Esquina unaEsquinaNorte = new Esquina();
+		unaEsquinaInicial.setEsquinaAl(new Norte(), unaEsquinaNorte);
+		unaEsquinaNorte.setEsquinaAl(new Sur(), unaEsquinaInicial);
+		int movimientos;
+		Vehiculo unVehiculo = new Vehiculo(unaEsquinaInicial, new Auto());;
+		
+		movimientos = unVehiculo.getMovimientos();
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquinaInicial);
+		Assert.assertEquals(unVehiculo.getMovimientos(), movimientos);
+		
+		unVehiculo.moverA(new Norte());
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquinaNorte);
+		movimientos++;
+		Assert.assertEquals(unVehiculo.getMovimientos(), movimientos);
+		
+		unVehiculo.moverA(new Sur());
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquinaInicial);
+		movimientos++;
+		Assert.assertEquals(unVehiculo.getMovimientos(), movimientos);
+		
+	}
+	
+	@Test
+	public void testVehiculoMoverAEsquinaInexistente() {
+	//Prueba que el vehículo no se mueva a una esquina inexistente ni tampoco se incremente 
+	//el contador de movimientos
+		Esquina unaEsquina = new Esquina();
+		int movimientos;
+		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
+		
+		movimientos = unVehiculo.getMovimientos();
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquina);
+		Assert.assertEquals(unVehiculo.getMovimientos(), movimientos);
+		
+		unVehiculo.moverA(new Norte());
+		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquina);
+		Assert.assertEquals(unVehiculo.getMovimientos(), movimientos);
+	}
 }
