@@ -11,7 +11,7 @@ public class Jugador {
     private String mNombre;
     private float mPuntaje;
 	
-    	///////////////// Métodos Publicos ///////////////////
+    	///////////////// Métodos Públicos ///////////////////
 	
     public Jugador(String nombre, Vehiculo vehiculo) {
         this.mNombre = nombre;
@@ -32,8 +32,7 @@ public class Jugador {
     }
            
     public void moverVehiculoA(Direccion direccion) {
-    	if (direccion != null) {
-    	
+    	if (direccion != null) {    	
     		this.mVehiculo.moverA(direccion);
     	}
     }
