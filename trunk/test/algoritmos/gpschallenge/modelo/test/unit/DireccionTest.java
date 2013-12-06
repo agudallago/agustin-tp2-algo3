@@ -23,12 +23,4 @@ public class DireccionTest {
 		Assert.assertEquals(norte1, norte2);
 	}
 	
-	@Test
-	public void testVerificarHascodeNorte() {
-		Direccion unNorte = new Norte();
-		String stringNorte = "norte";
-				
-		Assert.assertEquals(unNorte.hashCode(), stringNorte.hashCode());
-	}
-	
 }
