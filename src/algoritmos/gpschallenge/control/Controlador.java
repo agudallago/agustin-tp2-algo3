@@ -1,4 +1,4 @@
-package algoritmos.gpschallenge.modelo.control;
+package algoritmos.gpschallenge.control;
 import java.awt.event.*;
 
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
