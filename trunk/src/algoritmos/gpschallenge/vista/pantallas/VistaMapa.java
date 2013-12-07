@@ -1,24 +1,16 @@
 package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.Button;
-import java.awt.Frame;
 import java.awt.Label;
 import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.*;
 import java.util.*;
-import java.awt.event.*;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import algoritmos.gpschallenge.control.Controlador;
-import algoritmos.gpschallenge.control.*;
+
+import algoritmos.gpschallenge.modelo.control.*;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
 
 public class VistaMapa implements Observer{
