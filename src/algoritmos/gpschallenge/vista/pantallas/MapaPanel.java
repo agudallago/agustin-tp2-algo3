@@ -9,7 +9,10 @@ import javax.swing.JPanel;
 
 public class MapaPanel extends JPanel {
 
-		  private Image imagenMapa;
+	 // serialVersionUID creado por el Eclipse
+
+	private static final long serialVersionUID = 1L;
+		private Image imagenMapa;
 
 		  public MapaPanel(String imagenMapa) {
 		    this(new ImageIcon(imagenMapa).getImage());

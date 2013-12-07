@@ -2,7 +2,6 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -11,9 +10,7 @@ import javax.swing.SwingConstants;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.Toolkit;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.JList;
 
 
