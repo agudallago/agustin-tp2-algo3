@@ -2,6 +2,7 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -10,14 +11,18 @@ import javax.swing.SwingConstants;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PantallaBienvenida {
 
-	private JFrame frmGpsChallenge;
+	JFrame frmGpsChallenge;
 	private JTextField txtBienvenido;
 	private JButton btnYaSoyJugador;
-
+	private PantallaJugadorExistente windowJugadorExistente;
+	private PantallaJugadorNuevo windowJugadorNuevo;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -39,6 +44,7 @@ public class PantallaBienvenida {
 	 */
 	public PantallaBienvenida() {
 		initialize();
+		frmGpsChallenge.setVisible(true);
 	}
 
 	/**
@@ -74,6 +80,11 @@ public class PantallaBienvenida {
 		frmGpsChallenge.getContentPane().add(btnNuevoJugador);
 		
 		btnYaSoyJugador = new JButton("Ya soy Jugador");
+		btnYaSoyJugador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowJugadorNuevo = new PantallaJugadorNuevo();
+			}
+		});
 		btnYaSoyJugador.setActionCommand("YaSoyJugador");
 		btnYaSoyJugador.setBounds(132, 169, 171, 49);
 		frmGpsChallenge.getContentPane().add(btnYaSoyJugador);

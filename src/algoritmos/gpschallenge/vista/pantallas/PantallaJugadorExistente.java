@@ -40,6 +40,8 @@ public class PantallaJugadorExistente {
 	 */
 	public PantallaJugadorExistente() {
 		initialize();
+		PantallaJugadorExistente window = new PantallaJugadorExistente();
+		window.frmGpsChallenge.setVisible(true);
 	}
 
 	/**
