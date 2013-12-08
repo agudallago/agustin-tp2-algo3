@@ -20,8 +20,8 @@ public class PantallaBienvenida {
 	JFrame frmGpsChallenge;
 	private JTextField txtBienvenido;
 	private JButton btnYaSoyJugador;
-	private PantallaJugadorExistente windowJugadorExistente;
 	private PantallaJugadorNuevo windowJugadorNuevo;
+	private PantallaJugadorExistente windowJugadorExistente;
 	
 	/**
 	 * Launch the application.
@@ -75,6 +75,11 @@ public class PantallaBienvenida {
 		txtBienvenido.setColumns(10);
 		
 		JButton btnNuevoJugador = new JButton("Nuevo Jugador");
+		btnNuevoJugador.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowJugadorNuevo = new PantallaJugadorNuevo();
+			}
+		});
 		btnNuevoJugador.setActionCommand("NuevoJugador");
 		btnNuevoJugador.setBounds(132, 109, 171, 49);
 		frmGpsChallenge.getContentPane().add(btnNuevoJugador);
@@ -82,7 +87,7 @@ public class PantallaBienvenida {
 		btnYaSoyJugador = new JButton("Ya soy Jugador");
 		btnYaSoyJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				windowJugadorNuevo = new PantallaJugadorNuevo();
+				windowJugadorExistente = new PantallaJugadorExistente();
 			}
 		});
 		btnYaSoyJugador.setActionCommand("YaSoyJugador");
