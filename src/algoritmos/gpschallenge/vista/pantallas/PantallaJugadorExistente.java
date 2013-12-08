@@ -2,7 +2,6 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -11,14 +10,14 @@ import javax.swing.SwingConstants;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.Toolkit;
+import javax.swing.JComboBox;
 
 
 public class PantallaJugadorExistente {
 
 	private JFrame frmGpsChallenge;
 	private JTextField txtTitulo;
-	private JButton btnGuardar;
-	private JTextField campoNombre;
+	private JButton btnAceptar;
 
 	/**
 	 * Launch the application.
@@ -41,6 +40,7 @@ public class PantallaJugadorExistente {
 	 */
 	public PantallaJugadorExistente() {
 		initialize();
+		frmGpsChallenge.setVisible(true);
 	}
 
 	/**
@@ -65,22 +65,19 @@ public class PantallaJugadorExistente {
 		txtTitulo.setForeground(new Color(0, 102, 204));
 		txtTitulo.setFont(new Font("Arial", Font.BOLD, 18));
 		txtTitulo.setEditable(false);
-		txtTitulo.setText("Ingrese su nombre");
-		txtTitulo.setBounds(10, 49, 414, 29);
+		txtTitulo.setText("Elija su usuario");
+		txtTitulo.setBounds(10, 31, 414, 29);
 		frmGpsChallenge.getContentPane().add(txtTitulo);
 		txtTitulo.setColumns(10);
 		
-		btnGuardar = new JButton("Guardar");
-		btnGuardar.setActionCommand("GuardarNombre");
-		btnGuardar.setBounds(132, 169, 171, 49);
-		frmGpsChallenge.getContentPane().add(btnGuardar);
+		btnAceptar = new JButton("Aceptar");
+		btnAceptar.setActionCommand("GuardarNombre");
+		btnAceptar.setBounds(132, 169, 171, 49);
+		frmGpsChallenge.getContentPane().add(btnAceptar);
 		
-		campoNombre = new JTextField();
-		campoNombre.setFont(new Font("Arial", Font.BOLD, 12));
-		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		campoNombre.setBounds(132, 102, 171, 29);
-		frmGpsChallenge.getContentPane().add(campoNombre);
-		campoNombre.setColumns(10);
-		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{campoNombre, btnGuardar}));
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(132, 89, 171, 29);
+		frmGpsChallenge.getContentPane().add(comboBox);
+		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnAceptar}));
 	}
 }
