@@ -10,7 +10,7 @@ import java.util.*;
 import javax.swing.JFrame;
 
 
-import algoritmos.gpschallenge.modelo.control.*;
+import algoritmos.gpschallenge.control.*;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
 
 public class VistaMapa implements Observer{
