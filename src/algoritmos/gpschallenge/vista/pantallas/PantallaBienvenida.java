@@ -22,7 +22,7 @@ public class PantallaBienvenida {
 	private JButton btnYaSoyJugador;
 	private PantallaJugadorNuevo windowJugadorNuevo;
 	private PantallaJugadorExistente windowJugadorExistente;
-	
+	PantallaBienvenida windowBienvenida;
 	/**
 	 * Launch the application.
 	 */
@@ -44,7 +44,8 @@ public class PantallaBienvenida {
 	 */
 	public PantallaBienvenida() {
 		initialize();
-		frmGpsChallenge.setVisible(true);
+		PantallaBienvenida windowBienvenida = this; //new PantallaBienvenida();
+		windowBienvenida.frmGpsChallenge.setVisible(true);
 	}
 
 	/**
@@ -88,6 +89,8 @@ public class PantallaBienvenida {
 		btnYaSoyJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowJugadorExistente = new PantallaJugadorExistente();
+				
+				
 			}
 		});
 		btnYaSoyJugador.setActionCommand("YaSoyJugador");
