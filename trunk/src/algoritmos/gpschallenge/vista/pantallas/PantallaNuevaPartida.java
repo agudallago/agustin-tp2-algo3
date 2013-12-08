@@ -2,6 +2,7 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
@@ -10,7 +11,10 @@ import javax.swing.SwingConstants;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 import java.awt.Component;
 import java.awt.Toolkit;
+import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.TitledBorder;
+import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
@@ -24,6 +28,7 @@ public class PantallaNuevaPartida {
 	/**
 	 * @wbp.nonvisual location=212,129
 	 */
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JRadioButton rdbtn4x4;
 	private JRadioButton rdbtnAuto;
 	private JRadioButton rdbtnMoto;
@@ -128,10 +133,10 @@ public class PantallaNuevaPartida {
 		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 		
 		//Agrupo los botones de Tipo de Vehiculo
-		ButtonGroup grupoVehiculo = new ButtonGroup();
-		grupoVehiculo.add(rdbtnMoto);
-		grupoVehiculo.add(rdbtnAuto);
-		grupoVehiculo.add(rdbtn4x4);
+				ButtonGroup grupoVehiculo = new ButtonGroup();
+				grupoVehiculo.add(rdbtnMoto);
+				grupoVehiculo.add(rdbtnAuto);
+				grupoVehiculo.add(rdbtn4x4);
 		
 	}
 }
