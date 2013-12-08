@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 
 import algoritmos.gpschallenge.control.*;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
+import javax.swing.JButton;
 
 public class VistaMapa implements Observer{
 		
@@ -19,10 +20,10 @@ public class VistaMapa implements Observer{
 		private JFrame frameMapa; //marco que contendrá el mapa
 		private MapaPanel panelMapa; //Panel que contiene la imagen del mapa
 		private TextField textoMapa = new TextField(); //texto que mostrara el Nivel 
-		private Button botonNorte = new Button("Norte");  //boton para ir al Norte
-		private Button botonSur = new Button("Sur");  //boton para ir al Sur
-		private Button botonEste = new Button("Este");  //boton para ir al Este
-		private Button botonOeste = new Button("Oeste");  //boton para ir al Oeste
+		private JButton botonNorte = new JButton();  //boton para ir al Norte
+		private JButton botonSur = new JButton("Sur", null);  //boton para ir al Sur
+		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
+		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
 		private MapaPanel panelAuto = new MapaPanel("images/auto.png");
 				
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
@@ -42,43 +43,55 @@ public class VistaMapa implements Observer{
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
 			frameMapa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frameMapa.setFocusable(true);
+			frameMapa.getContentPane().setLayout(null);
 			
-			frameMapa.add("North", new Label("Nivel 1 "));  //agregamos un titulo
-			frameMapa.add("Center", textoMapa); //agregamos el texto que muestra el Nivel
+			Label label = new Label("Nivel 1 ");
+			label.setBounds(0, 0, 984, 22);
+			frameMapa.getContentPane().add(label);  //agregamos un titulo
+			textoMapa.setBounds(0, 0, 0, 0);
+			frameMapa.getContentPane().add(textoMapa); //agregamos el texto que muestra el Nivel
+			panelAuto.setSize(59, 22);
 			
 			
 			//frameMapa.add(panelAuto);
 			frameMapa.getContentPane().add(panelAuto);
-			panelAuto.setLocation(100,100);
+			panelAuto.setLocation(100,77);
+			panelAuto.setLayout(null);
 			modelo.setPosX(100);
 			modelo.setPosY(100);
 			
 			//Creamos panel de Mapa y lo agregamos al frame
 			panelMapa = new MapaPanel(imagenMapaNivel); //Panel que contiene la imagen del mapa
-			frameMapa.add("Center",panelMapa);   //agregamos el panel con el mapa
+			panelMapa.setBounds(0, 22, 984, 542);
+			frameMapa.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
+		panelMapa.setLayout(null);
+		botonNorte.setBounds(753, 456, 66, 22);
+		botonNorte.setText("Norte");
+		panelMapa.add(botonNorte);
+		botonEste.setBounds(822, 484, 61, 22);
+		panelMapa.add(botonEste);
+		botonOeste.setBounds(690, 484, 61, 22);
+		panelMapa.add(botonOeste);
+		botonSur.setBounds(753, 510, 66, 22);
+		panelMapa.add(botonSur);
+		
+		JButton button = new JButton("   ");
+		button.setBounds(753, 484, 66, 22);
+		panelMapa.add(button);
+		botonSur.addActionListener(control.getListenerBotonSur());
+		botonOeste.addActionListener(control.getListenerBotonOeste());
+		botonEste.addActionListener(control.getListenerBotonEste());
 			
-			frameMapa.addKeyListener(control.getListenerTeclas()); //agregamos el listener de teclas
+			//agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
+			//Notar que los listeners se los pedimos al controlador
+		botonNorte.addActionListener(control.getListenerBotonNorte());
 			
-			//Creamos panel de Botones y agregamos los botones de "Norte", "Sur", "Este"y "Oeste" al panel
-			Panel panelBotones = new Panel(); //creamos un panel para los botones	
-			panelBotones.add(botonNorte);  
-			panelBotones.add(botonSur);  
-			panelBotones.add(botonEste);  
-			panelBotones.add(botonOeste);  
-			
-			frameMapa.add("South", panelBotones);  //agregamos el panel al marco
+			frameMapa.addKeyListener(control.getListenerTeclas());
 			frameMapa.setSize(1000,600);  //seteamos las dimensiones del marco
 			frameMapa.setVisible(true);  //mostramos el marco
 
 			//agregamos el listener del evento de cerrado de la ventana		
 			frameMapa.addWindowListener(new CloseListener());
-			
-			//agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
-			//Notar que los listeners se los pedimos al controlador
-		botonNorte.addActionListener(control.getListenerBotonNorte());
-		botonSur.addActionListener(control.getListenerBotonSur());
-		botonEste.addActionListener(control.getListenerBotonEste());
-		botonOeste.addActionListener(control.getListenerBotonOeste());
 
 		// Conectamos esta vista con el modelo
 		this.modelo = modelo;
@@ -100,9 +113,7 @@ public class VistaMapa implements Observer{
 		  public static void main(String[] args) {
 			  ModeloJuego modelo =  new ModeloJuego();
 			  Controlador controlador = new Controlador(modelo);
-			  
 			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, "images/fondo.jpg");
 			    
 			}
-		
 	}
