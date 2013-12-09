@@ -4,12 +4,12 @@ import java.awt.event.*;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
 
 
-public class Controlador {
+public class ControladorVistaMapa {
 
 	private ModeloJuego modelo;
 	
 	//Constructor de la clase Controlador
-		public Controlador(ModeloJuego modelo) {
+		public ControladorVistaMapa(ModeloJuego modelo) {
 			this.modelo = modelo;
 		}
 	
