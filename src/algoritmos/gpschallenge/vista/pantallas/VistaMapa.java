@@ -37,7 +37,7 @@ public class VistaMapa implements Observer{
 
 
 //Constructor de la vista
-		public VistaMapa(ModeloJuego modelo, Controlador control, String imagenMapaNivel) {
+		public VistaMapa(ModeloJuego modelo, ControladorVistaMapa control, String imagenMapaNivel) {
 			
 			//armado de la ventana
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
@@ -112,7 +112,7 @@ public class VistaMapa implements Observer{
 		
 		  public static void main(String[] args) {
 			  ModeloJuego modelo =  new ModeloJuego();
-			  Controlador controlador = new Controlador(modelo);
+			  ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
 			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, "images/fondo.jpg");
 			    
 			}
