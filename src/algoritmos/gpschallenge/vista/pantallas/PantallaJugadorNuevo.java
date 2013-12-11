@@ -2,24 +2,40 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import algoritmos.gpschallenge.modelo.juego.Jugador;
+
 import java.awt.Component;
 import java.awt.Toolkit;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PantallaJugadorNuevo {
 
-	private JFrame frmGpsChallenge;
+	private JFrame frame;
 	private JTextField txtTitulo;
 	private JButton btnGuardar;
 	private JTextField campoNombre;
-
+	private JButton button;
+	private PantallaJugadorNuevo windowJugadorNuevo;
+	private PantallaBienvenida windowBienvenida;
+	private PantallaOpciones windowOpciones;
+	private Jugador jugador;
+	private String nombre;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -28,7 +44,7 @@ public class PantallaJugadorNuevo {
 			public void run() {
 				try {
 					PantallaJugadorNuevo window = new PantallaJugadorNuevo();
-					window.frmGpsChallenge.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -41,22 +57,23 @@ public class PantallaJugadorNuevo {
 	 */
 	public PantallaJugadorNuevo() {
 		initialize();
-		frmGpsChallenge.setVisible(true);
+		windowJugadorNuevo = this;
+		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmGpsChallenge = new JFrame();
-		frmGpsChallenge.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
-		frmGpsChallenge.setTitle("GPS Challenge");
-		frmGpsChallenge.setName("frameBienvenida");
-		frmGpsChallenge.getContentPane().setBackground(new Color(255, 255, 255));
-		frmGpsChallenge.getContentPane().setForeground(new Color(0, 0, 0));
-		frmGpsChallenge.setBounds(100, 100, 450, 300);
-		frmGpsChallenge.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmGpsChallenge.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
+		frame.setTitle("GPS Challenge");
+		frame.setName("frameBienvenida");
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		txtTitulo = new JTextField();
 		txtTitulo.setRequestFocusEnabled(false);
@@ -68,20 +85,42 @@ public class PantallaJugadorNuevo {
 		txtTitulo.setEditable(false);
 		txtTitulo.setText("Ingrese su nombre");
 		txtTitulo.setBounds(10, 49, 414, 29);
-		frmGpsChallenge.getContentPane().add(txtTitulo);
+		frame.getContentPane().add(txtTitulo);
 		txtTitulo.setColumns(10);
 		
 		btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//TODO 
+				// Guardar jugador con persistencia
+				nombre = txtTitulo.getText();
+				jugador = new Jugador(nombre, null);
+				windowOpciones = new PantallaOpciones(jugador);
+				frame.dispose();
+			}
+		});
 		btnGuardar.setActionCommand("GuardarNombre");
-		btnGuardar.setBounds(132, 169, 171, 49);
-		frmGpsChallenge.getContentPane().add(btnGuardar);
+		btnGuardar.setBounds(132, 169, 82, 49);
+		frame.getContentPane().add(btnGuardar);
 		
 		campoNombre = new JTextField();
 		campoNombre.setFont(new Font("Arial", Font.BOLD, 12));
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		campoNombre.setBounds(132, 102, 171, 29);
-		frmGpsChallenge.getContentPane().add(campoNombre);
+		frame.getContentPane().add(campoNombre);
 		campoNombre.setColumns(10);
-		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{campoNombre, btnGuardar}));
+		campoNombre.setText(jugador.getNombre());
+		
+		button = new JButton("Volver");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowBienvenida = new PantallaBienvenida();
+				frame.dispose();
+			}
+		});
+		button.setAlignmentX(0.5f);
+		button.setBounds(221, 169, 82, 49);
+		frame.getContentPane().add(button);
+		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{campoNombre, btnGuardar}));
 	}
 }

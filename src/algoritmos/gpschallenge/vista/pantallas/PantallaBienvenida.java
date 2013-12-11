@@ -22,7 +22,7 @@ public class PantallaBienvenida {
 	private JButton btnYaSoyJugador;
 	private PantallaJugadorNuevo windowJugadorNuevo;
 	private PantallaJugadorExistente windowJugadorExistente;
-	PantallaBienvenida windowBienvenida;
+	private PantallaBienvenida windowBienvenida;
 	/**
 	 * Launch the application.
 	 */
@@ -79,6 +79,7 @@ public class PantallaBienvenida {
 		btnNuevoJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowJugadorNuevo = new PantallaJugadorNuevo();
+				frmGpsChallenge.dispose();
 			}
 		});
 		btnNuevoJugador.setActionCommand("NuevoJugador");
@@ -89,7 +90,7 @@ public class PantallaBienvenida {
 		btnYaSoyJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowJugadorExistente = new PantallaJugadorExistente();
-				
+				frmGpsChallenge.dispose();
 				
 			}
 		});
