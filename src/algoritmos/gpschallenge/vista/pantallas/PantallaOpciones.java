@@ -1,28 +1,21 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
-
-import java.awt.GridBagLayout;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.Font;
 import java.awt.Color;
-
 import javax.swing.SwingConstants;
-
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-
 import algoritmos.gpschallenge.modelo.juego.Jugador;
-
 import java.awt.Component;
 import java.awt.Toolkit;
-
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PantallaOpciones {
@@ -33,7 +26,10 @@ public class PantallaOpciones {
 	private JButton btnPuntajes;
 	private JTextField textFieldNombre;
 	private JButton btnSalir;
-
+	private PantallaPuntajes windowPuntajes;
+	private PantallaBienvenida windowBienvenida;
+	//private Jugador jugador;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -55,9 +51,11 @@ public class PantallaOpciones {
 	 * Create the application.
 	 */
 	
-	public PantallaOpciones(Jugador jugador) {
-		initialize(jugador);
+	public PantallaOpciones(Jugador unJugador) {
+		initialize(unJugador);
+		//this.jugador = unJugador;
 		frame.setVisible(true);
+		
 	}
 	
 	/**
@@ -98,6 +96,11 @@ public class PantallaOpciones {
 		frame.getContentPane().add(btnRecuperarPartida);
 		
 		btnPuntajes = new JButton("Ver Puntajes");
+		btnPuntajes.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowPuntajes = new PantallaPuntajes();
+			}
+		});
 		btnPuntajes.setActionCommand("VerPuntajes");
 		btnPuntajes.setBounds(129, 186, 171, 49);
 		frame.getContentPane().add(btnPuntajes);
@@ -116,7 +119,13 @@ public class PantallaOpciones {
 		textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
-		btnSalir = new JButton("Salir");
+		btnSalir = new JButton("Volver");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowBienvenida = new PantallaBienvenida();
+				frame.dispose();
+			}
+		});
 		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnSalir.setBounds(335, 212, 89, 23);
 		frame.getContentPane().add(btnSalir);
