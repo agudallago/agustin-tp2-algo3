@@ -54,10 +54,12 @@ public class PantallaOpciones {
 	/**
 	 * Create the application.
 	 */
+	
 	public PantallaOpciones(Jugador jugador) {
 		initialize(jugador);
+		frame.setVisible(true);
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -102,7 +104,7 @@ public class PantallaOpciones {
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldNombre.setText("#Nombre");
+		textFieldNombre.setText("Hola");
 		textFieldNombre.setRequestFocusEnabled(false);
 		textFieldNombre.setForeground(new Color(0, 0, 0));
 		textFieldNombre.setFont(new Font("Arial", Font.BOLD, 16));
@@ -111,6 +113,7 @@ public class PantallaOpciones {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
+		textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnSalir = new JButton("Salir");

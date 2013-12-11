@@ -21,6 +21,8 @@ import java.awt.Component;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 
 
 public class PantallaJugadorNuevo {
@@ -28,8 +30,8 @@ public class PantallaJugadorNuevo {
 	private JFrame frame;
 	private JTextField txtTitulo;
 	private JButton btnGuardar;
+	private JButton btnVolver;
 	private JTextField campoNombre;
-	private JButton button;
 	private PantallaJugadorNuevo windowJugadorNuevo;
 	private PantallaBienvenida windowBienvenida;
 	private PantallaOpciones windowOpciones;
@@ -93,7 +95,7 @@ public class PantallaJugadorNuevo {
 			public void actionPerformed(ActionEvent e) {
 				//TODO 
 				// Guardar jugador con persistencia
-				nombre = txtTitulo.getText();
+				nombre = campoNombre.getText() + "\n";
 				jugador = new Jugador(nombre, null);
 				windowOpciones = new PantallaOpciones(jugador);
 				frame.dispose();
@@ -104,23 +106,29 @@ public class PantallaJugadorNuevo {
 		frame.getContentPane().add(btnGuardar);
 		
 		campoNombre = new JTextField();
+		campoNombre.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				campoNombre.setText("");
+			}
+		});
 		campoNombre.setFont(new Font("Arial", Font.BOLD, 12));
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		campoNombre.setBounds(132, 102, 171, 29);
 		frame.getContentPane().add(campoNombre);
 		campoNombre.setColumns(10);
-		campoNombre.setText(jugador.getNombre());
+		campoNombre.setText("Ingrese su nombre");
 		
-		button = new JButton("Volver");
-		button.addActionListener(new ActionListener() {
+		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowBienvenida = new PantallaBienvenida();
 				frame.dispose();
 			}
 		});
-		button.setAlignmentX(0.5f);
-		button.setBounds(221, 169, 82, 49);
-		frame.getContentPane().add(button);
+		btnVolver.setAlignmentX(0.5f);
+		btnVolver.setBounds(221, 169, 82, 49);
+		frame.getContentPane().add(btnVolver);
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{campoNombre, btnGuardar}));
 	}
 }

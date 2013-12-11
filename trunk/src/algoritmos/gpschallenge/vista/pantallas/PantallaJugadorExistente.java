@@ -13,6 +13,7 @@ import javax.swing.SwingConstants;
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import algoritmos.gpschallenge.modelo.juego.Jugador;
+import algoritmos.gpschallenge.modelo.vehiculo.Auto;
 
 import java.awt.Component;
 import java.awt.Toolkit;
@@ -28,6 +29,7 @@ public class PantallaJugadorExistente {
 	private JFrame frame;
 	private JTextField txtTitulo;
 	private JButton btnAceptar;
+	private JButton btnVolver;
 	private PantallaJugadorExistente windowJugadorExistente;
 	private PantallaBienvenida windowBienvenida;
 	private PantallaOpciones windowOpciones;
@@ -90,13 +92,14 @@ public class PantallaJugadorExistente {
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//TODO cargar jugador existente
-				frame.dispose();
+				//jugador = new Jugador("Pepe", new Auto());
+				jugador = new Jugador("pepe", null);
 				windowOpciones = new PantallaOpciones(jugador); //Falta enviarle el Jugador como argumento
-				
+				frame.dispose();
 			}
 		});
 		btnAceptar.setActionCommand("GuardarNombre");
-		btnAceptar.setBounds(138, 169, 72, 49);
+		btnAceptar.setBounds(132, 169, 83, 49);
 		frame.getContentPane().add(btnAceptar);
 		
 		JComboBox comboBox = new JComboBox();
@@ -104,16 +107,16 @@ public class PantallaJugadorExistente {
 		frame.getContentPane().add(comboBox);
 		//TODO cargar nombres de jugadores pre-existentes
 		
-		JButton button = new JButton("Volver");
-		button.addActionListener(new ActionListener() {
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowBienvenida = new PantallaBienvenida();
 				frame.dispose();
 			}
 		});
-		button.setAlignmentX(0.5f);
-		button.setBounds(231, 169, 72, 49);
-		frame.getContentPane().add(button);
+		btnVolver.setAlignmentX(0.5f);
+		btnVolver.setBounds(220, 169, 83, 49);
+		frame.getContentPane().add(btnVolver);
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnAceptar}));
 	}
 }
