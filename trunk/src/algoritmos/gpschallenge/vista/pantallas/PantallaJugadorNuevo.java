@@ -15,7 +15,10 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import algoritmos.gpschallenge.modelo.juego.Esquina;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
+import algoritmos.gpschallenge.modelo.vehiculo.Auto;
+import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 import java.awt.Component;
 import java.awt.Toolkit;
@@ -37,7 +40,7 @@ public class PantallaJugadorNuevo {
 	private PantallaOpciones windowOpciones;
 	private Jugador jugador;
 	private String nombre;
-	
+	private Vehiculo auto = new Vehiculo(null, null);
 	/**
 	 * Launch the application.
 	 */
@@ -95,8 +98,8 @@ public class PantallaJugadorNuevo {
 			public void actionPerformed(ActionEvent e) {
 				//TODO 
 				// Guardar jugador con persistencia
-				nombre = campoNombre.getText() + "\n"; 
-				jugador = new Jugador(nombre, null);
+				nombre = campoNombre.getText();// + "\n"; 
+				jugador = new Jugador(nombre,new Vehiculo(null, null));
 				windowOpciones = new PantallaOpciones(jugador);
 				frame.dispose();
 			}
