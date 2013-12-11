@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 
 public class PantallaBienvenida {
 
-	JFrame frmGpsChallenge;
+	JFrame frame;
 	private JTextField txtBienvenido;
 	private JButton btnYaSoyJugador;
 	private PantallaJugadorNuevo windowJugadorNuevo;
@@ -31,7 +31,7 @@ public class PantallaBienvenida {
 			public void run() {
 				try {
 					PantallaBienvenida window = new PantallaBienvenida();
-					window.frmGpsChallenge.setVisible(true);
+					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -45,22 +45,22 @@ public class PantallaBienvenida {
 	public PantallaBienvenida() {
 		initialize();
 		PantallaBienvenida windowBienvenida = this; //new PantallaBienvenida();
-		windowBienvenida.frmGpsChallenge.setVisible(true);
+		windowBienvenida.frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmGpsChallenge = new JFrame();
-		frmGpsChallenge.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
-		frmGpsChallenge.setTitle("GPS Challenge");
-		frmGpsChallenge.setName("frameBienvenida");
-		frmGpsChallenge.getContentPane().setBackground(new Color(255, 255, 255));
-		frmGpsChallenge.getContentPane().setForeground(new Color(0, 0, 0));
-		frmGpsChallenge.setBounds(100, 100, 450, 300);
-		frmGpsChallenge.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmGpsChallenge.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
+		frame.setTitle("GPS Challenge");
+		frame.setName("frameBienvenida");
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		txtBienvenido = new JTextField();
 		txtBienvenido.setRequestFocusEnabled(false);
@@ -72,31 +72,31 @@ public class PantallaBienvenida {
 		txtBienvenido.setEditable(false);
 		txtBienvenido.setText("BIENVENIDO");
 		txtBienvenido.setBounds(10, 49, 414, 29);
-		frmGpsChallenge.getContentPane().add(txtBienvenido);
+		frame.getContentPane().add(txtBienvenido);
 		txtBienvenido.setColumns(10);
 		
 		JButton btnNuevoJugador = new JButton("Nuevo Jugador");
 		btnNuevoJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowJugadorNuevo = new PantallaJugadorNuevo();
-				frmGpsChallenge.dispose();
+				frame.dispose();
 			}
 		});
 		btnNuevoJugador.setActionCommand("NuevoJugador");
 		btnNuevoJugador.setBounds(132, 109, 171, 49);
-		frmGpsChallenge.getContentPane().add(btnNuevoJugador);
+		frame.getContentPane().add(btnNuevoJugador);
 		
 		btnYaSoyJugador = new JButton("Ya soy Jugador");
 		btnYaSoyJugador.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowJugadorExistente = new PantallaJugadorExistente();
-				frmGpsChallenge.dispose();
+				frame.dispose();
 				
 			}
 		});
 		btnYaSoyJugador.setActionCommand("YaSoyJugador");
 		btnYaSoyJugador.setBounds(132, 169, 171, 49);
-		frmGpsChallenge.getContentPane().add(btnYaSoyJugador);
-		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido, btnNuevoJugador}));
+		frame.getContentPane().add(btnYaSoyJugador);
+		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido, btnNuevoJugador}));
 	}
 }
