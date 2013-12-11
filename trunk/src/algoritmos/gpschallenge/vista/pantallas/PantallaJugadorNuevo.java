@@ -95,7 +95,7 @@ public class PantallaJugadorNuevo {
 			public void actionPerformed(ActionEvent e) {
 				//TODO 
 				// Guardar jugador con persistencia
-				nombre = campoNombre.getText() + "\n";
+				nombre = campoNombre.getText() + "\n"; 
 				jugador = new Jugador(nombre, null);
 				windowOpciones = new PantallaOpciones(jugador);
 				frame.dispose();
