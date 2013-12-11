@@ -28,7 +28,8 @@ public class PantallaOpciones {
 	private JButton btnSalir;
 	private PantallaPuntajes windowPuntajes;
 	private PantallaBienvenida windowBienvenida;
-	//private Jugador jugador;
+	private PantallaNuevaPartida windowNuevaPartida; 
+	private Jugador jugador;
 	
 	/**
 	 * Launch the application.
@@ -52,8 +53,8 @@ public class PantallaOpciones {
 	 */
 	
 	public PantallaOpciones(Jugador unJugador) {
-		initialize(unJugador);
-		//this.jugador = unJugador;
+		this.jugador = unJugador;
+		initialize();
 		frame.setVisible(true);
 		
 	}
@@ -61,7 +62,7 @@ public class PantallaOpciones {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize(Jugador jugador) {
+	private void initialize() {
 		frame = new JFrame();
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
 		frame.setTitle("GPS Challenge");
@@ -86,6 +87,12 @@ public class PantallaOpciones {
 		txtBienvenido.setColumns(10);
 		
 		JButton btnComenzarPartida = new JButton("Comenzar Partida");
+		btnComenzarPartida.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					windowNuevaPartida = new PantallaNuevaPartida(jugador);
+					frame.dispose();
+			}
+		});
 		btnComenzarPartida.setActionCommand("ComenzarPartida");
 		btnComenzarPartida.setBounds(129, 66, 171, 49);
 		frame.getContentPane().add(btnComenzarPartida);
@@ -107,7 +114,7 @@ public class PantallaOpciones {
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldNombre.setText("Hola");
+		textFieldNombre.setText("Nombre");
 		textFieldNombre.setRequestFocusEnabled(false);
 		textFieldNombre.setForeground(new Color(0, 0, 0));
 		textFieldNombre.setFont(new Font("Arial", Font.BOLD, 16));

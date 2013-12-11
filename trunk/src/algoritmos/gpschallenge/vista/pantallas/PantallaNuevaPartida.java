@@ -2,15 +2,24 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import algoritmos.gpschallenge.modelo.juego.Jugador;
+
 import java.awt.Component;
 import java.awt.Toolkit;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
@@ -21,7 +30,7 @@ import javax.swing.ButtonGroup;
 
 public class PantallaNuevaPartida {
 
-	private JFrame frmGpsChallenge;
+	private JFrame frame;
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
@@ -35,7 +44,7 @@ public class PantallaNuevaPartida {
 
 	/**
 	 * Launch the application.
-	 */
+	 */ /*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -47,28 +56,29 @@ public class PantallaNuevaPartida {
 				}
 			}
 		});
-	}
+	} */
 
 	/**
 	 * Create the application.
 	 */
-	public PantallaNuevaPartida() {
+	public PantallaNuevaPartida(Jugador unJugador) {
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmGpsChallenge = new JFrame();
-		frmGpsChallenge.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
-		frmGpsChallenge.setTitle("GPS Challenge");
-		frmGpsChallenge.setName("frameBienvenida");
-		frmGpsChallenge.getContentPane().setBackground(new Color(255, 255, 255));
-		frmGpsChallenge.getContentPane().setForeground(new Color(0, 0, 0));
-		frmGpsChallenge.setBounds(100, 100, 450, 389);
-		frmGpsChallenge.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmGpsChallenge.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
+		frame.setTitle("GPS Challenge");
+		frame.setName("frameBienvenida");
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.setBounds(100, 100, 450, 389);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		txtBienvenido = new JTextField();
 		txtBienvenido.setRequestFocusEnabled(false);
@@ -80,7 +90,7 @@ public class PantallaNuevaPartida {
 		txtBienvenido.setEditable(false);
 		txtBienvenido.setText("Nueva Partida");
 		txtBienvenido.setBounds(0, 0, 434, 29);
-		frmGpsChallenge.getContentPane().add(txtBienvenido);
+		frame.getContentPane().add(txtBienvenido);
 		txtBienvenido.setColumns(10);
 		
 		textFieldNombre = new JTextField();
@@ -94,24 +104,27 @@ public class PantallaNuevaPartida {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		frmGpsChallenge.getContentPane().add(textFieldNombre);
+		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
 		btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
-		btnVolver.setBounds(330, 301, 89, 23);
-		frmGpsChallenge.getContentPane().add(btnVolver);
+		btnVolver.setBounds(245, 285, 109, 40);
+		frame.getContentPane().add(btnVolver);
 		
 		JRadioButton rdbtnFacil = new JRadioButton("F\u00E1cil");
-		rdbtnFacil.setBounds(53, 111, 109, 23);
-		frmGpsChallenge.getContentPane().add(rdbtnFacil);
+		rdbtnFacil.setBackground(Color.WHITE);
+		rdbtnFacil.setBounds(90, 111, 109, 23);
+		frame.getContentPane().add(rdbtnFacil);
 		
 		JRadioButton rdbtnModerado = new JRadioButton("Moderado");
-		rdbtnModerado.setBounds(53, 165, 109, 23);
-		frmGpsChallenge.getContentPane().add(rdbtnModerado);
+		rdbtnModerado.setBackground(Color.WHITE);
+		rdbtnModerado.setBounds(90, 165, 109, 23);
+		frame.getContentPane().add(rdbtnModerado);
 		
 		JRadioButton rdbtnDificil = new JRadioButton("Dificil");
-		rdbtnDificil.setBounds(53, 217, 109, 23);
-		frmGpsChallenge.getContentPane().add(rdbtnDificil);
+		rdbtnDificil.setBackground(Color.WHITE);
+		rdbtnDificil.setBounds(90, 217, 109, 23);
+		frame.getContentPane().add(rdbtnDificil);
 		
 		//Agrupo los botones de nivel de dificultad
 		ButtonGroup grupoDificultad = new ButtonGroup();
@@ -120,23 +133,31 @@ public class PantallaNuevaPartida {
 		grupoDificultad.add(rdbtnDificil);
 		
 		rdbtn4x4 = new JRadioButton("4x4");
+		rdbtn4x4.setBackground(Color.WHITE);
 		rdbtn4x4.setBounds(245, 217, 109, 23);
-		frmGpsChallenge.getContentPane().add(rdbtn4x4);
+		frame.getContentPane().add(rdbtn4x4);
 		
 		rdbtnAuto = new JRadioButton("Auto");
+		rdbtnAuto.setBackground(Color.WHITE);
 		rdbtnAuto.setBounds(245, 165, 109, 23);
-		frmGpsChallenge.getContentPane().add(rdbtnAuto);
+		frame.getContentPane().add(rdbtnAuto);
 		
 		rdbtnMoto = new JRadioButton("Moto");
+		rdbtnMoto.setBackground(Color.WHITE);
 		rdbtnMoto.setBounds(245, 111, 109, 23);
-		frmGpsChallenge.getContentPane().add(rdbtnMoto);
-		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
+		frame.getContentPane().add(rdbtnMoto);
+		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 		
 		//Agrupo los botones de Tipo de Vehiculo
 				ButtonGroup grupoVehiculo = new ButtonGroup();
 				grupoVehiculo.add(rdbtnMoto);
 				grupoVehiculo.add(rdbtnAuto);
 				grupoVehiculo.add(rdbtn4x4);
+				
+				JButton btnJugar = new JButton("Jugar");
+				btnJugar.setAlignmentX(0.5f);
+				btnJugar.setBounds(90, 285, 109, 40);
+				frame.getContentPane().add(btnJugar);
 		
 	}
 }
