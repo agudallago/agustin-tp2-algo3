@@ -35,32 +35,15 @@ public class PantallaPuntajes {
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
-	//private Jugador jugador;
+	private Jugador jugador;
 	
 	/**
-	 * Launch the application.
-	 */ /*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaPuntajes window = new PantallaPuntajes();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		}); 
-	}*/
-
-	/**
-	 * Create the application.
+	 * Constructor
 	 */
-	public PantallaPuntajes() {
+	public PantallaPuntajes(Jugador unJugador) {
+		this.jugador = unJugador;
 		initialize();
 		frame.setVisible(true);
-		//this.jugador = unJugador;
-		
 	}
 
 	/**
@@ -101,6 +84,7 @@ public class PantallaPuntajes {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
+		textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Cerrar");

@@ -10,8 +10,15 @@ import java.util.*;
 import javax.swing.JFrame;
 
 
+
+
+
 import algoritmos.gpschallenge.control.*;
+import algoritmos.gpschallenge.modelo.juego.Jugador;
+import algoritmos.gpschallenge.modelo.vehiculo.Auto;
+import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
+
 import javax.swing.JButton;
 
 public class VistaMapa implements Observer{
@@ -25,7 +32,8 @@ public class VistaMapa implements Observer{
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
 		private MapaPanel panelAuto = new MapaPanel("images/auto.png");
-				
+		private Jugador jugador;
+		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
 			
@@ -37,7 +45,9 @@ public class VistaMapa implements Observer{
 
 
 //Constructor de la vista
-		public VistaMapa(ModeloJuego modelo, ControladorVistaMapa control, String imagenMapaNivel) {
+		public VistaMapa(ModeloJuego modelo, ControladorVistaMapa control, Jugador unJugador, String imagenMapaNivel) {
+			
+			this.jugador = unJugador;
 			
 			//armado de la ventana
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
@@ -111,9 +121,10 @@ public class VistaMapa implements Observer{
 	
 		
 		  public static void main(String[] args) {
+			  Jugador jugador = new Jugador("Pepe", new Vehiculo(null, new Auto()));
 			  ModeloJuego modelo =  new ModeloJuego();
 			  ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
-			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, "images/fondo.jpg");
+			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.jpg");
 			    
 			}
 	}

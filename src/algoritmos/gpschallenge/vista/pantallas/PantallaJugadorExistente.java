@@ -37,23 +37,7 @@ public class PantallaJugadorExistente {
 	private Jugador jugador;
 	
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaJugadorExistente window = new PantallaJugadorExistente();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	public PantallaJugadorExistente() {
 		initialize();

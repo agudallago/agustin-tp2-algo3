@@ -32,24 +32,7 @@ public class PantallaOpciones {
 	private Jugador jugador;
 	
 	/**
-	 * Launch the application.
-	 */
-	/*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaOpciones windowOpciones = new PantallaOpciones();
-					windowOpciones.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	
 	public PantallaOpciones(Jugador unJugador) {
@@ -105,7 +88,7 @@ public class PantallaOpciones {
 		btnPuntajes = new JButton("Ver Puntajes");
 		btnPuntajes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				windowPuntajes = new PantallaPuntajes();
+				windowPuntajes = new PantallaPuntajes(jugador);
 			}
 		});
 		btnPuntajes.setActionCommand("VerPuntajes");

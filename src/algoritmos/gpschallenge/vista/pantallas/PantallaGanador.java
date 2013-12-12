@@ -2,68 +2,70 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+
 import java.awt.GridBagLayout;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import algoritmos.gpschallenge.modelo.juego.Jugador;
+
 import java.awt.Component;
 import java.awt.Toolkit;
+
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.JList;
 import javax.swing.JLabel;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 
 public class PantallaGanador {
 
-	private JFrame frmGpsChallenge;
+	private JFrame frame;
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
 	private JButton btnJugarOtraVez;
 	private JLabel lblMovimientos;
 	private JLabel lblPuntaje;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaGanador window = new PantallaGanador();
-					window.frmGpsChallenge.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
+	private PantallaOpciones windowOpciones;
+	private PantallaNuevaPartida windowNuevaPartida;
+	private Jugador jugador;
+	
 	/**
 	 * Create the application.
 	 */
-	public PantallaGanador() {
+	public PantallaGanador(Jugador unJugador) {
+		this.jugador = unJugador;
 		initialize();
+		frame.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frmGpsChallenge = new JFrame();
-		frmGpsChallenge.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
-		frmGpsChallenge.setTitle("GPS Challenge");
-		frmGpsChallenge.setName("frameBienvenida");
-		frmGpsChallenge.getContentPane().setBackground(new Color(255, 255, 255));
-		frmGpsChallenge.getContentPane().setForeground(new Color(0, 0, 0));
-		frmGpsChallenge.setBounds(100, 100, 450, 389);
-		frmGpsChallenge.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmGpsChallenge.getContentPane().setLayout(null);
+		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
+		frame.setTitle("GPS Challenge");
+		frame.setName("frameBienvenida");
+		frame.getContentPane().setBackground(new Color(255, 255, 255));
+		frame.getContentPane().setForeground(new Color(0, 0, 0));
+		frame.setBounds(100, 100, 450, 389);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
 		
 		txtBienvenido = new JTextField();
 		txtBienvenido.setRequestFocusEnabled(false);
@@ -75,7 +77,7 @@ public class PantallaGanador {
 		txtBienvenido.setEditable(false);
 		txtBienvenido.setText("Partida F\u00E1cil");
 		txtBienvenido.setBounds(0, 0, 434, 29);
-		frmGpsChallenge.getContentPane().add(txtBienvenido);
+		frame.getContentPane().add(txtBienvenido);
 		txtBienvenido.setColumns(10);
 		
 		textFieldNombre = new JTextField();
@@ -89,36 +91,49 @@ public class PantallaGanador {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		frmGpsChallenge.getContentPane().add(textFieldNombre);
+		textFieldNombre.setText(jugador.getNombre());
+		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowOpciones = new PantallaOpciones(jugador);
+				frame.dispose();
+			}
+		});
 		btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnVolver.setBounds(231, 275, 171, 49);
-		frmGpsChallenge.getContentPane().add(btnVolver);
+		frame.getContentPane().add(btnVolver);
 		
 		btnJugarOtraVez = new JButton("Jugar otra vez");
+		btnJugarOtraVez.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowNuevaPartida = new PantallaNuevaPartida(jugador);
+				frame.dispose();
+			}
+		});
 		btnJugarOtraVez.setActionCommand("JugarOtraVez");
 		btnJugarOtraVez.setBounds(30, 275, 171, 49);
-		frmGpsChallenge.getContentPane().add(btnJugarOtraVez);
+		frame.getContentPane().add(btnJugarOtraVez);
 		
 		JLabel lblGanaste = new JLabel(" \u00A1 GANASTE !");
 		lblGanaste.setFont(new Font("Arial", Font.BOLD, 24));
 		lblGanaste.setForeground(new Color(0, 204, 0));
 		lblGanaste.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGanaste.setBounds(76, 68, 278, 59);
-		frmGpsChallenge.getContentPane().add(lblGanaste);
+		frame.getContentPane().add(lblGanaste);
 		
 		lblMovimientos = new JLabel("Te sobraron X movimientos");
 		lblMovimientos.setFont(new Font("Arial", Font.BOLD, 16));
 		lblMovimientos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMovimientos.setBounds(10, 138, 409, 14);
-		frmGpsChallenge.getContentPane().add(lblMovimientos);
+		frame.getContentPane().add(lblMovimientos);
 		
 		lblPuntaje = new JLabel("Obtuviste un puntaje de X puntos");
 		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntaje.setFont(new Font("Arial", Font.BOLD, 16));
 		lblPuntaje.setBounds(10, 182, 409, 14);
-		frmGpsChallenge.getContentPane().add(lblPuntaje);
-		frmGpsChallenge.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
+		frame.getContentPane().add(lblPuntaje);
+		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 	}
 }
