@@ -2,30 +2,23 @@ package algoritmos.gpschallenge.vista.pantallas;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
-import java.awt.GridBagLayout;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 import java.awt.Font;
 import java.awt.Color;
-
 import javax.swing.SwingConstants;
-
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-
+import algoritmos.gpschallenge.control.ControladorVistaMapa;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
-
+import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
 import java.awt.Component;
 import java.awt.Toolkit;
-
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.JList;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class PantallaNuevaPartida {
@@ -34,35 +27,32 @@ public class PantallaNuevaPartida {
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
+	
 	/**
 	 * @wbp.nonvisual location=212,129
 	 */
-	private final ButtonGroup buttonGroup = new ButtonGroup();
+	//Radio buttons de vehículo
 	private JRadioButton rdbtn4x4;
 	private JRadioButton rdbtnAuto;
 	private JRadioButton rdbtnMoto;
-
+	
+	//Radio buttons de Dificultad
+	private JRadioButton rdbtnDificil;
+	private JRadioButton rdbtnModerado;
+	private JRadioButton rdbtnFacil;
+	
+	private Jugador jugador; 
+	
+	private PantallaOpciones windowOpciones;
+	private VistaMapa windowMapa;
+	
 	/**
-	 * Launch the application.
-	 */ /*
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaNuevaPartida window = new PantallaNuevaPartida();
-					window.frmGpsChallenge.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	} */
-
-	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	public PantallaNuevaPartida(Jugador unJugador) {
+		this.jugador = unJugador;
 		initialize();
+		
 		frame.setVisible(true);
 	}
 
@@ -104,24 +94,31 @@ public class PantallaNuevaPartida {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
+		textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				windowOpciones = new PantallaOpciones(jugador);
+				frame.dispose();
+			}
+		});
 		btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnVolver.setBounds(245, 285, 109, 40);
 		frame.getContentPane().add(btnVolver);
 		
-		JRadioButton rdbtnFacil = new JRadioButton("F\u00E1cil");
+		rdbtnFacil = new JRadioButton("F\u00E1cil");
 		rdbtnFacil.setBackground(Color.WHITE);
 		rdbtnFacil.setBounds(90, 111, 109, 23);
 		frame.getContentPane().add(rdbtnFacil);
 		
-		JRadioButton rdbtnModerado = new JRadioButton("Moderado");
+		rdbtnModerado = new JRadioButton("Moderado");
 		rdbtnModerado.setBackground(Color.WHITE);
 		rdbtnModerado.setBounds(90, 165, 109, 23);
 		frame.getContentPane().add(rdbtnModerado);
 		
-		JRadioButton rdbtnDificil = new JRadioButton("Dificil");
+		rdbtnDificil = new JRadioButton("Dificil");
 		rdbtnDificil.setBackground(Color.WHITE);
 		rdbtnDificil.setBounds(90, 217, 109, 23);
 		frame.getContentPane().add(rdbtnDificil);
@@ -155,6 +152,16 @@ public class PantallaNuevaPartida {
 				grupoVehiculo.add(rdbtn4x4);
 				
 				JButton btnJugar = new JButton("Jugar");
+				btnJugar.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						//TODO
+						//Configurar el juego según las opciones
+						ModeloJuego modelo =  new ModeloJuego();
+						ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
+						windowMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.jpg");
+						frame.dispose();
+					}
+				});
 				btnJugar.setAlignmentX(0.5f);
 				btnJugar.setBounds(90, 285, 109, 40);
 				frame.getContentPane().add(btnJugar);

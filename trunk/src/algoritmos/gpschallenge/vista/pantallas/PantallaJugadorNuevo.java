@@ -41,24 +41,9 @@ public class PantallaJugadorNuevo {
 	private Jugador jugador;
 	private String nombre;
 	private Vehiculo auto = new Vehiculo(null, null);
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaJugadorNuevo window = new PantallaJugadorNuevo();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
-	 * Create the application.
+	 * Constructor
 	 */
 	public PantallaJugadorNuevo() {
 		initialize();
