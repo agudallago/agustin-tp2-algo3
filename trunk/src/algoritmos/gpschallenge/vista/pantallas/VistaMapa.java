@@ -60,7 +60,7 @@ public class VistaMapa implements Observer{
 			frameMapa.getContentPane().add(label);  //agregamos un titulo
 			textoMapa.setBounds(0, 0, 0, 0);
 			frameMapa.getContentPane().add(textoMapa); //agregamos el texto que muestra el Nivel
-			panelAuto.setSize(59, 22);
+			panelAuto.setSize(59,22);
 			
 			
 			//frameMapa.add(panelAuto);
@@ -72,7 +72,7 @@ public class VistaMapa implements Observer{
 			
 			//Creamos panel de Mapa y lo agregamos al frame
 			panelMapa = new MapaPanel(imagenMapaNivel); //Panel que contiene la imagen del mapa
-			panelMapa.setBounds(0, 22, 984, 542);
+			panelMapa.setBounds(0, 22, 984, 600);
 			frameMapa.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
 		panelMapa.setLayout(null);
 		botonNorte.setBounds(753, 456, 66, 22);
@@ -97,7 +97,7 @@ public class VistaMapa implements Observer{
 		botonNorte.addActionListener(control.getListenerBotonNorte());
 			
 			frameMapa.addKeyListener(control.getListenerTeclas());
-			frameMapa.setSize(1000,600);  //seteamos las dimensiones del marco
+			frameMapa.setSize(1000,680);  //seteamos las dimensiones del marco
 			frameMapa.setVisible(true);  //mostramos el marco
 
 			//agregamos el listener del evento de cerrado de la ventana		

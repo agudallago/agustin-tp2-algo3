@@ -17,6 +17,8 @@ public class AdminDeJugadores {
 		this.mPuntajesPorJugador = new HashMap<Jugador, List<Float>>();		
 	}
 	
+	/*
+	
 	public List<Jugador> getListaDeJugadoresFrecuentes() {
 	//TODO FILL THIS
 	}
@@ -28,4 +30,6 @@ public class AdminDeJugadores {
 	public Map<Jugador, List<Float>> getTopTenComoMapa() {
 		//TODO FILL THIS
 	}
+
+	*/
 }
