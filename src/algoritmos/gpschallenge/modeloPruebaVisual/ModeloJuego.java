@@ -4,7 +4,7 @@ public class ModeloJuego extends java.util.Observable {
 
 	private int posX;
 	private int posY;
-	int incremento = 50;
+	int incremento = 38;
 	
 	public void ModeloJuego() {
 		//setPosX(100);
