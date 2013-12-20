@@ -54,7 +54,7 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			frame.setFocusable(true);
 			frame.getContentPane().setLayout(null);
 			
-			Label label = new Label("Nivel 1 ");
+			Label label = new Label("NIVEL DIFICIL");
 			label.setBounds(0, 0, 984, 22);
 			frame.getContentPane().add(label);  //agregamos un titulo
 			textoMapa.setBounds(0, 0, 0, 0);
@@ -64,10 +64,10 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			
 			//frameMapa.add(panelAuto);
 			frame.getContentPane().add(panelAuto);
-			panelAuto.setLocation(100,77);
+			panelAuto.setLocation(20,240);
 			panelAuto.setLayout(null);
-			modelo.setPosX(100);
-			modelo.setPosY(100);
+			modelo.setPosX(20);
+			modelo.setPosY(240);
 			
 			//Creamos panel de Mapa y lo agregamos al frame
 			panelMapa = new PanelImagen(imagenMapaNivel); //Panel que contiene la imagen del mapa
@@ -123,7 +123,7 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			  Jugador jugador = new Jugador("Pepe", new Vehiculo(null, new Auto()));
 			  ModeloJuego modelo =  new ModeloJuego();
 			  ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
-			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.jpg");
+			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.png");
 			    
 			}
 	}
