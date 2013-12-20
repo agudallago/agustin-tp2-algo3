@@ -2,26 +2,32 @@ package algoritmos.gpschallenge.vista.pantallas;
 
 
 import javax.swing.JFrame;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import algoritmos.gpschallenge.control.ControladorPantallas;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
+
 import java.awt.Component;
 import java.awt.Toolkit;
+
 import javax.swing.border.LineBorder;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 
-public class PantallaOpciones {
+public class PantallaOpciones extends PantallaGPSChallenge{
 
-	private JFrame frame;
 	private JTextField txtBienvenido;
+	private JButton btnComenzarPartida;
 	private JButton btnRecuperarPartida;
 	private JButton btnPuntajes;
 	private JTextField textFieldNombre;
@@ -35,15 +41,22 @@ public class PantallaOpciones {
 	 * Constructor
 	 */
 	
-	public PantallaOpciones(Jugador unJugador) {
-		this.jugador = unJugador;
+	public PantallaOpciones(ControladorPantallas controlador) {
+		this.control = controlador;
 		initialize();
-		frame.setVisible(true);
-		
+		addListeners();
+
 	}
 	
+//Método para agregar los listeners de los botones del Frame
+	private void addListeners() {
+		btnComenzarPartida.addActionListener(control.getListenerBtnNuevaPartida(this));
+		btnPuntajes.addActionListener(control.getListenerBtnPuntajes(this));
+		btnSalir.addActionListener(control.getListenerBtnVolver(this));
+	}
+
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializa el contenido del Frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -69,29 +82,15 @@ public class PantallaOpciones {
 		frame.getContentPane().add(txtBienvenido);
 		txtBienvenido.setColumns(10);
 		
-		JButton btnComenzarPartida = new JButton("Comenzar Partida");
-		btnComenzarPartida.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-					windowNuevaPartida = new PantallaNuevaPartida(jugador);
-					frame.dispose();
-			}
-		});
-		btnComenzarPartida.setActionCommand("ComenzarPartida");
+		btnComenzarPartida = new JButton("Comenzar Partida");
 		btnComenzarPartida.setBounds(129, 66, 171, 49);
 		frame.getContentPane().add(btnComenzarPartida);
 		
 		btnRecuperarPartida = new JButton("Recuperar Partida");
-		btnRecuperarPartida.setActionCommand("RecuperarPartida");
 		btnRecuperarPartida.setBounds(129, 126, 171, 49);
 		frame.getContentPane().add(btnRecuperarPartida);
 		
 		btnPuntajes = new JButton("Ver Puntajes");
-		btnPuntajes.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowPuntajes = new PantallaPuntajes(jugador);
-			}
-		});
-		btnPuntajes.setActionCommand("VerPuntajes");
 		btnPuntajes.setBounds(129, 186, 171, 49);
 		frame.getContentPane().add(btnPuntajes);
 		
@@ -110,15 +109,9 @@ public class PantallaOpciones {
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnSalir = new JButton("Volver");
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowBienvenida = new PantallaBienvenida();
-				frame.dispose();
-			}
-		});
+		
 		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnSalir.setBounds(335, 212, 89, 23);
 		frame.getContentPane().add(btnSalir);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido, btnComenzarPartida}));
 	}
 }

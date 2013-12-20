@@ -15,24 +15,19 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import algoritmos.gpschallenge.control.ControladorPantallas;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
 
 import java.awt.Component;
-import java.awt.Toolkit;
 
-import javax.swing.border.EtchedBorder;
+
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
-import javax.swing.JList;
 import javax.swing.JLabel;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
-public class PantallaGanador {
+public class PantallaGanador extends PantallaGPSChallenge {
 
-	private JFrame frame;
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
@@ -40,25 +35,25 @@ public class PantallaGanador {
 	private JLabel lblMovimientos;
 	private JLabel lblPuntaje;
 	
-	private PantallaOpciones windowOpciones;
-	private PantallaNuevaPartida windowNuevaPartida;
-	private Jugador jugador;
-	
 	/**
-	 * Create the application.
+	 * Constructor.
 	 */
-	public PantallaGanador(Jugador unJugador) {
-		this.jugador = unJugador;
+	public PantallaGanador(ControladorPantallas controlador) {
 		initialize();
-		frame.setVisible(true);
+		addListeners();
 	}
 
+	//Método para agregar los listeners de los botones del Frame
+		private void addListeners() {
+			btnVolver.addActionListener(control.getListenerBtnVolverAOpciones(this));
+			btnJugarOtraVez.addActionListener(control.getListenerBtnNuevaPartida(this));
+		}
+		
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializa el contenido del Frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
@@ -91,28 +86,16 @@ public class PantallaGanador {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		textFieldNombre.setText(jugador.getNombre());
+		//TODO: cambiar la lectura del nombre 
+		//textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowOpciones = new PantallaOpciones(jugador);
-				frame.dispose();
-			}
-		});
 		btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnVolver.setBounds(231, 275, 171, 49);
 		frame.getContentPane().add(btnVolver);
 		
 		btnJugarOtraVez = new JButton("Jugar otra vez");
-		btnJugarOtraVez.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowNuevaPartida = new PantallaNuevaPartida(jugador);
-				frame.dispose();
-			}
-		});
-		btnJugarOtraVez.setActionCommand("JugarOtraVez");
 		btnJugarOtraVez.setBounds(30, 275, 171, 49);
 		frame.getContentPane().add(btnJugarOtraVez);
 		
@@ -134,6 +117,5 @@ public class PantallaGanador {
 		lblPuntaje.setFont(new Font("Arial", Font.BOLD, 16));
 		lblPuntaje.setBounds(10, 182, 409, 14);
 		frame.getContentPane().add(lblPuntaje);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 	}
 }

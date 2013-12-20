@@ -1,33 +1,31 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.Font;
 import java.awt.Color;
+
 import javax.swing.SwingConstants;
+
 import org.eclipse.wb.swing.FocusTraversalOnArray;
-import algoritmos.gpschallenge.control.ControladorVistaMapa;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
+
+import algoritmos.gpschallenge.control.ControladorPantallas;
+
 import java.awt.Component;
-import java.awt.Toolkit;
+
 import javax.swing.border.LineBorder;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
+public class PantallaNuevaPartida extends PantallaGPSChallenge{
 
-public class PantallaNuevaPartida {
-
-	private JFrame frame;
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
-	
+	private JButton btnJugar;	
 	/**
 	 * @wbp.nonvisual location=212,129
 	 */
@@ -40,28 +38,27 @@ public class PantallaNuevaPartida {
 	private JRadioButton rdbtnDificil;
 	private JRadioButton rdbtnModerado;
 	private JRadioButton rdbtnFacil;
-	
-	private Jugador jugador; 
-	
-	private PantallaOpciones windowOpciones;
-	private VistaMapa windowMapa;
-	
+
 	/**
 	 * Constructor
 	 */
-	public PantallaNuevaPartida(Jugador unJugador) {
-		this.jugador = unJugador;
+	public PantallaNuevaPartida(ControladorPantallas controlador) {
+		this.control = controlador;
 		initialize();
-		
-		frame.setVisible(true);
+		addListeners();
 	}
 
+	private void addListeners() {
+		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones(this));
+		btnJugar.addActionListener(control.getListenerBtnJugar(this));
+	}
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
@@ -94,16 +91,10 @@ public class PantallaNuevaPartida {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		textFieldNombre.setText(jugador.getNombre());
+		//textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowOpciones = new PantallaOpciones(jugador);
-				frame.dispose();
-			}
-		});
 		btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnVolver.setBounds(245, 285, 109, 40);
 		frame.getContentPane().add(btnVolver);
@@ -146,25 +137,15 @@ public class PantallaNuevaPartida {
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 		
 		//Agrupo los botones de Tipo de Vehiculo
-				ButtonGroup grupoVehiculo = new ButtonGroup();
-				grupoVehiculo.add(rdbtnMoto);
-				grupoVehiculo.add(rdbtnAuto);
-				grupoVehiculo.add(rdbtn4x4);
-				
-				JButton btnJugar = new JButton("Jugar");
-				btnJugar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						//TODO
-						//Configurar el juego según las opciones
-						ModeloJuego modelo =  new ModeloJuego();
-						ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
-						windowMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.jpg");
-						frame.dispose();
-					}
-				});
-				btnJugar.setAlignmentX(0.5f);
-				btnJugar.setBounds(90, 285, 109, 40);
-				frame.getContentPane().add(btnJugar);
+		ButtonGroup grupoVehiculo = new ButtonGroup();
+		grupoVehiculo.add(rdbtnMoto);
+		grupoVehiculo.add(rdbtnAuto);
+		grupoVehiculo.add(rdbtn4x4);
+		
+		btnJugar = new JButton("Jugar");
+		btnJugar.setAlignmentX(0.5f);
+		btnJugar.setBounds(90, 285, 109, 40);
+		frame.getContentPane().add(btnJugar);
 		
 	}
 }

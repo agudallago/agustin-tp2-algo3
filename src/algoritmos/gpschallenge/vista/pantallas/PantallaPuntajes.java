@@ -1,10 +1,6 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
-import java.awt.GridBagLayout;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -15,43 +11,40 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import algoritmos.gpschallenge.control.ControladorPantallas;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
 
 import java.awt.Component;
-import java.awt.Toolkit;
 
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.JList;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+public class PantallaPuntajes extends PantallaGPSChallenge{
 
-
-public class PantallaPuntajes {
-
-	private JFrame frame;
 	private JTextField txtBienvenido;
 	private JTextField textFieldNombre;
 	private JButton btnVolver;
 	private Jugador jugador;
+	private JList list;	
 	
 	/**
 	 * Constructor
 	 */
-	public PantallaPuntajes(Jugador unJugador) {
-		this.jugador = unJugador;
+	public PantallaPuntajes(ControladorPantallas control) {
 		initialize();
-		frame.setVisible(true);
+		addListeners();
+
 	}
 
+	public void addListeners(){
+		btnVolver.addActionListener(control.getListenerBtnCerrar(this));
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
@@ -88,16 +81,11 @@ public class PantallaPuntajes {
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Cerrar");
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				frame.dispose();
-			}
-		});
 		btnVolver.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnVolver.setBounds(330, 301, 89, 23);
 		frame.getContentPane().add(btnVolver);
 		
-		JList list = new JList();
+		list = new JList();
 		list.setBorder(new LineBorder(new Color(0, 0, 0)));
 		list.setBounds(72, 63, 248, 261);
 		frame.getContentPane().add(list);

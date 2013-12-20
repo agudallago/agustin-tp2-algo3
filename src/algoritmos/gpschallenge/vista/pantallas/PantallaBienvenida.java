@@ -1,59 +1,43 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-import java.awt.Component;
+import algoritmos.gpschallenge.control.ControladorPantallas;
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
-public class PantallaBienvenida {
+public class PantallaBienvenida extends PantallaGPSChallenge {
 
-	JFrame frame;
 	private JTextField txtBienvenido;
 	private JButton btnYaSoyJugador;
-	private PantallaJugadorNuevo windowJugadorNuevo;
-	private PantallaJugadorExistente windowJugadorExistente;
-	private PantallaBienvenida windowBienvenida;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					PantallaBienvenida window = new PantallaBienvenida();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	private JButton btnNuevoJugador;
+
 
 	/**
-	 * Create the application.
+	 * Constructor.
 	 */
-	public PantallaBienvenida() {
+
+	public PantallaBienvenida(ControladorPantallas controlador) {
+		this.control = controlador;
 		initialize();
-		PantallaBienvenida windowBienvenida = this; //new PantallaBienvenida();
-		windowBienvenida.frame.setVisible(true);
+		addListeners();
 	}
+	
+	//Método para agregar los listeners de los botones del Frame
+		private void addListeners() {
+			btnNuevoJugador.addActionListener(control.getListenerBtnJugadorNuevo(this));
+			btnYaSoyJugador.addActionListener(control.getListenerBtnJugadorExistente(this));
+		}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializa los contenidos del Frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\gaston\\JAVAworkspace\\PruebaMVC\\images\\minicooper64_2.ico"));
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
@@ -75,28 +59,13 @@ public class PantallaBienvenida {
 		frame.getContentPane().add(txtBienvenido);
 		txtBienvenido.setColumns(10);
 		
-		JButton btnNuevoJugador = new JButton("Nuevo Jugador");
-		btnNuevoJugador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowJugadorNuevo = new PantallaJugadorNuevo();
-				frame.dispose();
-			}
-		});
-		btnNuevoJugador.setActionCommand("NuevoJugador");
+		btnNuevoJugador = new JButton("Nuevo Jugador");
 		btnNuevoJugador.setBounds(132, 109, 171, 49);
 		frame.getContentPane().add(btnNuevoJugador);
 		
 		btnYaSoyJugador = new JButton("Ya soy Jugador");
-		btnYaSoyJugador.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowJugadorExistente = new PantallaJugadorExistente();
-				frame.dispose();
-				
-			}
-		});
-		btnYaSoyJugador.setActionCommand("YaSoyJugador");
 		btnYaSoyJugador.setBounds(132, 169, 171, 49);
 		frame.getContentPane().add(btnYaSoyJugador);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido, btnNuevoJugador}));
 	}
+	
 }

@@ -15,42 +15,38 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import algoritmos.gpschallenge.modelo.juego.Esquina;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modelo.vehiculo.Auto;
-import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
-import java.awt.Component;
+
+import algoritmos.gpschallenge.control.ControladorPantallas;
+
 import java.awt.Toolkit;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
 
-public class PantallaJugadorNuevo {
+public class PantallaJugadorNuevo extends PantallaGPSChallenge {
 
-	private JFrame frame;
+	//private JFrame frame;
 	private JTextField txtTitulo;
 	private JButton btnGuardar;
 	private JButton btnVolver;
 	private JTextField campoNombre;
-	private PantallaJugadorNuevo windowJugadorNuevo;
-	private PantallaBienvenida windowBienvenida;
-	private PantallaOpciones windowOpciones;
-	private Jugador jugador;
-	private String nombre;
-	private Vehiculo auto = new Vehiculo(null, null);
 
 	/**
 	 * Constructor
 	 */
-	public PantallaJugadorNuevo() {
+	public PantallaJugadorNuevo(ControladorPantallas controlador) {
+		this.control = controlador;
 		initialize();
-		windowJugadorNuevo = this;
-		frame.setVisible(true);
+		addListeners();
 	}
 
+	//Método para agregar los listeners de los botones del Frame
+	private void addListeners() {
+		btnGuardar.addActionListener(control.getListenerBtnGuardar(this));
+		btnVolver.addActionListener(control.getListenerBtnVolver(this));
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -79,17 +75,6 @@ public class PantallaJugadorNuevo {
 		txtTitulo.setColumns(10);
 		
 		btnGuardar = new JButton("Guardar");
-		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//TODO 
-				// Guardar jugador con persistencia
-				nombre = campoNombre.getText();// + "\n"; 
-				jugador = new Jugador(nombre,new Vehiculo(null, null));
-				windowOpciones = new PantallaOpciones(jugador);
-				frame.dispose();
-			}
-		});
-		btnGuardar.setActionCommand("GuardarNombre");
 		btnGuardar.setBounds(132, 169, 82, 49);
 		frame.getContentPane().add(btnGuardar);
 		
@@ -108,15 +93,8 @@ public class PantallaJugadorNuevo {
 		campoNombre.setText("Ingrese su nombre");
 		
 		btnVolver = new JButton("Volver");
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowBienvenida = new PantallaBienvenida();
-				frame.dispose();
-			}
-		});
 		btnVolver.setAlignmentX(0.5f);
 		btnVolver.setBounds(221, 169, 82, 49);
 		frame.getContentPane().add(btnVolver);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{campoNombre, btnGuardar}));
 	}
 }
