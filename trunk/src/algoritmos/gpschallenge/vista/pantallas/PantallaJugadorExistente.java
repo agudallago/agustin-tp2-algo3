@@ -10,41 +10,36 @@ import java.awt.Color;
 
 import javax.swing.SwingConstants;
 
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modelo.vehiculo.Auto;
-
-import java.awt.Component;
 import java.awt.Toolkit;
 
 import javax.swing.JComboBox;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import algoritmos.gpschallenge.control.ControladorPantallas;
 
+public class PantallaJugadorExistente extends PantallaGPSChallenge {
 
-public class PantallaJugadorExistente {
-
-	private JFrame frame;
+	//private JFrame frame;
 	private JTextField txtTitulo;
 	private JButton btnAceptar;
 	private JButton btnVolver;
-	private PantallaJugadorExistente windowJugadorExistente;
-	private PantallaBienvenida windowBienvenida;
-	private PantallaOpciones windowOpciones;
-	private String nombre;
-	private Jugador jugador;
+	JComboBox comboBox;
 	
 	/**
 	 * Constructor
 	 */
-	public PantallaJugadorExistente() {
+	public PantallaJugadorExistente(ControladorPantallas controlador) {
+		this.control = controlador;
 		initialize();
-		windowJugadorExistente = this;
-		frame.setVisible(true);
+		addListeners();
 	}
 
+	//Método para agregar los listeners de los botones del Frame
+	private void addListeners() {
+		btnVolver.addActionListener(control.getListenerBtnVolver(this));
+		btnAceptar.addActionListener(control.getListenerBtnJugadorExistente(this));
+	}
+
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -73,34 +68,18 @@ public class PantallaJugadorExistente {
 		txtTitulo.setColumns(10);
 		
 		btnAceptar = new JButton("Aceptar");
-		btnAceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//TODO cargar jugador existente
-				//jugador = new Jugador("Pepe", new Auto());
-				jugador = new Jugador("pepe", null);
-				windowOpciones = new PantallaOpciones(jugador); //Falta enviarle el Jugador como argumento
-				frame.dispose();
-			}
-		});
-		btnAceptar.setActionCommand("GuardarNombre");
 		btnAceptar.setBounds(132, 169, 83, 49);
 		frame.getContentPane().add(btnAceptar);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setBounds(132, 89, 171, 29);
 		frame.getContentPane().add(comboBox);
 		//TODO cargar nombres de jugadores pre-existentes
 		
-		JButton btnVolver = new JButton("Volver");
-		btnVolver.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				windowBienvenida = new PantallaBienvenida();
-				frame.dispose();
-			}
-		});
+		btnVolver = new JButton("Volver");
 		btnVolver.setAlignmentX(0.5f);
 		btnVolver.setBounds(220, 169, 83, 49);
 		frame.getContentPane().add(btnVolver);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{btnAceptar}));
 	}
+
 }
