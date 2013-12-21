@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ControladorPantallas {
