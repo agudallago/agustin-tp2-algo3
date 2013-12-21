@@ -6,15 +6,17 @@ import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 public class Jugador {
 		
 		//////////////////// Atributos //////////////////////
-	
+	private static int mContadorJugadores = 0;
 	private Vehiculo mVehiculo;
+	private int mId;
     private String mNombre;
     private float mPuntaje;
 	
     	///////////////// Métodos Públicos ///////////////////
 	
     public Jugador(String nombre, Vehiculo vehiculo) {
-        this.mNombre = nombre;
+        this.mId = mContadorJugadores++;
+    	this.mNombre = nombre;
         this.mVehiculo = vehiculo;
         this.mPuntaje = 0;
     }
@@ -47,6 +49,23 @@ public class Jugador {
 
 	public boolean juegoTerminado() {
 		return this.mVehiculo.estaEnLaMeta();
+	}
+	
+	public int getId() {
+		return this.mId;
+	}
+	
+	public boolean equals(Object otroJugador) {		
+		if(mId == ( (Jugador)otroJugador ).getId() ) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	public int hashCode() {
+		return mNombre.hashCode();
 	}
     
 		///////////////// Metodos Privados ///////////////////
