@@ -11,8 +11,6 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import algoritmos.gpschallenge.control.ControladorPantallas;
-
 import java.awt.Component;
 
 import javax.swing.border.LineBorder;
@@ -91,7 +89,7 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		//textFieldNombre.setText(jugador.getNombre());
+		//TODO: textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
