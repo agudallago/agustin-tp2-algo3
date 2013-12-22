@@ -1,7 +1,6 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
 import javax.swing.JFrame;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -11,6 +10,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import java.awt.Component;
+
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 
@@ -25,6 +25,7 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 	 * Constructor
 	 */
 	public PantallaPerdedor() {
+		super();
 		initialize();
 		addListeners();
 	}
@@ -91,4 +92,13 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 		lblGanaste.setBounds(76, 68, 278, 59);
 		frame.getContentPane().add(lblGanaste);
 	}
+	
+	public static PantallaPerdedor getInstance(){
+		if (instance == null) { 
+				instance = new PantallaPerdedor(); 
+				} 
+		return (PantallaPerdedor) instance; 
+	}
+	
 }
+

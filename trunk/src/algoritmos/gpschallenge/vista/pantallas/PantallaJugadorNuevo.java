@@ -17,6 +17,7 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 
 
+
 import algoritmos.gpschallenge.control.ControladorPantallas;
 
 import java.awt.Toolkit;
@@ -35,8 +36,8 @@ public class PantallaJugadorNuevo extends PantallaGPSChallenge {
 	/**
 	 * Constructor
 	 */
-	public PantallaJugadorNuevo(ControladorPantallas controlador) {
-		this.control = controlador;
+	public PantallaJugadorNuevo() {
+		super();
 		initialize();
 		addListeners();
 	}
@@ -97,4 +98,12 @@ public class PantallaJugadorNuevo extends PantallaGPSChallenge {
 		btnVolver.setBounds(221, 169, 82, 49);
 		frame.getContentPane().add(btnVolver);
 	}
+	
+	public static PantallaJugadorNuevo getInstance(){
+		if (instance == null) { 
+				instance = new PantallaJugadorNuevo(); 
+				} 
+		return (PantallaJugadorNuevo) instance; 
+	}
+	
 }

@@ -6,8 +6,6 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
-import algoritmos.gpschallenge.control.ControladorPantallas;
-import java.awt.Toolkit;
 
 
 public class PantallaBienvenida extends PantallaGPSChallenge {
@@ -21,8 +19,8 @@ public class PantallaBienvenida extends PantallaGPSChallenge {
 	 * Constructor.
 	 */
 
-	public PantallaBienvenida(ControladorPantallas controlador) {
-		this.control = controlador;
+	public PantallaBienvenida() {
+		super();
 		initialize();
 		addListeners();
 	}
@@ -32,7 +30,7 @@ public class PantallaBienvenida extends PantallaGPSChallenge {
 			btnNuevoJugador.addActionListener(control.getListenerBtnJugadorNuevo(this));
 			btnYaSoyJugador.addActionListener(control.getListenerBtnJugadorExistente(this));
 		}
-
+		
 	/**
 	 * Inicializa los contenidos del Frame.
 	 */
@@ -67,5 +65,24 @@ public class PantallaBienvenida extends PantallaGPSChallenge {
 		btnYaSoyJugador.setBounds(132, 169, 171, 49);
 		frame.getContentPane().add(btnYaSoyJugador);
 	}
+	
+	public static PantallaBienvenida getInstance(){
+		if (instance == null) { 
+				instance = new PantallaBienvenida(); 
+				} 
+		return (PantallaBienvenida) instance; 
+	}
+	
+	/* Main de prueba*/
+	/*
+	public static void main(String[] args) {
+		ModeloPantallas modelo = new ModeloPantallas();
+		ControladorPantallas control = ControladorPantallas.getInstance();
+		control.setModelo(modelo);
+		PantallaBienvenida wBienvenida = new PantallaBienvenida();
+		wBienvenida.setVisible(true);
+		
+	}*/
+	
 	
 }

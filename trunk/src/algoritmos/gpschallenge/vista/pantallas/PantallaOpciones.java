@@ -32,17 +32,14 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 	private JButton btnPuntajes;
 	private JTextField textFieldNombre;
 	private JButton btnSalir;
-	private PantallaPuntajes windowPuntajes;
-	private PantallaBienvenida windowBienvenida;
-	private PantallaNuevaPartida windowNuevaPartida; 
 	private Jugador jugador;
 	
 	/**
 	 * Constructor
 	 */
 	
-	public PantallaOpciones(ControladorPantallas controlador) {
-		this.control = controlador;
+	public PantallaOpciones() {
+		super();
 		initialize();
 		addListeners();
 
@@ -105,7 +102,7 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		textFieldNombre.setText(jugador.getNombre());
+		//TODO: textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnSalir = new JButton("Volver");
@@ -113,5 +110,12 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 		btnSalir.setBounds(335, 212, 89, 23);
 		frame.getContentPane().add(btnSalir);
+	}
+	
+	public static PantallaOpciones getInstance(){
+		if (instance == null) { 
+				instance = new PantallaOpciones(); 
+				} 
+		return (PantallaOpciones) instance; 
 	}
 }

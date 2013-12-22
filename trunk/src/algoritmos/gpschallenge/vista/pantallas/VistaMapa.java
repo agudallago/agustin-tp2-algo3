@@ -73,27 +73,27 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			panelMapa = new PanelImagen(imagenMapaNivel); //Panel que contiene la imagen del mapa
 			panelMapa.setBounds(0, 22, 984, 600);
 			frame.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
-		panelMapa.setLayout(null);
-		botonNorte.setBounds(753, 456, 66, 22);
-		botonNorte.setText("Norte");
-		panelMapa.add(botonNorte);
-		botonEste.setBounds(822, 484, 61, 22);
-		panelMapa.add(botonEste);
-		botonOeste.setBounds(690, 484, 61, 22);
-		panelMapa.add(botonOeste);
-		botonSur.setBounds(753, 510, 66, 22);
-		panelMapa.add(botonSur);
+			panelMapa.setLayout(null);
+			botonNorte.setBounds(753, 456, 66, 22);
+			botonNorte.setText("Norte");
+			panelMapa.add(botonNorte);
+			botonEste.setBounds(822, 484, 61, 22);
+			panelMapa.add(botonEste);
+			botonOeste.setBounds(690, 484, 61, 22);
+			panelMapa.add(botonOeste);
+			botonSur.setBounds(753, 510, 66, 22);
+			panelMapa.add(botonSur);
 		
-		JButton button = new JButton("   ");
-		button.setBounds(753, 484, 66, 22);
-		panelMapa.add(button);
-		botonSur.addActionListener(control.getListenerBotonSur());
-		botonOeste.addActionListener(control.getListenerBotonOeste());
-		botonEste.addActionListener(control.getListenerBotonEste());
+			JButton button = new JButton("   ");
+			button.setBounds(753, 484, 66, 22);
+			panelMapa.add(button);
+			botonSur.addActionListener(control.getListenerBotonSur());
+			botonOeste.addActionListener(control.getListenerBotonOeste());
+			botonEste.addActionListener(control.getListenerBotonEste());
 			
 			//agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
 			//Notar que los listeners se los pedimos al controlador
-		botonNorte.addActionListener(control.getListenerBotonNorte());
+			botonNorte.addActionListener(control.getListenerBotonNorte());
 			
 			frame.addKeyListener(control.getListenerTeclas());
 			frame.setSize(1000,680);  //seteamos las dimensiones del marco
@@ -102,9 +102,9 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			//agregamos el listener del evento de cerrado de la ventana		
 			frame.addWindowListener(new CloseListener());
 
-		// Conectamos esta vista con el modelo
-		this.modelo = modelo;
-		this.modelo.addObserver(this);
+			// Conectamos esta vista con el modelo
+			this.modelo = modelo;
+			this.modelo.addObserver(this);
 			
 		}
 		

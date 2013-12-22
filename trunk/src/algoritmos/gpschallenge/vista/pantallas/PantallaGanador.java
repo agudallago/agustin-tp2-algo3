@@ -21,6 +21,7 @@ import algoritmos.gpschallenge.modelo.juego.Jugador;
 import java.awt.Component;
 
 
+
 import javax.swing.border.LineBorder;
 import javax.swing.JLabel;
 
@@ -38,7 +39,8 @@ public class PantallaGanador extends PantallaGPSChallenge {
 	/**
 	 * Constructor.
 	 */
-	public PantallaGanador(ControladorPantallas controlador) {
+	public PantallaGanador() {
+		super();
 		initialize();
 		addListeners();
 	}
@@ -117,5 +119,12 @@ public class PantallaGanador extends PantallaGPSChallenge {
 		lblPuntaje.setFont(new Font("Arial", Font.BOLD, 16));
 		lblPuntaje.setBounds(10, 182, 409, 14);
 		frame.getContentPane().add(lblPuntaje);
+	}
+	
+	public static PantallaGanador getInstance(){
+		if (instance == null) { 
+				instance = new PantallaGanador(); 
+				} 
+		return (PantallaGanador) instance; 
 	}
 }
