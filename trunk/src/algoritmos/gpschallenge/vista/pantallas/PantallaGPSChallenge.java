@@ -33,7 +33,7 @@ public class PantallaGPSChallenge {
 	}
 	
 	private void addListeners(){
-
+		//Se crea como contrato para las demás pantallas
 	}
 	
 	public void dispose(){

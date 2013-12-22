@@ -8,15 +8,8 @@ import java.util.*;
 
 import javax.swing.JFrame;
 
-
-
-
-
-
 import algoritmos.gpschallenge.control.*;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
-//import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 import algoritmos.gpschallenge.modelo.vehiculo.Auto;
 import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
@@ -32,7 +25,7 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
 		private PanelImagen panelAuto = new PanelImagen("images/auto.png");
-		private Jugador jugador;
+		private ControladorVistaMapa controlJuego = new ControladorVistaMapa(new ModeloJuego());
 		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
@@ -45,10 +38,10 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 
 
 //Constructor de la vista
-		public VistaMapa(ModeloJuego modelo, ControladorVistaMapa control, Jugador unJugador, String imagenMapaNivel) {
+		public VistaMapa() {
 			
-			this.jugador = unJugador;
-			
+			super();
+						
 			//armado de la ventana
 			frame = new JFrame("GPS Challenge"); //creamos el marco
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +54,6 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			textoMapa.setBounds(0, 0, 0, 0);
 			frame.getContentPane().add(textoMapa); //agregamos el texto que muestra el Nivel
 			panelAuto.setSize(59,22);
-			
 			
 			//frameMapa.add(panelAuto);
 			frame.getContentPane().add(panelAuto);
@@ -88,15 +80,15 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			JButton button = new JButton("   ");
 			button.setBounds(753, 484, 66, 22);
 			panelMapa.add(button);
-			botonSur.addActionListener(control.getListenerBotonSur());
-			botonOeste.addActionListener(control.getListenerBotonOeste());
-			botonEste.addActionListener(control.getListenerBotonEste());
+			botonSur.addActionListener(controlJuego.getListenerBotonSur());
+			botonOeste.addActionListener(controlJuego.getListenerBotonOeste());
+			botonEste.addActionListener(controlJuego.getListenerBotonEste());
 			
 			//agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
 			//Notar que los listeners se los pedimos al controlador
-			botonNorte.addActionListener(control.getListenerBotonNorte());
+			botonNorte.addActionListener(controlJuego.getListenerBotonNorte());
 			
-			frame.addKeyListener(control.getListenerTeclas());
+			frame.addKeyListener(controlJuego.getListenerTeclas());
 			frame.setSize(1000,680);  //seteamos las dimensiones del marco
 			frame.setVisible(true);  //mostramos el marco
 
@@ -117,14 +109,20 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			
 		}
 
+		public static VistaMapa getInstance(){
+			if (instance == null) { 
+					instance = new VistaMapa(); 
+					} 
+			return (VistaMapa) instance; 
+		}
+		
 		//public void setTextoMapa(String s){ textoTemp.setText(s);}
 	
 		
 		  public static void main(String[] args) {
-			  Jugador jugador = new Jugador("Pepe", new Vehiculo(null, new Auto()));
 			  ModeloJuego modelo =  new ModeloJuego();
 			  ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
-			  VistaMapa vistaMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.png");
+			  VistaMapa vistaMapa = new VistaMapa();
 			    
 			}
 	}
