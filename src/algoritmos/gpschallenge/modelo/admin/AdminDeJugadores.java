@@ -7,6 +7,7 @@ import com.thoughtworks.xstream.XStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import algoritmos.gpschallenge.modelo.juego.Jugador;
 
@@ -61,21 +62,26 @@ public class AdminDeJugadores {
 		lista.add(puntaje);
 		this.mPuntajesPorJugador.put(jugador, lista);
 	}
-	
-	
 	/*
-	
 	public List<Jugador> getListaDeJugadoresFrecuentes() {
-	//TODO FILL THIS
+		
 	}
 	
-	public List<Float> getPuntajesDeJugador(Jugador jugador) {
-	//TODO FILL THIS
+	public List<Float> getPuntajesDeJugador(final Jugador jugador) throws JugadorInexistenteException {
+		if(mPuntajesPorJugador.containsKey(jugador) == false) {
+			throw JugadorInexistenteException;
+		}
+		return mPuntajesPorJugador.get(jugador);		
 	}
 	
 	public Map<Jugador, List<Float>> getTopTenComoMapa() {
-		//TODO FILL THIS
+		final int tamanioRanking = 10;
+		
+		for (int i = 0; i < tamanioRanking; ++i)
+		{
+			
+		}
 	}
-
-	*/
+*/
+	
 }
