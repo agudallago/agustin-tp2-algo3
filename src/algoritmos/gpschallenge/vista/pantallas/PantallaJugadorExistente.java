@@ -18,7 +18,6 @@ import algoritmos.gpschallenge.control.ControladorPantallas;
 
 public class PantallaJugadorExistente extends PantallaGPSChallenge {
 
-	//private JFrame frame;
 	private JTextField txtTitulo;
 	private JButton btnAceptar;
 	private JButton btnVolver;
@@ -27,8 +26,8 @@ public class PantallaJugadorExistente extends PantallaGPSChallenge {
 	/**
 	 * Constructor
 	 */
-	public PantallaJugadorExistente(ControladorPantallas controlador) {
-		this.control = controlador;
+	public PantallaJugadorExistente() {
+		super();
 		initialize();
 		addListeners();
 	}
@@ -81,5 +80,12 @@ public class PantallaJugadorExistente extends PantallaGPSChallenge {
 		btnVolver.setBounds(220, 169, 83, 49);
 		frame.getContentPane().add(btnVolver);
 	}
-
+	
+	public static PantallaJugadorExistente getInstance(){
+		if (instance == null) { 
+				instance = new PantallaJugadorExistente(); 
+				} 
+		return (PantallaJugadorExistente) instance; 
+	}
+	
 }

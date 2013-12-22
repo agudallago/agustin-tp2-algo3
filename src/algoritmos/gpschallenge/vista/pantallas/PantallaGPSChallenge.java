@@ -7,26 +7,41 @@ import algoritmos.gpschallenge.control.ControladorPantallas;
 
 //Clase abstracta de la cual heredan las otras pantallas
 
-public abstract class PantallaGPSChallenge {
+public class PantallaGPSChallenge {
 
-	public JFrame frame;
+	protected static JFrame frame;
 	public ControladorPantallas control;
+	protected static PantallaGPSChallenge instance;
 	
 	/* Metodos */
 	
 	public PantallaGPSChallenge() {
+		this.control = ControladorPantallas.getInstance();
 		this.frame = new JFrame();
+		instance = this;
 	}
 
+	public static PantallaGPSChallenge getInstance(){
+		if (instance == null) { 
+				instance = new PantallaGPSChallenge(); 
+				} 
+		return instance; 
+	}
+	
+	public static void setInstanceNull () {
+		instance = null;
+	}
+	
 	private void addListeners(){
 
 	}
 	
 	public void dispose(){
-		this.frame.dispose();
+		this.setInstanceNull();
+		frame.dispose();
 	}
 	
 	public void setVisible(boolean b){
-		this.frame.setVisible(b);
+		frame.setVisible(b);
 	}
 }

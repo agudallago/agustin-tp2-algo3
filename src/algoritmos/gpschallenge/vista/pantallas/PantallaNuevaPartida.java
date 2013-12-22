@@ -42,8 +42,8 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 	/**
 	 * Constructor
 	 */
-	public PantallaNuevaPartida(ControladorPantallas controlador) {
-		this.control = controlador;
+	public PantallaNuevaPartida() {
+		super();
 		initialize();
 		addListeners();
 	}
@@ -148,4 +148,11 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 		frame.getContentPane().add(btnJugar);
 		
 	}
+	public static PantallaNuevaPartida getInstance(){
+		if (instance == null) { 
+				instance = new PantallaNuevaPartida(); 
+				} 
+		return (PantallaNuevaPartida) instance; 
+	}
+	
 }

@@ -30,7 +30,8 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 	/**
 	 * Constructor
 	 */
-	public PantallaPuntajes(ControladorPantallas control) {
+	public PantallaPuntajes() {
+		super();
 		initialize();
 		addListeners();
 
@@ -77,7 +78,7 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		textFieldNombre.setText(jugador.getNombre());
+		// TODO: textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Cerrar");
@@ -92,5 +93,11 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 		
 		//TODO cargar Ranking de puntajes
+	}
+	public static PantallaPuntajes getInstance(){
+		if (instance == null) { 
+				instance = new PantallaPuntajes(); 
+				} 
+		return (PantallaPuntajes) instance; 
 	}
 }
