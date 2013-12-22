@@ -1,8 +1,10 @@
 package algoritmos.gpschallenge.control;
 import java.awt.event.*;
 
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
+
 //import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
+
 
 
 public class ControladorVistaMapa {
