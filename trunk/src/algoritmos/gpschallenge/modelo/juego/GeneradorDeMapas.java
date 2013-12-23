@@ -245,30 +245,10 @@ public class GeneradorDeMapas {
 		this.mEsquinasMapa[13][3].addElementoEnEsquina(sorpresaCambioVehiculo);
 		
 		
-		//La ubicación de la meta será decidida en tiempo de ejecución, entre 5 posibles ubicaciones.		
-		
-		Random generadorRandom = new Random();
-		
-		int numeroAleatorio = generadorRandom.nextInt(5);
-		
-		switch (numeroAleatorio) {	
-		case 0:
-			this.mEsquinasMapa[5][0].addElementoEnEsquina(meta);
-			break;
-		case 1:
-			this.mEsquinasMapa[10][0].addElementoEnEsquina(meta);
-			break;
-		case 2:
-			this.mEsquinasMapa[14][0].addElementoEnEsquina(meta);
-			break;
-		case 3:
-			this.mEsquinasMapa[2][2].addElementoEnEsquina(meta);
-			break;
-		case 4:
-			this.mEsquinasMapa[12][2].addElementoEnEsquina(meta);
-			break;
-		}
-			
+		//Ubicación de la meta		
+	
+		this.mEsquinasMapa[14][14].addElementoEnEsquina(meta);
+						
 	}
 	
 }

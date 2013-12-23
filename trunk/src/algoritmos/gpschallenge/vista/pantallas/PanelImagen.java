@@ -9,7 +9,7 @@ import java.awt.geom.Ellipse2D;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-import sun.java2d.ScreenUpdateManager;
+//import sun.java2d.ScreenUpdateManager;
 
 
 public class PanelImagen extends JPanel {
