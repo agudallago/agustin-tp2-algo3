@@ -31,8 +31,8 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 	}
 
 	public void addListeners(){
-		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones(this));
-		btnJugarOtraVez.addActionListener(control.getListenerBtnNuevaPartida(this));
+		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones());
+		btnJugarOtraVez.addActionListener(control.getListenerBtnNuevaPartida());
 		
 	}
 	

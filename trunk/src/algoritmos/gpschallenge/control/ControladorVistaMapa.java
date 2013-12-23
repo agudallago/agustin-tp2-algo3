@@ -1,19 +1,16 @@
 package algoritmos.gpschallenge.control;
 import java.awt.event.*;
 
-import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
-
-//import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
-
+import algoritmos.gpschallenge.modeloPruebaVisual.*;
 
 
 public class ControladorVistaMapa {
 
-	private ModeloJuego modelo;
+	private ModeloJuegoPrueba modelo;
 	
 	//Constructor de la clase Controlador
-		public ControladorVistaMapa(ModeloJuego modelo) {
-			this.modelo = modelo;
+		public ControladorVistaMapa() {
+			this.modelo = new ModeloJuegoPrueba();
 		}
 	
 	//----------------------------------------------------------------------

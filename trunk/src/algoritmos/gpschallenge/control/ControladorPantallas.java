@@ -3,18 +3,22 @@ package algoritmos.gpschallenge.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuegoPrueba;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloPantallas;
 import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ControladorPantallas {
 	
 	private static ControladorPantallas instance = null;
-	private ModeloPantallas modelo;
-	 
+	private ModeloPantallas modeloPantalla;
+	private ModeloJuegoPrueba modeloJuego; 
 	
 	protected ControladorPantallas () {
 		//Contructor protegido
 	}
+	
+	//ControladorPantallas es una Clase con patron Singleton porque es única para el juego y debe ser 
+	//accesible para todas las instancias de Pantallas
 	
 	public static ControladorPantallas getInstance () {
 		if(instance == null) {
@@ -24,105 +28,102 @@ public class ControladorPantallas {
 	   }
 	
 	public void setModelo (ModeloPantallas modelo) {
-		this.modelo = modelo;
+		this.modeloPantalla = modelo;
 	}
 	
-	/* public ControladorPantallas(ModeloPantallas modelo){
-		this.modelo = modelo;
-	}
-	*/
 	
 	//--------------------------------------------------------------------------------------------
-	public ActionListener getListenerBtnJugadorExistente(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnJugadorExistente() {
 		return new EscuchaBtnJugadorExistente();
 	}
 	
 	private class EscuchaBtnJugadorExistente implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			modelo.abrirPantallaJugadorExistente();
+			modeloPantalla.abrirPantallaJugadorExistente();
 		}
 	}
 
 	//--------------------------------------------------------------------------------------------
-	public ActionListener getListenerBtnJugadorNuevo(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnJugadorNuevo() {
 		return new EscuchaBtnJugadorNuevo();
 	}
 	
 	private class EscuchaBtnJugadorNuevo implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
-			modelo.abrirPantallaJugadorNuevo();
+			modeloPantalla.abrirPantallaJugadorNuevo();
 		}
 	}
 	//--------------------------------------------------------------------------------------------
 	
-	public ActionListener getListenerBtnVolver(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnVolver() {
 		return new EscuchaBtnVolver();
 	}
 	
 	private class EscuchaBtnVolver implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
-			modelo.abrirPantallaBienvenida();
+			modeloPantalla.abrirPantallaBienvenida();
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
-	public ActionListener getListenerBtnVolverAOpciones(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnVolverAOpciones() {
 		return new EscuchaBtnVolverAOpciones();
 	}
 	
 	private class EscuchaBtnVolverAOpciones implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
-			modelo.abrirPantallaOpciones();
+			modeloPantalla.abrirPantallaOpciones();
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
-	public ActionListener getListenerBtnNuevaPartida(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnNuevaPartida() {
 		return new EscuchaBtnNuevaPartida();
 	}
 
 	private class EscuchaBtnNuevaPartida implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
-			modelo.abrirPantallaNuevaPartida();
+			modeloPantalla.abrirPantallaNuevaPartida();
 		}
 	}
 	
 
 //--------------------------------------------------------------------------------------------
-	public ActionListener getListenerBtnPuntajes(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnPuntajes() {
 		return new EscuchaBtnPuntajes();
 	}
 	
 	private class EscuchaBtnPuntajes implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
-			modelo.abrirPantallaPuntajes();
+			modeloPantalla.abrirPantallaPuntajes();
 		}
 	}
 
 //--------------------------------------------------------------------------------------------
 		
-	public ActionListener getListenerBtnGuardar(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnGuardar() {
 		return new EscuchaBtnGuardar();
 	}
 	
 	private class EscuchaBtnGuardar implements ActionListener {	
-		public void actionPerformed(ActionEvent e) {	
-			//TODO guardar datos del jugador
-			modelo.abrirPantallaOpciones();		
+		public void actionPerformed(ActionEvent e) {
+			//TODO crear el jugador
+			modeloPantalla.abrirPantallaOpciones();		
 			}
 	}
 	
 //--------------------------------------------------------------------------------------------
 
-	public ActionListener getListenerBtnJugar(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnJugar() {
 		return new EscuchaBtnJugar();
 	}
 	
 	private class EscuchaBtnJugar implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {	
 			//TODO revisar
-			modelo.abrirVistaMapa();
+			modeloJuego.crearJugador();
+			modeloPantalla.abrirVistaMapa();
 			
 			//ModeloJuego modelo =  new ModeloJuego();
 			//ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
@@ -132,15 +133,17 @@ public class ControladorPantallas {
 	}
 	
 //--------------------------------------------------------------------------------------------
-	public ActionListener getListenerBtnCerrar(PantallaGPSChallenge pantalla) {
+	public ActionListener getListenerBtnCerrar() {
 		return new EscuchaBtnCerrar();
 	}
 	
 	private class EscuchaBtnCerrar implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
 			//Para esta versión vuelve a la pantalla opciones
-			modelo.abrirPantallaOpciones();
+			modeloPantalla.abrirPantallaOpciones();
 		}
 	}
+	
+
 }
 	

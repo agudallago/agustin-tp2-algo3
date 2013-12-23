@@ -47,9 +47,9 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 	
 //Método para agregar los listeners de los botones del Frame
 	private void addListeners() {
-		btnComenzarPartida.addActionListener(control.getListenerBtnNuevaPartida(this));
-		btnPuntajes.addActionListener(control.getListenerBtnPuntajes(this));
-		btnSalir.addActionListener(control.getListenerBtnVolver(this));
+		btnComenzarPartida.addActionListener(control.getListenerBtnNuevaPartida());
+		btnPuntajes.addActionListener(control.getListenerBtnPuntajes());
+		btnSalir.addActionListener(control.getListenerBtnVolver());
 	}
 
 	/**
