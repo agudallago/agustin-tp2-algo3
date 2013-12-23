@@ -38,7 +38,7 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 	}
 
 	public void addListeners(){
-		btnVolver.addActionListener(control.getListenerBtnCerrar(this));
+		btnVolver.addActionListener(control.getListenerBtnCerrar());
 	}
 	
 	/**

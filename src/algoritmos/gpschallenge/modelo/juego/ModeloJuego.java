@@ -51,8 +51,6 @@ public class ModeloJuego extends java.util.Observable {
 		ActualizarObservadores();	
 	}
 
-	
-	
 
 	private int getPosX() {
 		return posX;

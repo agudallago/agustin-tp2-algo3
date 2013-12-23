@@ -47,8 +47,8 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 	}
 
 	private void addListeners() {
-		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones(this));
-		btnJugar.addActionListener(control.getListenerBtnJugar(this));
+		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones());
+		btnJugar.addActionListener(control.getListenerBtnJugar());
 	}
 	
 	

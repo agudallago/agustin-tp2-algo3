@@ -27,8 +27,8 @@ public class PantallaBienvenida extends PantallaGPSChallenge {
 	
 	//Método para agregar los listeners de los botones del Frame
 		private void addListeners() {
-			btnNuevoJugador.addActionListener(control.getListenerBtnJugadorNuevo(this));
-			btnYaSoyJugador.addActionListener(control.getListenerBtnJugadorExistente(this));
+			btnNuevoJugador.addActionListener(control.getListenerBtnJugadorNuevo());
+			btnYaSoyJugador.addActionListener(control.getListenerBtnJugadorExistente());
 		}
 		
 	/**
