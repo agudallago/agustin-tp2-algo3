@@ -1,0 +1,34 @@
+<object-stream>
+  <algoritmos.gpschallenge.modelo.admin.AdminDeJugadores>
+    <mPuntajeMaxPorJugador>
+      <entry>
+        <algoritmos.gpschallenge.modelo.juego.Jugador>
+          <mVehiculo>
+            <mTipo class="algoritmos.gpschallenge.modelo.vehiculo.Auto"/>
+            <mMovimientos>0</mMovimientos>
+            <mMovimientosBonus>0.0</mMovimientosBonus>
+            <mAlcanzoMeta>false</mAlcanzoMeta>
+          </mVehiculo>
+          <mId>0</mId>
+          <mNombre>Pepe</mNombre>
+          <mPuntajeActual>0.0</mPuntajeActual>
+        </algoritmos.gpschallenge.modelo.juego.Jugador>
+        <float>20.0</float>
+      </entry>
+      <entry>
+        <algoritmos.gpschallenge.modelo.juego.Jugador>
+          <mVehiculo>
+            <mTipo class="algoritmos.gpschallenge.modelo.vehiculo.Moto"/>
+            <mMovimientos>0</mMovimientos>
+            <mMovimientosBonus>0.0</mMovimientosBonus>
+            <mAlcanzoMeta>false</mAlcanzoMeta>
+          </mVehiculo>
+          <mId>1</mId>
+          <mNombre>Agustin</mNombre>
+          <mPuntajeActual>0.0</mPuntajeActual>
+        </algoritmos.gpschallenge.modelo.juego.Jugador>
+        <float>5.0</float>
+      </entry>
+    </mPuntajeMaxPorJugador>
+  </algoritmos.gpschallenge.modelo.admin.AdminDeJugadores>
+</object-stream>
