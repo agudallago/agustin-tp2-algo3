@@ -19,8 +19,7 @@ public class ModeloJuego extends java.util.Observable {
 	
 	public ModeloJuego() throws FileNotFoundException, IOException, ClassNotFoundException {
 		mAdminDeJugadores = AdminDeJugadores.cargarJugadores(RUTA_JUGADORES_XML);
-		//setPosX(100);
-		//setPosY(100);
+		
 	}	
 	
 	////////////////// Persistencia ///////////////////
