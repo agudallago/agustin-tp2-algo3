@@ -5,20 +5,20 @@ import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 public class Jugador {
 		
-		//////////////////// Atributos //////////////////////
+	//////////////////// Atributos //////////////////////
 	private static int mContadorJugadores = 0;
 	private Vehiculo mVehiculo;
-	private int mId;
+	private int mId;							// Identificador univoco de jugador
     private String mNombre;
-    private float mPuntaje;
+    private float mPuntajeActual;
 	
-    	///////////////// Métodos Públicos ///////////////////
+    ///////////////// Métodos Públicos ///////////////////
 	
     public Jugador(String nombre, Vehiculo vehiculo) {
         this.mId = mContadorJugadores++;
     	this.mNombre = nombre;
         this.mVehiculo = vehiculo;
-        this.mPuntaje = 0;
+        this.mPuntajeActual = 0;
     }
     
     public String getNombre() {
@@ -26,7 +26,7 @@ public class Jugador {
 	}
     
     public float getPuntaje() {
-		return mPuntaje;
+		return mPuntajeActual;
 	}  
     
     public void actualizar() {
@@ -71,7 +71,7 @@ public class Jugador {
 		///////////////// Metodos Privados ///////////////////
     
 	private void actualizarPuntaje() {
-    	this.mPuntaje = mVehiculo.getMovimientos() + mVehiculo.getMovimientosBonus();
+    	this.mPuntajeActual = mVehiculo.getMovimientos() + mVehiculo.getMovimientosBonus();
     }
 	
 	@SuppressWarnings("unused")
