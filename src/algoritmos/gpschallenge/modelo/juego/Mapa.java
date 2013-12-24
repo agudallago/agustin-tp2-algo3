@@ -9,17 +9,13 @@ import algoritmos.gpschallenge.modelo.direccion.Sur;
 
 
 public class Mapa {
-
 	
 	private ArrayList<Esquina> mEsquinas; //solo se usa para los tests de integracion	
-	
 	Esquina [][] mEsquinasMapa;	
-	
-	
-	public Mapa (){
-	
-			mEsquinasMapa = new Esquina [15][15];
-			this.crearConexionesEnMapa();
+		
+	public Mapa () {
+		mEsquinasMapa = new Esquina [15][15];
+		this.crearConexionesEnMapa();
 	}
 	
 	private void crearConexionesEnMapa() {
@@ -38,8 +34,7 @@ public class Mapa {
 				this.mEsquinasMapa[fila][col].setEsquinaAl(norte, this.mEsquinasMapa[fila-1][col]);
 				this.mEsquinasMapa[fila][col].setEsquinaAl(sur, this.mEsquinasMapa[fila+1][col]);
 				this.mEsquinasMapa[fila][col].setEsquinaAl(este, this.mEsquinasMapa[fila][col+1]);
-				this.mEsquinasMapa[fila][col].setEsquinaAl(oeste, this.mEsquinasMapa[fila][col-1]);
-				
+				this.mEsquinasMapa[fila][col].setEsquinaAl(oeste, this.mEsquinasMapa[fila][col-1]);				
 			}
 		}
 	
@@ -49,17 +44,14 @@ public class Mapa {
 		this.mEsquinasMapa[0][0].setEsquinaAl(este, this.mEsquinasMapa[0][1]);
 		
 		for (int col = 1; col < 14; col++)
-		{
-			
-				this.mEsquinasMapa[0][col].setEsquinaAl(sur, this.mEsquinasMapa[1][col]);
-				this.mEsquinasMapa[0][col].setEsquinaAl(este, this.mEsquinasMapa[0][col+1]);
-				this.mEsquinasMapa[0][col].setEsquinaAl(oeste, this.mEsquinasMapa[0][col-1]);
-						
+		{			
+			this.mEsquinasMapa[0][col].setEsquinaAl(sur, this.mEsquinasMapa[1][col]);
+			this.mEsquinasMapa[0][col].setEsquinaAl(este, this.mEsquinasMapa[0][col+1]);
+			this.mEsquinasMapa[0][col].setEsquinaAl(oeste, this.mEsquinasMapa[0][col-1]);						
 		}
 		
 		this.mEsquinasMapa[0][14].setEsquinaAl(sur, this.mEsquinasMapa[1][14]);
 		this.mEsquinasMapa[0][14].setEsquinaAl(oeste, this.mEsquinasMapa[0][13]);
-		
 		
 		//Conexion de la ultima fila
 		
@@ -67,54 +59,33 @@ public class Mapa {
 		this.mEsquinasMapa[14][0].setEsquinaAl(este, this.mEsquinasMapa[14][1]);
 		
 		for (int col = 1; col < 14; col++)
-		{
-			
-				this.mEsquinasMapa[14][col].setEsquinaAl(norte, this.mEsquinasMapa[13][col]);
-				this.mEsquinasMapa[14][col].setEsquinaAl(este, this.mEsquinasMapa[14][col+1]);
-				this.mEsquinasMapa[14][col].setEsquinaAl(oeste, this.mEsquinasMapa[14][col-1]);
-						
+		{			
+			this.mEsquinasMapa[14][col].setEsquinaAl(norte, this.mEsquinasMapa[13][col]);
+			this.mEsquinasMapa[14][col].setEsquinaAl(este, this.mEsquinasMapa[14][col+1]);
+			this.mEsquinasMapa[14][col].setEsquinaAl(oeste, this.mEsquinasMapa[14][col-1]);						
 		}
 		
 		this.mEsquinasMapa[14][14].setEsquinaAl(norte, this.mEsquinasMapa[13][14]);
 		this.mEsquinasMapa[14][14].setEsquinaAl(oeste, this.mEsquinasMapa[14][13]);
-		
-		
-		//Conexion de la primera columna
-		
+				
+		//Conexion de la primera columna		
 		for (int fila = 1; fila < 14; fila++)
-		{
-			
-				this.mEsquinasMapa[fila][0].setEsquinaAl(norte, this.mEsquinasMapa[fila-1][0]);
-				this.mEsquinasMapa[fila][0].setEsquinaAl(sur, this.mEsquinasMapa[fila+1][0]);
-				this.mEsquinasMapa[fila][0].setEsquinaAl(este, this.mEsquinasMapa[fila][1]);
-						
+		{		
+			this.mEsquinasMapa[fila][0].setEsquinaAl(norte, this.mEsquinasMapa[fila-1][0]);
+			this.mEsquinasMapa[fila][0].setEsquinaAl(sur, this.mEsquinasMapa[fila+1][0]);
+			this.mEsquinasMapa[fila][0].setEsquinaAl(este, this.mEsquinasMapa[fila][1]);
 		}
 		
-		
-		//Conexion de la ultima columna
-		
+		//Conexion de la ultima columna		
 		for (int fila = 1; fila < 14; fila++)
-		{
-			
-				this.mEsquinasMapa[fila][14].setEsquinaAl(norte, this.mEsquinasMapa[fila-1][14]);
-				this.mEsquinasMapa[fila][14].setEsquinaAl(sur, this.mEsquinasMapa[fila+1][14]);
-				this.mEsquinasMapa[fila][14].setEsquinaAl(oeste, this.mEsquinasMapa[fila][13]);
-						
+		{			
+			this.mEsquinasMapa[fila][14].setEsquinaAl(norte, this.mEsquinasMapa[fila-1][14]);
+			this.mEsquinasMapa[fila][14].setEsquinaAl(sur, this.mEsquinasMapa[fila+1][14]);
+			this.mEsquinasMapa[fila][14].setEsquinaAl(oeste, this.mEsquinasMapa[fila][13]);						
 		}
 		
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
+		
 	// Estos métodos fueron para hacer test unitarios.
 	
 	public Mapa(int numeroDeMapa, ElementoDeEsquina elemento) {
@@ -199,8 +170,7 @@ public class Mapa {
 		
 		this.getEsquinaFinal().addElementoEnEsquina(elemento);
 	}
-	
-		
+			
 	private Esquina addEsquina() {
 		Esquina esquina = new Esquina();
 		this.mEsquinas.add(esquina);
