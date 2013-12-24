@@ -2,8 +2,6 @@ package algoritmos.gpschallenge.modelo.admin;
 
 import java.io.*;
 
-import com.thoughtworks.xstream.XStream;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -14,9 +12,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modelo.vehiculo.*;
 
-public class AdminDeJugadores {
+public class AdminDeJugadores extends AdminXML {
 	
 	//////////////////////Atributos ////////////////////////////
 	private HashMap<Jugador, Float> mPuntajeMaxPorJugador;	
@@ -40,33 +37,17 @@ public class AdminDeJugadores {
 	}
 	
 	// Metodo de clase
-	public static AdminDeJugadores cargarJugadores(String ruta) throws FileNotFoundException, IOException, ClassNotFoundException {
-		XStream xStream = new XStream();
-		
-		InputStream inFile = new FileInputStream(ruta);
-		ObjectInputStream inStream = xStream.createObjectInputStream(inFile);
-
-		AdminDeJugadores admin = (AdminDeJugadores)inStream.readObject();
-		
-		inFile.close();
-		inStream.close();
-		
-		return admin;
-	}
-		
-	public void guardarJugadores(String ruta) throws FileNotFoundException, IOException {
-		XStream xStream = new XStream();
-		
-		OutputStream outFile = new FileOutputStream(ruta);
-		ObjectOutputStream outStream = xStream.createObjectOutputStream(outFile);
-
-		outStream.writeObject(this);
-		
-		outStream.close();
-		outFile.close();
+	public static AdminDeJugadores cargarJugadores(String ruta)
+	throws FileNotFoundException, IOException, ClassNotFoundException {				
+		return (AdminDeJugadores)cargarXML(ruta);	
 	}
 	
-	public void addPuntaje(Jugador jugador, float puntaje) {
+	public void guardarJugadoresYPuntajes(String ruta)
+	throws FileNotFoundException, IOException {
+		guardarXML(this, ruta);
+	}
+	
+	public void addJugadorYPuntaje(Jugador jugador, float puntaje) {
 		float puntajeMax;
 		
 		if(mPuntajeMaxPorJugador.containsKey(jugador) == true) {

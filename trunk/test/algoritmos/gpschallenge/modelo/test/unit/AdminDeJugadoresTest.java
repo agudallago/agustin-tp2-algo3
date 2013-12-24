@@ -14,7 +14,7 @@ public class AdminDeJugadoresTest {
 	
 	@Test
 	public void testCrearAdminNoNulo() {
-		AdminDeJugadores admin = new AdminDeJugadores();
+		AdminXML admin = new AdminDeJugadores();
 		Assert.assertNotNull(admin);
 	}
 	

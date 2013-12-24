@@ -56,12 +56,7 @@ public class Jugador {
 	}
 	
 	public boolean equals(Object otroJugador) {		
-		if(mId == ( (Jugador)otroJugador ).getId() ) {
-			return true;
-		}
-		else {
-			return false;
-		}
+		return (mId == ( (Jugador)otroJugador ).getId() );
 	}
 	
 	public int hashCode() {
