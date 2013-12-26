@@ -1,9 +1,6 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-
-import java.awt.GridBagLayout;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -12,11 +9,6 @@ import java.awt.Font;
 import java.awt.Color;
 
 import javax.swing.SwingConstants;
-
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-import algoritmos.gpschallenge.control.ControladorPantallas;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
 
 import java.awt.Component;
 
