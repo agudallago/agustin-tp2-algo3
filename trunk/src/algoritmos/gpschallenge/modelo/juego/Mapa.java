@@ -86,6 +86,13 @@ public class Mapa {
 		
 	}	
 		
+	public Esquina getEsquinaInicialMapa(){
+		
+		return this.mEsquinasMapa[5][0];
+	}
+	
+	
+	
 	// Estos métodos fueron para hacer test unitarios.
 	
 	public Mapa(int numeroDeMapa, ElementoDeEsquina elemento) {
