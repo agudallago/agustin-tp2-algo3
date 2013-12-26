@@ -14,7 +14,6 @@ import java.awt.Toolkit;
 
 import javax.swing.JComboBox;
 
-import algoritmos.gpschallenge.control.ControladorPantallas;
 
 public class PantallaJugadorExistente extends PantallaGPSChallenge {
 
