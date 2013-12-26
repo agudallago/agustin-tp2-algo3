@@ -9,10 +9,6 @@ import java.util.*;
 import javax.swing.JFrame;
 
 import algoritmos.gpschallenge.control.*;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuegoPrueba;
-import algoritmos.gpschallenge.modelo.vehiculo.Auto;
-import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
-
 import javax.swing.JButton;
 
 
