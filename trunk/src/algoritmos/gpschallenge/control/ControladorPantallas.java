@@ -144,14 +144,13 @@ public class ControladorPantallas {
 		}
 
 		public void actionPerformed(ActionEvent e) {	
-			//TODO revisar. Ver si creo jugador o cargó jugador existente.
-			//modeloJuego.crearJugador();
+			//Solicita la selección de los RadioButton a la pantalla. Se los devuelve como 2 string
 			String dificultad = this.pantalla.seleccionDificultad();
 			String vehiculo = this.pantalla.seleccionVehiculo();
-			
+			String nombre = modeloPantalla.getNombreJugador();
+			modeloJuego.crearPartida(nombre, vehiculo, dificultad);
 			modeloPantalla.abrirVistaMapa();
 			
-			//ModeloJuego modelo =  new ModeloJuego();
 			//ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
 			//windowMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.jpg");
 			
