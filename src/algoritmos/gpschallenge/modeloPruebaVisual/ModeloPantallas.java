@@ -1,6 +1,6 @@
 package algoritmos.gpschallenge.modeloPruebaVisual;
 
-//import algoritmos.gpschallenge.control.ControladorPantallas;
+import algoritmos.gpschallenge.control.ControladorVistaMapa;
 import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ModeloPantallas {
@@ -60,16 +60,14 @@ public class ModeloPantallas {
 		ventanaActiva.setVisible(true);
 	}
 
-	public void abrirVistaMapa() {
+	public void abrirPantallaMapa(ModeloPartida modelo, ControladorVistaMapa controlador, String imagenMapa, String imagenVehiculo) {
 		ventanaActiva.dispose();
-		ventanaActiva = VistaMapa.getInstance();
-		ventanaActiva.setFieldNombre(nombreJugador);
-		ventanaActiva.setVisible(true);
+		PantallaMapa pantallaMapa = new PantallaMapa(modelo, controlador, imagenMapa, imagenVehiculo);
+		pantallaMapa.setVisible(true);
 	}
 		
 	public void setVentanaActiva(PantallaGPSChallenge pantalla){
 		ventanaActiva = pantalla;
-		
 	}
 
 	public void abrirPantallaGanador() {

@@ -12,13 +12,12 @@ public class ControladorPantallas {
 	
 	private static ControladorPantallas instance = null;
 	private ModeloPantallas modeloPantalla;
-	private ModeloPartida modeloJuego;
+	private ModeloPartida modeloPartida;
 	
 	
 	protected ControladorPantallas () {
 		//Contructor protegido
 	}
-	
 
 	//ControladorPantallas es una Clase con patron Singleton porque es única para el juego y debe ser 
 	//accesible para todas las instancias de Pantallas
@@ -37,7 +36,7 @@ public class ControladorPantallas {
 	
 	//Método para setear el modelo de Juego
 	public void setModeloJuego (ModeloPartida modelo) {
-		this.modeloJuego = modelo;
+		this.modeloPartida = modelo;
 	}
 	
 	
@@ -148,11 +147,8 @@ public class ControladorPantallas {
 			String dificultad = this.pantalla.seleccionDificultad();
 			String vehiculo = this.pantalla.seleccionVehiculo();
 			String nombre = modeloPantalla.getNombreJugador();
-			modeloJuego.crearPartida(nombre, vehiculo, dificultad);
-			modeloPantalla.abrirVistaMapa();
-			
-			//ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
-			//windowMapa = new VistaMapa(modelo, controlador, jugador, "images/fondo.jpg");
+			modeloPartida.crearPartida(nombre, vehiculo, dificultad);
+			modeloPantalla.abrirPantallaMapa(modeloPartida, new ControladorVistaMapa(modeloPartida), modeloPartida.getImagenMapa(), modeloPartida.getImagenVehiculo());
 			
 		}
 	}
