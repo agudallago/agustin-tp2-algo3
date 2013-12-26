@@ -27,8 +27,9 @@ public class ModeloPartida extends java.util.Observable {
 		oeste = new Oeste();
 		este  = new Este();
 
-		//setPosX(100);
-		//setPosY(100);
+		//Cambiar estos números mágicos
+		setPosX(100);
+		setPosY(80);
 		ActualizarObservadores();	
 	}
 	
