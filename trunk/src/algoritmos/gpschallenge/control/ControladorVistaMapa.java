@@ -9,8 +9,8 @@ public class ControladorVistaMapa {
 	private ModeloPartida modelo;
 	
 	//Constructor de la clase Controlador
-		public ControladorVistaMapa() {
-			this.modelo = new ModeloPartida();
+		public ControladorVistaMapa(ModeloPartida modelo) {
+			this.modelo = modelo; 
 		}
 	
 	//----------------------------------------------------------------------
