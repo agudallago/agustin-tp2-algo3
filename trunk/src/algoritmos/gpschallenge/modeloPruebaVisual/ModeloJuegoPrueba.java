@@ -16,6 +16,7 @@ public class ModeloJuegoPrueba extends java.util.Observable {
 	Vehiculo mVehiculo;
 	Partida mPartida;
 	Direccion norte, sur, oeste, este;
+	GeneradorDeMapas generadorMapas = new GeneradorDeMapas();
 		
 	public ModeloJuegoPrueba() {
 		
@@ -29,7 +30,26 @@ public class ModeloJuegoPrueba extends java.util.Observable {
 		//setPosY(100);
 	}
 	
-
+	//---------------------------------------------------------------
+	// Creación de mapas
+	public void crearMapaFacil ( ) {
+		this.mMapa = generadorMapas.generarMapaFacil();
+	}
+	
+	public void crearMapaModerado () {
+		this.mMapa = generadorMapas.generarMapaModerado();
+	}
+	
+	public void crearMapaDificil () {
+		this.mMapa = generadorMapas.generarMapaDificil();
+	}
+	//----------------------------------------------------------
+	
+	public void crearJugador (String nombre, Vehiculo vehiculo) {
+		this.mJugador = new Jugador(nombre, vehiculo);
+	}
+	
+	//----------------------------------------------------------
 	public void moverNorte() {
 		setPosY(getPosY() - incremento);
 		ActualizarObservadores();
