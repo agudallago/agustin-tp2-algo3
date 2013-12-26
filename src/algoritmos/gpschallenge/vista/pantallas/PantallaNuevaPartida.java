@@ -30,12 +30,14 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 	private JRadioButton rdbtn4x4;
 	private JRadioButton rdbtnAuto;
 	private JRadioButton rdbtnMoto;
+	private ButtonGroup grupoVehiculo;
 	
 	//Radio buttons de Dificultad
 	private JRadioButton rdbtnDificil;
 	private JRadioButton rdbtnModerado;
 	private JRadioButton rdbtnFacil;
-
+	private ButtonGroup grupoDificultad;
+	
 	/**
 	 * Constructor
 	 */
@@ -47,7 +49,7 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 
 	private void addListeners() {
 		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones());
-		btnJugar.addActionListener(control.getListenerBtnJugar());
+		btnJugar.addActionListener(control.getListenerBtnJugar(this));
 	}
 	
 	/**
@@ -111,7 +113,7 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 		frame.getContentPane().add(rdbtnDificil);
 		
 		//Agrupo los botones de nivel de dificultad
-		ButtonGroup grupoDificultad = new ButtonGroup();
+		grupoDificultad = new ButtonGroup();
 		grupoDificultad.add(rdbtnFacil);
 		grupoDificultad.add(rdbtnModerado);
 		grupoDificultad.add(rdbtnDificil);
@@ -133,7 +135,7 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
 		
 		//Agrupo los botones de Tipo de Vehiculo
-		ButtonGroup grupoVehiculo = new ButtonGroup();
+		grupoVehiculo = new ButtonGroup();
 		grupoVehiculo.add(rdbtnMoto);
 		grupoVehiculo.add(rdbtnAuto);
 		grupoVehiculo.add(rdbtn4x4);
@@ -144,6 +146,35 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 		frame.getContentPane().add(btnJugar);
 		
 	}
+	
+	public String seleccionDificultad() {
+		if (rdbtnFacil.isSelected()) {
+			return "Facil";
+		}
+		else if (rdbtnModerado.isSelected()) {
+			return "Moderado";
+		}
+		else if (rdbtnDificil.isSelected()) { 
+			return "Dificil";
+		}
+		return null;
+	}
+	
+	
+	public String seleccionVehiculo() {
+		if (rdbtnAuto.isSelected()) {
+			return "Auto";
+		}
+		else if (rdbtnMoto.isSelected()) {
+			return "Moto";
+		}
+		else if (rdbtn4x4.isSelected()) { 
+			return "4x4";
+		}
+		return null;	
+	}
+	
+	
 	public static PantallaNuevaPartida getInstance(){
 		if (instance == null) { 
 				instance = new PantallaNuevaPartida(); 

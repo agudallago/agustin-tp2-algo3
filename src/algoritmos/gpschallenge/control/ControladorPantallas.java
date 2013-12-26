@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.modeloPruebaVisual.*;
+import algoritmos.gpschallenge.vista.pantallas.PantallaNuevaPartida;
 
 public class ControladorPantallas {
 	
@@ -131,14 +132,23 @@ public class ControladorPantallas {
 	
 //--------------------------------------------------------------------------------------------
 
-	public ActionListener getListenerBtnJugar() {
-		return new EscuchaBtnJugar();
+	public ActionListener getListenerBtnJugar(PantallaNuevaPartida pantalla) {
+		return new EscuchaBtnJugar(pantalla);
 	}
 	
 	private class EscuchaBtnJugar implements ActionListener {	
+		private PantallaNuevaPartida pantalla;
+		
+		public EscuchaBtnJugar(PantallaNuevaPartida pantalla) {
+			this.pantalla = pantalla;
+		}
+
 		public void actionPerformed(ActionEvent e) {	
 			//TODO revisar. Ver si creo jugador o cargó jugador existente.
 			//modeloJuego.crearJugador();
+			String dificultad = this.pantalla.seleccionDificultad();
+			String vehiculo = this.pantalla.seleccionVehiculo();
+			
 			modeloPantalla.abrirVistaMapa();
 			
 			//ModeloJuego modelo =  new ModeloJuego();
