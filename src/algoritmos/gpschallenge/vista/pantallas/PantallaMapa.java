@@ -119,8 +119,9 @@ public class PantallaMapa implements Observer{
 		
 		//Metodo que es llamado por el modelo al actualizarse el mismo
 		public void update(Observable t, Object o) {	
+		
 			panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());
-			this.frameMapa.requestFocus(); 
+			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame 
 		}
 		
 		public void setVisible (boolean b) {
