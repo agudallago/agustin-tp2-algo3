@@ -27,6 +27,7 @@ public class ModeloPartida extends java.util.Observable {
 	
 		//setPosX(100);
 		//setPosY(100);
+		
 	}
 	
 	//----------------------------------------------------------
@@ -44,21 +45,21 @@ public class ModeloPartida extends java.util.Observable {
 	
 	//---------------------------------------------------------------
 	// Creación de mapas
-	public void crearMapaFacil ( ) {
+	private void crearMapaFacil ( ) {
 		this.mMapa = generadorMapas.generarMapaFacil();
 	}
 	
-	public void crearMapaModerado () {
+	private void crearMapaModerado () {
 		this.mMapa = generadorMapas.generarMapaModerado();
 	}
 	
-	public void crearMapaDificil () {
+	private void crearMapaDificil () {
 		this.mMapa = generadorMapas.generarMapaDificil();
 	}
 	//----------------------------------------------------------
 	// Creación de Jugador
 	
-	public void crearJugador (String nombre, Vehiculo vehiculo) {
+	private void crearJugador (String nombre, Vehiculo vehiculo) {
 		this.mJugador = new Jugador(nombre, vehiculo);
 	}
 	
