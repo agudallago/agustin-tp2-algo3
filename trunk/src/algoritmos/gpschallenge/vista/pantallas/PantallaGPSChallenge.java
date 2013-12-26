@@ -1,7 +1,5 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
-import java.awt.event.KeyListener;
-
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
