@@ -100,4 +100,6 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 				} 
 		return (PantallaPuntajes) instance; 
 	}
+	
+
 }

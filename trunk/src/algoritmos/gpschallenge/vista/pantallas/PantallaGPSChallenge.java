@@ -1,6 +1,9 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
+import java.awt.event.KeyListener;
+
 import javax.swing.JFrame;
+import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.control.ControladorPantallas;
 
@@ -12,6 +15,7 @@ public class PantallaGPSChallenge {
 	protected static JFrame frame;
 	public ControladorPantallas control;
 	protected static PantallaGPSChallenge instance;
+	private JTextField textFieldNombre;
 	
 	/* Metodos */
 	
@@ -43,5 +47,9 @@ public class PantallaGPSChallenge {
 	
 	public void setVisible(boolean b){
 		frame.setVisible(b);
+	}
+	
+	public void setFieldNombre(String nombre) {
+		textFieldNombre.setText(nombre);
 	}
 }

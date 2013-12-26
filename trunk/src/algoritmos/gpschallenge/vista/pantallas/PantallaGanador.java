@@ -127,4 +127,5 @@ public class PantallaGanador extends PantallaGPSChallenge {
 				} 
 		return (PantallaGanador) instance; 
 	}
+	
 }

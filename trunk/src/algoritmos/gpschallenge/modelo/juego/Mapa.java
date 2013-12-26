@@ -105,7 +105,6 @@ public class Mapa {
 			case 2:
 				this.generarMapa3por3ElementoAlFinal(elemento);
 				break;
-			
 		}
 	}
 	
