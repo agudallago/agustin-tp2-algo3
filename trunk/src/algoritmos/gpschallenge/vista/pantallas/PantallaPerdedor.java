@@ -17,7 +17,6 @@ import javax.swing.JLabel;
 public class PantallaPerdedor extends PantallaGPSChallenge{
 
 	private JTextField txtBienvenido;
-	private JTextField textFieldNombre;
 	private JButton btnVolver;
 	private JButton btnJugarOtraVez;
 

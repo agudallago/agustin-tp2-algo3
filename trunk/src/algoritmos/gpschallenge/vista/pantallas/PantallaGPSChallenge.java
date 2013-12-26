@@ -13,7 +13,7 @@ public class PantallaGPSChallenge {
 	protected static JFrame frame;
 	public ControladorPantallas control;
 	protected static PantallaGPSChallenge instance;
-	private JTextField textFieldNombre;
+	protected static JTextField textFieldNombre;
 	
 	/* Metodos */
 	
@@ -21,6 +21,7 @@ public class PantallaGPSChallenge {
 		this.control = ControladorPantallas.getInstance();
 		this.frame = new JFrame();
 		instance = this;
+		this.textFieldNombre = new JTextField();
 	}
 
 	public static PantallaGPSChallenge getInstance(){

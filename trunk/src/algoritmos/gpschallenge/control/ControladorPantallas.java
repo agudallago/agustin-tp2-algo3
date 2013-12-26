@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.modeloPruebaVisual.*;
-import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ControladorPantallas {
 	
