@@ -9,7 +9,7 @@ import java.util.*;
 import javax.swing.JFrame;
 
 import algoritmos.gpschallenge.control.*;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuego;
+import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuegoPrueba;
 import algoritmos.gpschallenge.modelo.vehiculo.Auto;
 import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
@@ -26,6 +26,7 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
 		private PanelImagen panelAuto = new PanelImagen("images/auto.png");
 		private ControladorVistaMapa controlJuego = new ControladorVistaMapa();
+		private String imagenMapaNivel = "images/fondo.png";
 		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
@@ -39,10 +40,8 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 		//Constructor de la vista
 			public VistaMapa() {
 				super();
-				String imagenMapaNivel = "images/fondo.png";
 				initialize();
-				addListeners();		
-								
+				addListeners();						
 				}
 
 
@@ -109,15 +108,15 @@ public class VistaMapa extends PantallaGPSChallenge implements Observer{
 			frame.addWindowListener(new CloseListener());
 
 			// Conectamos esta vista con el modelo
-			this.modelo = modelo;
-			this.modelo.addObserver(this);
+			//TODO: this.modelo = modelo;
+			//TODO: this.modelo.addObserver(this);
 
 		}
 		
 		
 		//Metodo que es llamado por el modelo al actualizarse el mismo
 		public void update(Observable t, Object o) {	
-			panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());			
+			//TODO panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());			
 		}
 
 		public static VistaMapa getInstance(){

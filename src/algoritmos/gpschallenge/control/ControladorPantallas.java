@@ -3,20 +3,23 @@ package algoritmos.gpschallenge.control;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuegoPrueba;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloPantallas;
+import javax.swing.JTextField;
+
+import algoritmos.gpschallenge.modeloPruebaVisual.*;
 import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ControladorPantallas {
 	
 	private static ControladorPantallas instance = null;
 	private ModeloPantallas modeloPantalla;
-	private ModeloJuegoPrueba modeloJuego; 
+	private ModeloJuegoPrueba modeloJuego;
+	
 	
 	protected ControladorPantallas () {
 		//Contructor protegido
 	}
 	
+
 	//ControladorPantallas es una Clase con patron Singleton porque es única para el juego y debe ser 
 	//accesible para todas las instancias de Pantallas
 	
@@ -26,9 +29,15 @@ public class ControladorPantallas {
 	      }
 	      return instance;
 	   }
+
+	//Método para setear el modelo de Pantallas
+	public void setModeloPantalla (ModeloPantallas modeloPantalla) {
+		this.modeloPantalla = modeloPantalla;
+	}
 	
-	public void setModelo (ModeloPantallas modelo) {
-		this.modeloPantalla = modelo;
+	//Método para setear el modelo de Juego
+	public void setModeloJuego (ModeloJuegoPrueba modelo) {
+		this.modeloJuego = modelo;
 	}
 	
 	
@@ -102,13 +111,21 @@ public class ControladorPantallas {
 
 //--------------------------------------------------------------------------------------------
 		
-	public ActionListener getListenerBtnGuardar() {
-		return new EscuchaBtnGuardar();
+	public ActionListener getListenerBtnGuardar(JTextField campoNombre) {
+		return new EscuchaBtnGuardar(campoNombre);
 	}
 	
-	private class EscuchaBtnGuardar implements ActionListener {	
+	private class EscuchaBtnGuardar implements ActionListener {
+		private JTextField campo;
+		
+		public EscuchaBtnGuardar(JTextField campoNombre) {
+			// TODO Auto-generated constructor stub
+			this.campo = campoNombre;
+		}
+
 		public void actionPerformed(ActionEvent e) {
-			//TODO crear el jugador
+			//TODO Pedir al modelo Juego que cree el jugador.
+			modeloPantalla.setNombreJugador(campo.getText());
 			modeloPantalla.abrirPantallaOpciones();		
 			}
 	}
@@ -121,8 +138,8 @@ public class ControladorPantallas {
 	
 	private class EscuchaBtnJugar implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {	
-			//TODO revisar
-			modeloJuego.crearJugador();
+			//TODO revisar. Ver si creo jugador o cargó jugador existente.
+			//modeloJuego.crearJugador();
 			modeloPantalla.abrirVistaMapa();
 			
 			//ModeloJuego modelo =  new ModeloJuego();

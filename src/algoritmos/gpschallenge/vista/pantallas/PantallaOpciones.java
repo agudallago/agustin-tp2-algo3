@@ -10,18 +10,10 @@ import java.awt.Color;
 
 import javax.swing.SwingConstants;
 
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-import algoritmos.gpschallenge.control.ControladorPantallas;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-
 import java.awt.Component;
 import java.awt.Toolkit;
 
 import javax.swing.border.LineBorder;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 
 public class PantallaOpciones extends PantallaGPSChallenge{
@@ -32,10 +24,9 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 	private JButton btnPuntajes;
 	private JTextField textFieldNombre;
 	private JButton btnSalir;
-	private Jugador jugador;
 	
 	/**
-	 * Constructor
+	 * Constructor.
 	 */
 	
 	public PantallaOpciones() {
@@ -118,4 +109,5 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 				} 
 		return (PantallaOpciones) instance; 
 	}
+	
 }

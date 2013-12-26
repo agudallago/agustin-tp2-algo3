@@ -10,10 +10,10 @@ import java.awt.Color;
 
 import javax.swing.SwingConstants;
 
-
 import java.awt.Toolkit;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.awt.event.KeyEvent;
 
 
 public class PantallaJugadorNuevo extends PantallaGPSChallenge {
@@ -35,7 +35,7 @@ public class PantallaJugadorNuevo extends PantallaGPSChallenge {
 
 	//Método para agregar los listeners de los botones del Frame
 	private void addListeners() {
-		btnGuardar.addActionListener(control.getListenerBtnGuardar());
+		btnGuardar.addActionListener(control.getListenerBtnGuardar(campoNombre));
 		btnVolver.addActionListener(control.getListenerBtnVolver());
 	}
 	
@@ -76,7 +76,8 @@ public class PantallaJugadorNuevo extends PantallaGPSChallenge {
 			public void focusGained(FocusEvent e) {
 				campoNombre.setText("");
 			}
-		});
+		});	
+		
 		campoNombre.setFont(new Font("Arial", Font.BOLD, 12));
 		campoNombre.setHorizontalAlignment(SwingConstants.CENTER);
 		campoNombre.setBounds(132, 102, 171, 29);
@@ -96,5 +97,13 @@ public class PantallaJugadorNuevo extends PantallaGPSChallenge {
 				} 
 		return (PantallaJugadorNuevo) instance; 
 	}
+	
+	public String getCampoNombre () {
+		return campoNombre.getText();
+	}
+	
+	public void keyTyped(KeyEvent e) {
+        //displayInfo(e, "KEY TYPED: ");
+    }
 	
 }
