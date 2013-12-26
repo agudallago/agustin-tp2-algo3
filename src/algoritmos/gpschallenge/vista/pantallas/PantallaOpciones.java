@@ -22,7 +22,6 @@ public class PantallaOpciones extends PantallaGPSChallenge{
 	private JButton btnComenzarPartida;
 	private JButton btnRecuperarPartida;
 	private JButton btnPuntajes;
-	private JTextField textFieldNombre;
 	private JButton btnSalir;
 	
 	/**

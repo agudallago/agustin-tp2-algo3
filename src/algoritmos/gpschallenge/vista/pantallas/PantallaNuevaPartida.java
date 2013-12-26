@@ -21,7 +21,6 @@ import javax.swing.ButtonGroup;
 public class PantallaNuevaPartida extends PantallaGPSChallenge{
 
 	private JTextField txtBienvenido;
-	private JTextField textFieldNombre;
 	private JButton btnVolver;
 	private JButton btnJugar;	
 	/**
@@ -50,7 +49,6 @@ public class PantallaNuevaPartida extends PantallaGPSChallenge{
 		btnVolver.addActionListener(control.getListenerBtnVolverAOpciones());
 		btnJugar.addActionListener(control.getListenerBtnJugar());
 	}
-	
 	
 	/**
 	 * Initialize the contents of the frame.

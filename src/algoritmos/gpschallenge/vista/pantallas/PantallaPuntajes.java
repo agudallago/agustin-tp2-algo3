@@ -11,9 +11,6 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
-import algoritmos.gpschallenge.control.ControladorPantallas;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-
 import java.awt.Component;
 
 import javax.swing.border.LineBorder;
@@ -22,9 +19,7 @@ import javax.swing.JList;
 public class PantallaPuntajes extends PantallaGPSChallenge{
 
 	private JTextField txtBienvenido;
-	private JTextField textFieldNombre;
 	private JButton btnVolver;
-	private Jugador jugador;
 	private JList list;	
 	
 	/**

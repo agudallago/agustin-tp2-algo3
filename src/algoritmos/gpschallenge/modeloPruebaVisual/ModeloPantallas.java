@@ -43,7 +43,6 @@ public class ModeloPantallas {
 		ventanaActiva.dispose();
 		ventanaActiva = PantallaOpciones.getInstance();
 		ventanaActiva.setFieldNombre(nombreJugador);
-		System.out.println(nombreJugador);
 		ventanaActiva.setVisible(true);
 	}
 
