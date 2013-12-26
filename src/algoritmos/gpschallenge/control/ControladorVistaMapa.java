@@ -6,11 +6,11 @@ import algoritmos.gpschallenge.modeloPruebaVisual.*;
 
 public class ControladorVistaMapa {
 
-	private ModeloJuegoPrueba modelo;
+	private ModeloPartida modelo;
 	
 	//Constructor de la clase Controlador
 		public ControladorVistaMapa() {
-			this.modelo = new ModeloJuegoPrueba();
+			this.modelo = new ModeloPartida();
 		}
 	
 	//----------------------------------------------------------------------

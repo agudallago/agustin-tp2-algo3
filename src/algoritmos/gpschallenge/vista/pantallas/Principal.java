@@ -1,7 +1,7 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
 import algoritmos.gpschallenge.control.ControladorPantallas;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloJuegoPrueba;
+import algoritmos.gpschallenge.modeloPruebaVisual.ModeloPartida;
 import algoritmos.gpschallenge.modeloPruebaVisual.ModeloPantallas;
 
 public class Principal {
@@ -13,7 +13,7 @@ public class Principal {
 	public static void main(String[] args) {
 		//Se crean los modelos de pantalla y de juego
 		ModeloPantallas modeloPantalla = new ModeloPantallas();
-		ModeloJuegoPrueba modeloJuego = new ModeloJuegoPrueba();
+		ModeloPartida modeloJuego = new ModeloPartida();
 		
 		//Se crea el controlador de pantallas y se le asignan los modelos
 		ControladorPantallas controlPantallas = ControladorPantallas.getInstance();
