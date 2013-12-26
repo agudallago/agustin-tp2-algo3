@@ -11,12 +11,11 @@ public class ModeloJuegoPrueba extends java.util.Observable {
 	int incremento = 38;
 	
 	//Elementos del Juego
-	Jugador mJugador;
-	Mapa mMapa;
-	Vehiculo mVehiculo;
-	Partida mPartida;
-	Direccion norte, sur, oeste, este;
-	GeneradorDeMapas generadorMapas = new GeneradorDeMapas();
+	private Jugador mJugador;
+	private Mapa mMapa;
+	private Partida mPartida;
+	private Direccion norte, sur, oeste, este;
+	private GeneradorDeMapas generadorMapas = new GeneradorDeMapas();
 		
 	public ModeloJuegoPrueba() {
 		
@@ -28,6 +27,19 @@ public class ModeloJuegoPrueba extends java.util.Observable {
 	
 		//setPosX(100);
 		//setPosY(100);
+	}
+	
+	//----------------------------------------------------------
+	public void crearPartida (String nombre, String vehiculo, String dificultad) {
+		if (dificultad.equalsIgnoreCase("Facil")) crearMapaFacil();
+		if (dificultad.equalsIgnoreCase("Moderado")) crearMapaModerado();
+		if (dificultad.equalsIgnoreCase("Dificil")) crearMapaDificil();
+		
+		if (vehiculo.equalsIgnoreCase("Auto")) crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicial(), new Auto()));
+		if (vehiculo.equalsIgnoreCase("Moto")) crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicial(), new Moto()));
+		if (vehiculo.equalsIgnoreCase("4x4"))  crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicial(), new CuatroPorCuatro()));
+		
+		mPartida = new Partida (mJugador, mMapa);
 	}
 	
 	//---------------------------------------------------------------
@@ -44,12 +56,14 @@ public class ModeloJuegoPrueba extends java.util.Observable {
 		this.mMapa = generadorMapas.generarMapaDificil();
 	}
 	//----------------------------------------------------------
+	// Creación de Jugador
 	
 	public void crearJugador (String nombre, Vehiculo vehiculo) {
 		this.mJugador = new Jugador(nombre, vehiculo);
 	}
 	
 	//----------------------------------------------------------
+	
 	public void moverNorte() {
 		setPosY(getPosY() - incremento);
 		ActualizarObservadores();
