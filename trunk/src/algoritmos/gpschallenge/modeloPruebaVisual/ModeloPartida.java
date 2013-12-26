@@ -4,7 +4,7 @@ import algoritmos.gpschallenge.modelo.direccion.*;
 import algoritmos.gpschallenge.modelo.juego.*;
 import algoritmos.gpschallenge.modelo.vehiculo.*;
 
-public class ModeloJuegoPrueba extends java.util.Observable {
+public class ModeloPartida extends java.util.Observable {
 
 	private int posX;
 	private int posY;
@@ -17,7 +17,7 @@ public class ModeloJuegoPrueba extends java.util.Observable {
 	private Direccion norte, sur, oeste, este;
 	private GeneradorDeMapas generadorMapas = new GeneradorDeMapas();
 		
-	public ModeloJuegoPrueba() {
+	public ModeloPartida() {
 		
 	//Inicializo las direcciones para pasarle a vehículo
 		norte = new Norte();

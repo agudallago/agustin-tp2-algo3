@@ -12,7 +12,7 @@ public class ControladorPantallas {
 	
 	private static ControladorPantallas instance = null;
 	private ModeloPantallas modeloPantalla;
-	private ModeloJuegoPrueba modeloJuego;
+	private ModeloPartida modeloJuego;
 	
 	
 	protected ControladorPantallas () {
@@ -36,7 +36,7 @@ public class ControladorPantallas {
 	}
 	
 	//Método para setear el modelo de Juego
-	public void setModeloJuego (ModeloJuegoPrueba modelo) {
+	public void setModeloJuego (ModeloPartida modelo) {
 		this.modeloJuego = modelo;
 	}
 	
