@@ -1,23 +1,19 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.geom.Ellipse2D;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
-//import sun.java2d.ScreenUpdateManager;
 
-
+@SuppressWarnings("serial")
 public class PanelImagen extends JPanel {
 
 		  private Image imagenMapa;
 
-		  public PanelImagen(String imagenMapa) {
-		    this(new ImageIcon(imagenMapa).getImage());
+		  public PanelImagen(String imagen) {
+		    this(new ImageIcon(imagen).getImage());
 		  }
 
 		  public PanelImagen(Image imagenMapa) {

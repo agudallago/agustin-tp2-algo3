@@ -110,6 +110,7 @@ public class PantallaMapa implements Observer{
 			frameMapa.addKeyListener(control.getListenerTeclas());
 			frameMapa.setSize(600,600);  //seteamos las dimensiones del marco
 			frameMapa.setBounds(10, 10, 1000, 600);
+			frameMapa.setBackground(Color.black);
 			frameMapa.setVisible(true);  //mostramos el marco
 
 			//agregamos el listener del evento de cerrado de la ventana		
