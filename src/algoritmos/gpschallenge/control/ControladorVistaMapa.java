@@ -1,6 +1,7 @@
 package algoritmos.gpschallenge.control;
 import java.awt.event.*;
 
+import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
 import algoritmos.gpschallenge.modeloPruebaVisual.*;
 
 

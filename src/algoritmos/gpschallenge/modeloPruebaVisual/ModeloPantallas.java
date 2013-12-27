@@ -1,6 +1,7 @@
 package algoritmos.gpschallenge.modeloPruebaVisual;
 
 import algoritmos.gpschallenge.control.ControladorVistaMapa;
+import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
 import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ModeloPantallas {

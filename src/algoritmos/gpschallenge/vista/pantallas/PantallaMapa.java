@@ -15,9 +15,9 @@ import javax.swing.JPanel;
 
 import algoritmos.gpschallenge.control.*;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
+import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
 import algoritmos.gpschallenge.modelo.vehiculo.Auto;
 import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
-import algoritmos.gpschallenge.modeloPruebaVisual.ModeloPartida;
 
 import javax.swing.JButton;
 
