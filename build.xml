@@ -14,8 +14,11 @@
 
 	<path id="classpath">
 		<fileset dir="${libs}">
-			<include name="*.jar" />
+			<include name="*.jar" />				
 		</fileset>
+		<fileset dir="${libs}/xstream">
+			<include name="*.jar" />
+		</fileset>	
 		<pathelement location="${build}" />
 		<pathelement location="${instrumented.dir}" />
 		<pathelement location="${build}/tests" />
@@ -36,12 +39,13 @@
 	</target>
 
 	<target name="compilar.aplicacion" depends="setup">
-		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.6">
+		<javac srcdir="src" destdir="${build}" includeantruntime="false" debug="yes" target="1.6" source="1.6">
+			<classpath refid="classpath" />
 		</javac>
 	</target>
 	
 	<target name="compilar.tests" depends="instrumentar.aplicacion">
-		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.6">
+		<javac srcdir="test" destdir="${build}/tests" includeantruntime="false" debug="yes" target="1.6" source="1.6">
 			<classpath refid="classpath" />
 		</javac>
 	</target>
