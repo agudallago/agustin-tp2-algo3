@@ -25,7 +25,18 @@ public class Mapa {
 		Direccion este = new Este();
 		Direccion oeste = new Oeste();
 		
+		//Creacion de las esquinas
+		
+		for (int fila = 0; fila < 15; fila++)
+		{
+			for (int col=0; col<15; col++)
+			{
+				this.mEsquinasMapa[fila][col] = new Esquina();
+			}
+		}
+		
 		//Conexiones en la parte interna del mapa
+		
 		
 		for (int fila = 1; fila < 14; fila++)
 		{
@@ -91,7 +102,10 @@ public class Mapa {
 		return this.mEsquinasMapa[5][0];
 	}
 	
-	
+	public Esquina getEsquina(int x,int y){
+
+		return this.mEsquinasMapa[x][y];
+	}
 	
 	// Estos métodos fueron para hacer test unitarios.
 	
