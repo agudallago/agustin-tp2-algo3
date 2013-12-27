@@ -7,12 +7,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 
+@SuppressWarnings("serial")
 public class MapaPanel extends JPanel {
 
 		  private Image imagenMapa;
-
+		  private int x, y, width, height;
+		  
+		  
 		  public MapaPanel(String imagenMapa) {
 		    this(new ImageIcon(imagenMapa).getImage());
+		    x = y = width = height = 0;
 		  }
 
 		  public MapaPanel(Image imagenMapa) {
@@ -26,6 +30,9 @@ public class MapaPanel extends JPanel {
 		  }
 
 		  public void paintComponent(Graphics g) {
+			  private Ellipse2D ellipse = new Ellipse2D.Float();
+			  ellipse.setFrame(x, y, ew, eh);
+			  g2.setClip(ellipse)
 		    g.drawImage(imagenMapa, 0, 0, null);
 		  }
 
