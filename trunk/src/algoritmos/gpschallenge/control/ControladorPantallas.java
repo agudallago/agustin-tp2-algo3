@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JTextField;
 
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
 import algoritmos.gpschallenge.modelo.vista.*;
 import algoritmos.gpschallenge.vista.pantallas.PantallaNuevaPartida;
@@ -14,10 +15,11 @@ public class ControladorPantallas {
 	private static ControladorPantallas instance = null;
 	private ModeloPantallas modeloPantalla;
 	private ModeloPartida modeloPartida;
-	
+	private ModeloJuego modeloJuego;
 	
 	protected ControladorPantallas () {
 		//Contructor protegido
+		
 	}
 
 	//ControladorPantallas es una Clase con patron Singleton porque es única para el juego y debe ser 
