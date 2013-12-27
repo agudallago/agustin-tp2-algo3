@@ -28,8 +28,8 @@ public class ModeloPartida extends java.util.Observable {
 		este  = new Este();
 
 		//Cambiar estos números mágicos
-		setPosX(100);
-		setPosY(60);
+		setPosX(0);
+		setPosY(0);
 		ActualizarObservadores();	
 	}
 	
@@ -97,25 +97,25 @@ public class ModeloPartida extends java.util.Observable {
 	//----------------------------------------------------------
 	
 	public void moverNorte() {
-		//mJugador.moverVehiculoA(norte);
+		mJugador.moverVehiculoA(norte);
 		setPosY(getPosY() - incremento);
 		ActualizarObservadores();
 	}
 	
 	public void moverSur() {
-		//mJugador.moverVehiculoA(sur);
+		mJugador.moverVehiculoA(sur);
 		setPosY(getPosY() + incremento);
 		ActualizarObservadores();
 	}
 	
 	public void moverEste() {
-		//mJugador.moverVehiculoA(este);
+		mJugador.moverVehiculoA(este);
 		setPosX(getPosX() + incremento);
 		ActualizarObservadores();
 	}
 	
 	public void moverOeste() {
-		//mJugador.moverVehiculoA(oeste);
+		mJugador.moverVehiculoA(oeste);
 		setPosX(getPosX() - incremento);
 		ActualizarObservadores();	
 	}

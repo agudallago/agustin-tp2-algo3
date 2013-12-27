@@ -34,7 +34,6 @@ public class PantallaMapa implements Observer{
 		private PanelImagen panelAuto;
 		private ModeloPartida modelo;
 		private ControladorVistaMapa controlador;
-		private String imagenMapa;
 		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
@@ -54,7 +53,6 @@ public class PantallaMapa implements Observer{
 			this.modelo = modelo;
 			this.modelo.addObserver(this);
 			
-			this.imagenMapa = imagenMapa;
 			
 			//armado de la ventana
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
@@ -131,7 +129,8 @@ public class PantallaMapa implements Observer{
 		//Metodo que es llamado por el modelo al actualizarse el mismo
 		public void update(Observable t, Object o) {	
 			panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());
-			//panelMapa.setLocation(modelo.getPosX(), modelo.getPosY());
+			panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
+			this.frameMapa.repaint();
 			panelMapa.repaint();
 			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
