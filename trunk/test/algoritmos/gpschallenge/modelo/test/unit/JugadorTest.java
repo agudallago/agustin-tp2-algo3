@@ -3,7 +3,6 @@ package algoritmos.gpschallenge.modelo.test.unit;
 import org.junit.Assert;
 import org.junit.Test;
 
-import algoritmos.gpschallenge.modelo.direccion.Norte;
 import algoritmos.gpschallenge.modelo.direccion.Sur;
 import algoritmos.gpschallenge.modelo.juego.Esquina;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
