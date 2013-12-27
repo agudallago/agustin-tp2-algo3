@@ -29,7 +29,7 @@ public class ModeloPartida extends java.util.Observable {
 
 		//Cambiar estos números mágicos
 		setPosX(100);
-		setPosY(80);
+		setPosY(60);
 		ActualizarObservadores();	
 	}
 	
@@ -51,15 +51,15 @@ public class ModeloPartida extends java.util.Observable {
 		}
 		
 		if (vehiculo.equalsIgnoreCase("Auto")) {
-			//crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicial(), new Auto()));
+			crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicialMapa(), new Auto()));
 			imagenVehiculo = "images/auto.png";
 		}
 		if (vehiculo.equalsIgnoreCase("Moto")) {
-			//crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicial(), new Moto()));
+			crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicialMapa(), new Moto()));
 			imagenVehiculo = "images/moto.png";
 		}
 		if (vehiculo.equalsIgnoreCase("4x4"))  {
-			//crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicial(), new CuatroPorCuatro()));
+			crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicialMapa(), new CuatroPorCuatro()));
 			imagenVehiculo = "images/4x4.png";
 		}
 		
@@ -77,15 +77,15 @@ public class ModeloPartida extends java.util.Observable {
 	//---------------------------------------------------------------
 	// Creación de mapas
 	private void crearMapaFacil ( ) {
-		//this.mMapa = generadorMapas.generarMapaFacil();
+		this.mMapa = generadorMapas.generarMapaFacil();
 	}
 	
 	private void crearMapaModerado () {
-		//this.mMapa = generadorMapas.generarMapaModerado();
+		this.mMapa = generadorMapas.generarMapaModerado();
 	}
 	
 	private void crearMapaDificil () {
-		//this.mMapa = generadorMapas.generarMapaDificil();
+		this.mMapa = generadorMapas.generarMapaDificil();
 	}
 	//----------------------------------------------------------
 	// Creación de Jugador
