@@ -24,8 +24,8 @@ import javax.swing.JButton;
 public class PantallaMapa implements Observer{
 		
 		private JFrame frameMapa; //marco que contendrá el mapa
-		//private PanelImagen panelMapa; //Panel que contiene la imagen del mapa
-		private PanelMascara panelMapa;
+		private PanelImagen panelMapa; //Panel que contiene la imagen del mapa
+		//private PanelMascara panelMapa;
 		private TextField textoMapa = new TextField(); //texto que mostrara el Nivel 
 		private JButton botonNorte = new JButton("Norte", null);  //boton para ir al Norte
 		private JButton botonSur = new JButton("Sur", null);  //boton para ir al Sur
@@ -108,8 +108,8 @@ public class PantallaMapa implements Observer{
 			
 			
 			//Creamos panel de Mapa y lo agregamos al frame
-			//panelMapa = new PanelImagen(imagenMapa); //Panel que contiene la imagen del mapa
-			panelMapa = new PanelMascara(imagenMapa); //Panel que contiene la imagen del mapa
+			panelMapa = new PanelImagen(imagenMapa); //Panel que contiene la imagen del mapa
+			//panelMapa = new PanelMascara(imagenMapa); //Panel que contiene la imagen del mapa
 			panelMapa.setBounds(0, 22, 600, 600);
 			frameMapa.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
 			panelMapa.setLayout(null);
@@ -129,7 +129,7 @@ public class PantallaMapa implements Observer{
 		//Metodo que es llamado por el modelo al actualizarse el mismo
 		public void update(Observable t, Object o) {	
 			panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());
-			panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
+			//panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
 			this.frameMapa.repaint();
 			panelMapa.repaint();
 			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
