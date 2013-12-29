@@ -1,7 +1,7 @@
 package algoritmos.gpschallenge.modelo.vista;
 
 import algoritmos.gpschallenge.control.ControladorVistaMapa;
-import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 import algoritmos.gpschallenge.vista.pantallas.*;
 
 public class ModeloPantallas {
@@ -61,7 +61,7 @@ public class ModeloPantallas {
                 ventanaActiva.setVisible(true);
         }
 
-        public void abrirPantallaMapa(ModeloPartida modelo, ControladorVistaMapa controlador, String imagenMapa, String imagenVehiculo) {
+        public void abrirPantallaMapa(ModeloJuego modelo, ControladorVistaMapa controlador, String imagenMapa, String imagenVehiculo) {
                 ventanaActiva.dispose();
                 PantallaMapa pantallaMapa = new PantallaMapa(modelo, controlador, imagenMapa, imagenVehiculo);
                 pantallaMapa.setVisible(true);

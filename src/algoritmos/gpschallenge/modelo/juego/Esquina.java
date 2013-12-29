@@ -9,18 +9,32 @@ public class Esquina {
 	
 	////////////////////// Atributos ////////////////////////////
 	private HashMap<Direccion, Esquina> mEsquinasProximas;
-	private ElementoDeEsquina mElementoEnEsquina;	
+	private ElementoDeEsquina mElementoEnEsquina;
+	private final int mUbicacionHorizontal;
+	private final int mUbicacionVertical;
 	
 	////////////////// Metodos Publicos /////////////////////////
 	
-	public Esquina() {
+	public Esquina(int posHorizontal, int posVertical) {
 		this.mEsquinasProximas = new HashMap<Direccion, Esquina>();
 		this.mElementoEnEsquina = null;
+		this.mUbicacionHorizontal = posHorizontal;
+		this.mUbicacionVertical = posVertical;
 	}
 	
-	public Esquina(ElementoDeEsquina elementoEnEsquina) {
+	public Esquina(ElementoDeEsquina elementoEnEsquina, int posHorizontal, int posVertical) {
 		this.mEsquinasProximas = new HashMap<Direccion, Esquina>();
 		this.mElementoEnEsquina = elementoEnEsquina;
+		this.mUbicacionHorizontal = posHorizontal;
+		this.mUbicacionVertical = posVertical;
+	}
+	
+	public int getUbicacionHorizontal() {
+		return this.mUbicacionHorizontal;
+	}
+	
+	public int getUbicacionVertical() {
+		return this.mUbicacionVertical;
 	}
 	
 	public void setEsquinaAl(Direccion direccion, Esquina esquina) {		 

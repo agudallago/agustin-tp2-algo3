@@ -1,25 +1,18 @@
 package algoritmos.gpschallenge.vista.pantallas;
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.Frame;
 import java.awt.Label;
-import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.*;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.control.*;
-import algoritmos.gpschallenge.modelo.juego.Jugador;
-import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
-import algoritmos.gpschallenge.modelo.vehiculo.Auto;
-import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
+
 
 import javax.swing.JButton;
 import java.awt.Font;
@@ -37,11 +30,10 @@ public class PantallaMapa implements Observer{
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
 		private PanelImagen panelAuto;
-		private ModeloPartida modelo;
+		private ModeloJuego modelo;
 		private ControladorVistaMapa controlador;
 		private JTextField fldMovimientos;
-		
-		
+				
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
 			
@@ -53,7 +45,7 @@ public class PantallaMapa implements Observer{
 
 
 //Constructor de la vista
-		public PantallaMapa(ModeloPartida modelo, ControladorVistaMapa control, String imagenMapa, String imagenVehiculo) {
+		public PantallaMapa(ModeloJuego modelo, ControladorVistaMapa control, String imagenMapa, String imagenVehiculo) {
 			
 			// Conectamos esta vista con el modelo y el controlador
 			this.controlador = control;
@@ -67,7 +59,6 @@ public class PantallaMapa implements Observer{
 			frameMapa.setFocusable(true); 
 			frameMapa.getContentPane().setLayout(null); //No especificamos un Layout
 			frameMapa.getContentPane().setBackground(Color.BLACK);
-
 			
 			txtMovimientos = new JLabel("Movimientos: ");
 			fldMovimientos = new JTextField("--Movimientos--");
@@ -75,7 +66,6 @@ public class PantallaMapa implements Observer{
 			fldMovimientos.setBackground(Color.white);
 			txtMovimientos.setLocation(frameMapa.getWidth() - txtMovimientos.getWidth()*2, 0);
 			fldMovimientos.setLocation(frameMapa.getWidth() - txtMovimientos.getWidth(), 0);
-			
 			
 			botonNorte.setBounds(753, 456, 66, 22);
 			botonNorte.setText("Norte");

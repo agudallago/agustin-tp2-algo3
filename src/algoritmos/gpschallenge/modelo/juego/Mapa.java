@@ -31,7 +31,7 @@ public class Mapa {
 		{
 			for (int col=0; col<15; col++)
 			{
-				this.mEsquinasMapa[fila][col] = new Esquina();
+				this.mEsquinasMapa[fila][col] = new Esquina(fila, col);
 			}
 		}
 		
@@ -135,15 +135,15 @@ public class Mapa {
 	}
 	
 	private void generarMapa3por3Vacio() {
-		Esquina esquina11 = addEsquina();				
-		Esquina esquina12 = addEsquina();		
-		Esquina esquina13 = addEsquina();		
-		Esquina esquina21 = addEsquina();		
-		Esquina esquina22 = addEsquina();		
-		Esquina esquina23 = addEsquina();		
-		Esquina esquina31 = addEsquina();		
-		Esquina esquina32 = addEsquina();		
-		Esquina esquina33 = addEsquina();		
+		Esquina esquina11 = addEsquina(1,1);				
+		Esquina esquina12 = addEsquina(1,2);		
+		Esquina esquina13 = addEsquina(1,3);		
+		Esquina esquina21 = addEsquina(2,1);		
+		Esquina esquina22 = addEsquina(2,2);		
+		Esquina esquina23 = addEsquina(2,3);		
+		Esquina esquina31 = addEsquina(3,1);		
+		Esquina esquina32 = addEsquina(3,2);		
+		Esquina esquina33 = addEsquina(3,3);		
 		
 		Direccion norte = new Norte();
 		Direccion sur = new Sur();
@@ -191,8 +191,8 @@ public class Mapa {
 		this.getEsquinaFinal().addElementoEnEsquina(elemento);
 	}
 			
-	private Esquina addEsquina() {
-		Esquina esquina = new Esquina();
+	private Esquina addEsquina(int posHorizontal, int posVertical) {
+		Esquina esquina = new Esquina(posHorizontal, posVertical);
 		this.mEsquinas.add(esquina);
 		
 		return esquina;
