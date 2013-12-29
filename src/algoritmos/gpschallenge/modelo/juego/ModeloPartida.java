@@ -12,6 +12,7 @@ public class ModeloPartida extends java.util.Observable {
         
         //Elementos del Juego
         private Jugador mJugador;
+        private Vehiculo mVehiculo;
         private Mapa mMapa;
         private Partida mPartida;
         private Direccion norte, sur, oeste, este;
@@ -51,15 +52,18 @@ public class ModeloPartida extends java.util.Observable {
                 }
                 
                 if (vehiculo.equalsIgnoreCase("Auto")) {
-                        crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicialMapa(), new Auto()));
+                		mVehiculo = new Vehiculo(mMapa.getEsquinaInicialMapa(), new Auto());
+                        crearJugador(nombre, mVehiculo);
                         imagenVehiculo = "images/auto.png";
                 }
                 if (vehiculo.equalsIgnoreCase("Moto")) {
-                        crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicialMapa(), new Moto()));
+                		mVehiculo = new Vehiculo(mMapa.getEsquinaInicialMapa(), new Moto());
+                        crearJugador(nombre, mVehiculo);
                         imagenVehiculo = "images/moto.png";
                 }
                 if (vehiculo.equalsIgnoreCase("4x4"))  {
-                        crearJugador(nombre, new Vehiculo(mMapa.getEsquinaInicialMapa(), new CuatroPorCuatro()));
+                		mVehiculo = new Vehiculo(mMapa.getEsquinaInicialMapa(), new CuatroPorCuatro());
+                        crearJugador(nombre, mVehiculo);
                         imagenVehiculo = "images/4x4.png";
                 }
                 
@@ -141,5 +145,9 @@ public class ModeloPartida extends java.util.Observable {
         public void setPosY(int posY) {
                 this.posY = posY;
         }
+
+		public int getMovimientos() {
+			return mVehiculo.getMovimientos();
+		}
 
 }

@@ -11,7 +11,9 @@ import java.util.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.control.*;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
@@ -20,13 +22,16 @@ import algoritmos.gpschallenge.modelo.vehiculo.Auto;
 import algoritmos.gpschallenge.modelo.vehiculo.Vehiculo;
 
 import javax.swing.JButton;
+import java.awt.Font;
 
 public class PantallaMapa implements Observer{
 		
 		private JFrame frameMapa; //marco que contendrá el mapa
-		private PanelImagen panelMapa; //Panel que contiene la imagen del mapa
-		//private PanelMascara panelMapa;
-		private TextField textoMapa = new TextField(); //texto que mostrara el Nivel 
+		//private PanelImagen panelMapa; //Panel que contiene la imagen del mapa
+		private PanelMascara panelMapa;
+		private TextField textoMapa = new TextField(); //texto que mostrara el Nivel
+		private JLabel txtMovimientos;
+		
 		private JButton botonNorte = new JButton("Norte", null);  //boton para ir al Norte
 		private JButton botonSur = new JButton("Sur", null);  //boton para ir al Sur
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
@@ -34,6 +39,8 @@ public class PantallaMapa implements Observer{
 		private PanelImagen panelAuto;
 		private ModeloPartida modelo;
 		private ControladorVistaMapa controlador;
+		private JTextField fldMovimientos;
+		
 		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
@@ -61,7 +68,14 @@ public class PantallaMapa implements Observer{
 			frameMapa.getContentPane().setLayout(null); //No especificamos un Layout
 			frameMapa.getContentPane().setBackground(Color.BLACK);
 
-			//frameMapa.getContentPane().add(panelFondo);
+			
+			txtMovimientos = new JLabel("Movimientos: ");
+			fldMovimientos = new JTextField("--Movimientos--");
+			txtMovimientos.setBackground(Color.white);
+			fldMovimientos.setBackground(Color.white);
+			txtMovimientos.setLocation(frameMapa.getWidth() - txtMovimientos.getWidth()*2, 0);
+			fldMovimientos.setLocation(frameMapa.getWidth() - txtMovimientos.getWidth(), 0);
+			
 			
 			botonNorte.setBounds(753, 456, 66, 22);
 			botonNorte.setText("Norte");
@@ -108,12 +122,25 @@ public class PantallaMapa implements Observer{
 			
 			
 			//Creamos panel de Mapa y lo agregamos al frame
-			panelMapa = new PanelImagen(imagenMapa); //Panel que contiene la imagen del mapa
-			//panelMapa = new PanelMascara(imagenMapa); //Panel que contiene la imagen del mapa
+			//panelMapa = new PanelImagen(imagenMapa); //Panel que contiene la imagen del mapa
+			panelMapa = new PanelMascara(imagenMapa); //Panel que contiene la imagen del mapa
 			panelMapa.setBounds(0, 22, 600, 600);
 			frameMapa.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
 			panelMapa.setLayout(null);
 			panelMapa.setLocation(10, 10);
+			
+			JLabel lblMovimientos = new JLabel("Movimientos:");
+			lblMovimientos.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblMovimientos.setForeground(Color.WHITE);
+			lblMovimientos.setBounds(648, 33, 103, 14);
+			frameMapa.getContentPane().add(lblMovimientos);
+			
+			fldMovimientos = new JTextField();
+			fldMovimientos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+			fldMovimientos.setText("0");
+			fldMovimientos.setBounds(768, 30, 86, 20);
+			frameMapa.getContentPane().add(fldMovimientos);
+			fldMovimientos.setColumns(10);
 			
 			frameMapa.addKeyListener(control.getListenerTeclas());
 			frameMapa.setSize(600,600);  //seteamos las dimensiones del marco
@@ -129,26 +156,17 @@ public class PantallaMapa implements Observer{
 		//Metodo que es llamado por el modelo al actualizarse el mismo
 		public void update(Observable t, Object o) {	
 			panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());
-			//panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
+			panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
 			this.frameMapa.repaint();
 			panelMapa.repaint();
-			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
+			this.fldMovimientos.setText(Integer.toString(modelo.getMovimientos()));
+			
+			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
 		}
 		
 		public void setVisible (boolean b) {
 			this.frameMapa.setVisible(b);
 		}
-
-		//public void setTextoMapa(String s){ textoTemp.setText(s);}
-	
-		/*
-		  public static void main(String[] args) {
-			  Jugador jugador = new Jugador("Pepe", new Vehiculo(null, new Auto()));
-			  ModeloJuegoPrueba modelo =  new ModeloJuegoPrueba();
-			  ControladorVistaMapa controlador = new ControladorVistaMapa(modelo);
-			  PantallaMapa vistaMapa = new PantallaMapa(modelo, controlador, jugador, "images/fondo.jpg");
-			    
-			} */
 	}
