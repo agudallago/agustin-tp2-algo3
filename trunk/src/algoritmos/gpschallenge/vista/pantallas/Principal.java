@@ -23,7 +23,6 @@ public class Principal {
 		//Se crea la pantalla de bienvenida y se la hace visible para comenzar el juego
 		PantallaBienvenida wBienvenida = PantallaBienvenida.getInstance();
 		wBienvenida.setVisible(true);
-		
 				}
 		
 }
