@@ -50,8 +50,8 @@ public class VehiculoTest {
 	public void testVehiculoMover() {
 	//Prueba que el vehículo se mueva a la nueva esquina y que se incremente 
 	//el contador de movimientos
-		Esquina unaEsquina = new Esquina();
-		Esquina unaEsquinaNorte = new Esquina();
+		Esquina unaEsquina = new Esquina(0,0);
+		Esquina unaEsquinaNorte = new Esquina(0,1);
 		unaEsquina.setEsquinaAl(new Norte(), unaEsquinaNorte);
 		int movimientos;
 		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
@@ -71,8 +71,8 @@ public class VehiculoTest {
 	
 	@Test
 	public void testVehiculoMoverNorteyVolverAEsquinaInicialUsandoMover() {
-		Esquina unaEsquinaInicial = new Esquina();
-		Esquina unaEsquinaNorte = new Esquina();
+		Esquina unaEsquinaInicial = new Esquina(0,0);
+		Esquina unaEsquinaNorte = new Esquina(0,1);
 		unaEsquinaInicial.setEsquinaAl(new Norte(), unaEsquinaNorte);
 		unaEsquinaNorte.setEsquinaAl(new Sur(), unaEsquinaInicial);
 		int movimientos;
@@ -96,8 +96,8 @@ public class VehiculoTest {
 	
 	@Test
 	public void testVehiculoMoverNorteyVolverAUbicacionPrevia() {
-		Esquina unaEsquinaInicial = new Esquina();
-		Esquina unaEsquinaNorte = new Esquina();
+		Esquina unaEsquinaInicial = new Esquina(0,0);
+		Esquina unaEsquinaNorte = new Esquina(0,1);
 		unaEsquinaInicial.setEsquinaAl(new Norte(), unaEsquinaNorte);
 		//No es necesario setear la Esquina inicial en la Esquina norte porque esta
 		//informacion la guarda el vehiculo
@@ -124,7 +124,7 @@ public class VehiculoTest {
 	public void testVehiculoMoverAEsquinaInexistente() {
 	//Prueba que el vehículo no se mueva a una esquina inexistente ni tampoco se incremente 
 	//el contador de movimientos
-		Esquina unaEsquina = new Esquina();
+		Esquina unaEsquina = new Esquina(0,0);
 		int movimientos;
 		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
 		
@@ -140,7 +140,7 @@ public class VehiculoTest {
 	@Test
 	public void testVehiculoGetUbicacion() {
 	//Prueba que el vehículo guarde la ubicación Inicial
-		Esquina unaEsquina = new Esquina();
+		Esquina unaEsquina = new Esquina(0,0);
 		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
 		
 		Assert.assertEquals(unVehiculo.getUbicacion(), unaEsquina);

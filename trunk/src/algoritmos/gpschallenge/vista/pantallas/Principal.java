@@ -1,7 +1,10 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import algoritmos.gpschallenge.control.ControladorPantallas;
-import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 import algoritmos.gpschallenge.modelo.vista.ModeloPantallas;
 
 public class Principal {
@@ -10,10 +13,10 @@ public class Principal {
 	//	
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException, IOException {
 		//Se crean los modelos de pantalla y de juego
 		ModeloPantallas modeloPantalla = new ModeloPantallas();
-		ModeloPartida modeloJuego = new ModeloPartida();
+		ModeloJuego modeloJuego = new ModeloJuego();
 		
 		//Se crea el controlador de pantallas y se le asignan los modelos
 		ControladorPantallas controlPantallas = ControladorPantallas.getInstance();

@@ -81,7 +81,7 @@ public class JugadorTest {
 	public void testJugadorGetUbicacion() {
 	//Prueba que el Jugador obtiene bien la ubicación Inicial y la cantidad de movimientos
 		
-		Esquina unaEsquina = new Esquina();
+		Esquina unaEsquina = new Esquina(0,0);
 		Vehiculo unVehiculo = new Vehiculo(unaEsquina, new Auto());;
 		Jugador unJugador = new Jugador("Pepe", unVehiculo);
 		

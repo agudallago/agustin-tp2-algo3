@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
-import algoritmos.gpschallenge.modelo.juego.ModeloPartida;
 import algoritmos.gpschallenge.modelo.vista.*;
 import algoritmos.gpschallenge.vista.pantallas.PantallaNuevaPartida;
 
@@ -14,8 +13,7 @@ public class ControladorPantallas {
 	
 	private static ControladorPantallas instance = null;
 	private ModeloPantallas modeloPantalla;
-	private ModeloPartida modeloPartida;
-	private ModeloJuego modeloJuego;
+	private ModeloJuego modeloJuego;	
 	
 	protected ControladorPantallas () {
 		//Contructor protegido
@@ -38,8 +36,8 @@ public class ControladorPantallas {
 	}
 	
 	//Método para setear el modelo de Juego
-	public void setModeloJuego (ModeloPartida modelo) {
-		this.modeloPartida = modelo;
+	public void setModeloJuego (ModeloJuego modelo) {
+		this.modeloJuego = modelo;
 	}
 	
 	
@@ -150,8 +148,8 @@ public class ControladorPantallas {
 			String dificultad = this.pantalla.seleccionDificultad();
 			String vehiculo = this.pantalla.seleccionVehiculo();
 			String nombre = modeloPantalla.getNombreJugador();
-			modeloPartida.crearPartida(nombre, vehiculo, dificultad);
-			modeloPantalla.abrirPantallaMapa(modeloPartida, new ControladorVistaMapa(modeloPartida), modeloPartida.getImagenMapa(), modeloPartida.getImagenVehiculo());
+			modeloJuego.crearPartida(nombre, vehiculo, dificultad);
+			modeloPantalla.abrirPantallaMapa(modeloJuego, new ControladorVistaMapa(modeloJuego), modeloJuego.getImagenMapa(), modeloJuego.getImagenVehiculo());
 			
 		}
 	}
