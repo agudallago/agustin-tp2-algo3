@@ -15,13 +15,13 @@ import javax.swing.JPanel;
 public class PanelMascara extends JPanel {
 
 		  private Image imagenMapa;
-		  private int x, y, width, height;
+		  private int x, y;
 		  private int RADIO_MASCARA = 160;		  
 		  
 		  
 		  public PanelMascara(String imagenMapa) {
 		    this(new ImageIcon(imagenMapa).getImage());
-		    x = y = width = height = 0;
+		    x = y = 0;
 		  }
 
 		  public PanelMascara(Image imagenMapa) {
