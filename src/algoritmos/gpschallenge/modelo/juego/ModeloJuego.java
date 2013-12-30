@@ -52,6 +52,16 @@ public class ModeloJuego extends java.util.Observable {
         ActualizarObservadores();
 	}	
 
+    //TODO: refactorizar Métodos de Prueba
+    
+    public int getPosXModelo () {
+    	return mPosXModelo;
+    }
+    public int getPosYModelo () {
+    	return mPosYModelo;
+    }
+    
+    
     //----------------------------------------------------------
     public void crearPartida (String nombre, String vehiculo, String dificultad) {
         //Crea la partida y asigna las imagenes a las variables. Esto idealmente se podría leer de un archivo.
@@ -129,24 +139,32 @@ public class ModeloJuego extends java.util.Observable {
         mJugador.moverVehiculoA(norte);
         
         setPosY(getPosY() - INCREMENTO);
+        this.mPosXModelo = mVehiculo.getPosX();
+    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();
     }
     
     public void moverSur() {
         mJugador.moverVehiculoA(sur);
         setPosY(getPosY() + INCREMENTO);
+        this.mPosXModelo = mVehiculo.getPosX();
+    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();
     }
     
     public void moverEste() {
         mJugador.moverVehiculoA(este);
         setPosX(getPosX() + INCREMENTO);
+        this.mPosXModelo = mVehiculo.getPosX();
+    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();
     }
     
     public void moverOeste() {
         mJugador.moverVehiculoA(oeste);
         setPosX(getPosX() - INCREMENTO);
+        this.mPosXModelo = mVehiculo.getPosX();
+    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();       
     }
 
@@ -167,6 +185,7 @@ public class ModeloJuego extends java.util.Observable {
     public int getPosY() {
         return mPosY;
     }
+    
 
     public void setPosY(int posY) {
         this.mPosY = posY;

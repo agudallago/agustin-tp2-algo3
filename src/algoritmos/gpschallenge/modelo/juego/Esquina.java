@@ -15,7 +15,7 @@ public class Esquina {
 	
 	////////////////// Metodos Publicos /////////////////////////
 	
-	public Esquina(int posX, int posY) {
+	public Esquina(int posY, int posX) {
 		this.mEsquinasProximas = new HashMap<Direccion, Esquina>();
 		this.mElementoEnEsquina = null;
 		this.mPosX = posX;
