@@ -13,8 +13,9 @@ import algoritmos.gpschallenge.modelo.vehiculo.*;
 
 public class ModeloJuego extends java.util.Observable {
 
-    private int mPosX;
-    private int mPosY;
+    private int mPosX, mPosY;
+    private int mPosXModelo, mPosYModelo;
+    
     private final int POS_INICIAL_X = 0;
     private final int POS_INICIAL_Y = 0;
     private final int INCREMENTO = 38;
@@ -34,6 +35,7 @@ public class ModeloJuego extends java.util.Observable {
     private GeneradorDeMapas generadorMapas = new GeneradorDeMapas();
     String imagenMapa;
     String imagenVehiculo;
+    String imagenVehiculoGrande;
     
     public ModeloJuego() throws FileNotFoundException, IOException, ClassNotFoundException {
 		mAdminDeJugadores = AdminDeJugadores.cargarJugadores(RUTA_JUGADORES_XML);
@@ -71,16 +73,19 @@ public class ModeloJuego extends java.util.Observable {
         		mVehiculo = new Vehiculo(mMapa.getEsquinaInicialMapa(), new Auto());
                 crearJugador(nombre, mVehiculo);
                 imagenVehiculo = "images/auto.png";
+                imagenVehiculoGrande = "images/auto_grande.png";;
         }
         if (vehiculo.equalsIgnoreCase("Moto")) {
         		mVehiculo = new Vehiculo(mMapa.getEsquinaInicialMapa(), new Moto());
                 crearJugador(nombre, mVehiculo);
                 imagenVehiculo = "images/moto.png";
+                imagenVehiculoGrande = "images/moto_grande.png";;
         }
         if (vehiculo.equalsIgnoreCase("4x4"))  {
         		mVehiculo = new Vehiculo(mMapa.getEsquinaInicialMapa(), new CuatroPorCuatro());
                 crearJugador(nombre, mVehiculo);
                 imagenVehiculo = "images/4x4.png";
+                imagenVehiculoGrande = "images/4x4_grande.png";;
         }
         
         mPartida = new Partida (mJugador, mMapa);
@@ -93,7 +98,11 @@ public class ModeloJuego extends java.util.Observable {
     public String getImagenVehiculo() {
         return imagenVehiculo;
     }
-    
+
+    public String getImagenVehiculoGrande() {
+        return imagenVehiculoGrande;
+    }
+
     //---------------------------------------------------------------
     // Creación de mapas
     private void crearMapaFacil ( ) {
@@ -118,6 +127,7 @@ public class ModeloJuego extends java.util.Observable {
     
     public void moverNorte() {
         mJugador.moverVehiculoA(norte);
+        
         setPosY(getPosY() - INCREMENTO);
         ActualizarObservadores();
     }

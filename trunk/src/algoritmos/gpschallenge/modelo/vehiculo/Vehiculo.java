@@ -40,6 +40,14 @@ public class Vehiculo {
 		return mUbicacion;
 	}
 	
+	public int getPosX() {
+		return mUbicacion.getPosX();
+	}
+	
+	public int getPosY() {
+		return mUbicacion.getPosY();
+	}
+	
 	public int getMovimientos() {
 		return mMovimientos;
 	}

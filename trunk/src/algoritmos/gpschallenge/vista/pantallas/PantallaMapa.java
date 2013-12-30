@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.*;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -13,6 +14,11 @@ import javax.swing.JTextField;
 import algoritmos.gpschallenge.control.*;
 import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 
+
+
+import algoritmos.gpschallenge.vista.componentes.LabelVehiculo;
+import algoritmos.gpschallenge.vista.componentes.PanelImagen;
+import algoritmos.gpschallenge.vista.componentes.PanelMascara;
 
 import javax.swing.JButton;
 
@@ -30,13 +36,14 @@ public class PantallaMapa implements Observer{
 		private JButton botonSur = new JButton("Sur", null);  //boton para ir al Sur
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
-		private PanelImagen panelAuto;
+		private PanelImagen panelVehiculo;
 		private ModeloJuego modelo;
 		private ControladorVistaMapa controlador;
 		private JTextField fldMovimientos;
-		private final JLabel lblVehiculo = new JLabel("");
+		private final LabelVehiculo lblVehiculo;
 		private final JLabel lblTituloVehiculo = new JLabel("Veh\u00EDculo utilizado");
 		
+		private String imagenVehiculo;
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
 			
@@ -54,7 +61,7 @@ public class PantallaMapa implements Observer{
 			this.controlador = control;
 			this.modelo = modelo;
 			this.modelo.addObserver(this);
-			
+			this.imagenVehiculo = imagenVehiculo;
 			
 			//armado de la ventana
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
@@ -100,18 +107,17 @@ public class PantallaMapa implements Observer{
 			botonNorte.addActionListener(control.getListenerBotonNorte());
 			
 			Label label = new Label("Nivel");
-			//label.setBounds(0, 0, 984, 22);
 			frameMapa.getContentPane().add(label);  //agregamos un titulo
 			
 			textoMapa.setBounds(0, 0, 0, 0);
 			frameMapa.getContentPane().add(textoMapa); //agregamos el texto que muestra el Nivel
 			
 			
-			panelAuto = new PanelImagen(imagenVehiculo);
-			frameMapa.getContentPane().add(panelAuto);
-			panelAuto.setLocation(100,60);
-			panelAuto.setLayout(null);
-			panelAuto.setSize(59, 22);
+			panelVehiculo = new PanelImagen(imagenVehiculo);
+			frameMapa.getContentPane().add(panelVehiculo);
+			panelVehiculo.setLocation(100,60);
+			panelVehiculo.setLayout(null);
+			panelVehiculo.setSize(59, 22);
 			
 			
 			//Creamos panel de Mapa y lo agregamos al frame
@@ -135,11 +141,8 @@ public class PantallaMapa implements Observer{
 			fldMovimientos.setBounds(768, 30, 86, 20);
 			frameMapa.getContentPane().add(fldMovimientos);
 			fldMovimientos.setColumns(10);
-			lblVehiculo.setIcon(new ImageIcon("images/auto_grande.png"));
-			lblVehiculo.setBackground(Color.WHITE);
-			lblVehiculo.setForeground(Color.WHITE);
+			lblVehiculo = new LabelVehiculo(modelo.getImagenVehiculoGrande());
 			lblVehiculo.setBounds(685, 118, 250, 250);
-			//lblVehiculo.setIcon((Icon) new ImageIcon("images/moto.png").getImage());
 			
 			frameMapa.getContentPane().add(lblVehiculo);
 			lblTituloVehiculo.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -161,16 +164,25 @@ public class PantallaMapa implements Observer{
 		
 		//Metodo que es llamado por el modelo al actualizarse el mismo
 		public void update(Observable t, Object o) {	
-			panelAuto.setLocation(modelo.getPosX(), modelo.getPosY());
+			panelVehiculo.setLocation(modelo.getPosX(), modelo.getPosY());
 			panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
 			this.frameMapa.repaint();
 			panelMapa.repaint();
-			
+			lblVehiculo.updateImage(imagenVehiculo);
 			this.fldMovimientos.setText(Integer.toString(modelo.getMovimientos()));
 			//modelo.getTipoDeVehiculo()
-			
+			this.lblVehiculo.updateImage(imagenVehiculo);
 			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
+			//Eliminar, solo para pruebas
+			System.out.println();
+			System.out.printf("Modelo X: %d",  modelo.getPosX());
+			System.out.println();
+			System.out.printf("Modelo Y: %d", modelo.getPosY() );
+			System.out.println();
+			System.out.printf("Vehiculo X: %d", panelVehiculo.getX());
+			System.out.println();
+			System.out.printf("Vehiculo Y: %d", panelVehiculo.getY());
 		}
 		
 		public void setVisible (boolean b) {
