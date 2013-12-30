@@ -94,6 +94,12 @@ public class ControladorVistaMapa {
 				// TODO Auto-generated method stub
 				
 			}
+			
+			// Transformada entre coordenadas del modelo y la vista
+			/*
+			 * public point transformada(x,y){
+			 
+				}*/
 		}
 				
 }
