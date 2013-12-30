@@ -17,7 +17,8 @@ public class PanelMascara extends JPanel {
 		  private Image imagenMapa;
 		  private int x, y;
 		  private int RADIO_MASCARA = 160;		  
-		  
+		  private int COORDX_META = 550;
+		  private int COORDY_META = 370;
 		  
 		  public PanelMascara(String imagenMapa) {
 		    this(new ImageIcon(imagenMapa).getImage());
@@ -41,7 +42,9 @@ public class PanelMascara extends JPanel {
 			  //g2.setClip(ellipse)
 			  final Rectangle2D rect = new Rectangle2D.Float();
 			  final Rectangle2D meta = new Rectangle2D.Float();
-			  meta.setFrame(this.getWidth()-RADIO_MASCARA/4, this.getHeight()/2 + RADIO_MASCARA, RADIO_MASCARA/3, RADIO_MASCARA/3);
+			  meta.setFrame(COORDX_META, COORDY_META, RADIO_MASCARA/2, RADIO_MASCARA/2);
+			  //meta.setFrame(this.getWidth()-RADIO_MASCARA/4, this.getHeight()/2 + RADIO_MASCARA/2, RADIO_MASCARA/2, RADIO_MASCARA/2);
+			  
 			  rect.setFrame(this.x - RADIO_MASCARA/2, this.y - RADIO_MASCARA/2, RADIO_MASCARA, RADIO_MASCARA);
 			  g2.setClip(rect);
 			  g.drawImage(imagenMapa, 0, 0, null);

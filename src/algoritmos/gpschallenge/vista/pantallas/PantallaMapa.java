@@ -15,6 +15,7 @@ import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 
 
 import javax.swing.JButton;
+
 import java.awt.Font;
 
 public class PantallaMapa implements Observer{
@@ -33,7 +34,9 @@ public class PantallaMapa implements Observer{
 		private ModeloJuego modelo;
 		private ControladorVistaMapa controlador;
 		private JTextField fldMovimientos;
-				
+		private final JLabel lblVehiculo = new JLabel("");
+		private final JLabel lblTituloVehiculo = new JLabel("Veh\u00EDculo utilizado");
+		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
 			
@@ -59,7 +62,7 @@ public class PantallaMapa implements Observer{
 			frameMapa.setFocusable(true); 
 			frameMapa.getContentPane().setLayout(null); //No especificamos un Layout
 			frameMapa.getContentPane().setBackground(Color.BLACK);
-			
+
 			txtMovimientos = new JLabel("Movimientos: ");
 			fldMovimientos = new JTextField("--Movimientos--");
 			txtMovimientos.setBackground(Color.white);
@@ -114,6 +117,7 @@ public class PantallaMapa implements Observer{
 			//Creamos panel de Mapa y lo agregamos al frame
 			//panelMapa = new PanelImagen(imagenMapa); //Panel que contiene la imagen del mapa
 			panelMapa = new PanelMascara(imagenMapa); //Panel que contiene la imagen del mapa
+			panelMapa.setForeground(Color.WHITE);
 			panelMapa.setBounds(0, 22, 600, 600);
 			frameMapa.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
 			panelMapa.setLayout(null);
@@ -131,6 +135,18 @@ public class PantallaMapa implements Observer{
 			fldMovimientos.setBounds(768, 30, 86, 20);
 			frameMapa.getContentPane().add(fldMovimientos);
 			fldMovimientos.setColumns(10);
+			lblVehiculo.setIcon(new ImageIcon("images/auto_grande.png"));
+			lblVehiculo.setBackground(Color.WHITE);
+			lblVehiculo.setForeground(Color.WHITE);
+			lblVehiculo.setBounds(685, 118, 250, 250);
+			//lblVehiculo.setIcon((Icon) new ImageIcon("images/moto.png").getImage());
+			
+			frameMapa.getContentPane().add(lblVehiculo);
+			lblTituloVehiculo.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblTituloVehiculo.setForeground(Color.WHITE);
+			lblTituloVehiculo.setBounds(690, 93, 129, 14);
+			
+			frameMapa.getContentPane().add(lblTituloVehiculo);
 			
 			frameMapa.addKeyListener(control.getListenerTeclas());
 			frameMapa.setSize(600,600);  //seteamos las dimensiones del marco
@@ -151,6 +167,7 @@ public class PantallaMapa implements Observer{
 			panelMapa.repaint();
 			
 			this.fldMovimientos.setText(Integer.toString(modelo.getMovimientos()));
+			//modelo.getTipoDeVehiculo()
 			
 			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
