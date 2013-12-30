@@ -175,14 +175,15 @@ public class PantallaMapa implements Observer{
 			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
 			//Eliminar, solo para pruebas
+			System.out.println("--------------------------------------");
+			System.out.printf("Modelo X: %d",  modelo.getPosXModelo());
 			System.out.println();
-			System.out.printf("Modelo X: %d",  modelo.getPosX());
-			System.out.println();
-			System.out.printf("Modelo Y: %d", modelo.getPosY() );
+			System.out.printf("Modelo Y: %d", modelo.getPosYModelo() );
 			System.out.println();
 			System.out.printf("Vehiculo X: %d", panelVehiculo.getX());
 			System.out.println();
 			System.out.printf("Vehiculo Y: %d", panelVehiculo.getY());
+			System.out.println("--------------------------------------");
 		}
 		
 		public void setVisible (boolean b) {
