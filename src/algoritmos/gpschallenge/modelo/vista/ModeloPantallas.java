@@ -22,9 +22,9 @@ public class ModeloPantallas {
         }
         
         
-        public void abrirPantallaJugadorExistente() {
+        public void abrirPantallaJugadorExistente(ModeloJuego modelo) {
                 ventanaActiva.dispose();
-                ventanaActiva = PantallaJugadorExistente.getInstance();
+                ventanaActiva = new PantallaJugadorExistente(modelo);
                 ventanaActiva.setVisible(true);
         }
 

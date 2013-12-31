@@ -2,7 +2,7 @@ package algoritmos.gpschallenge.modelo.juego;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 import java.util.Map.Entry;
 
@@ -166,7 +166,7 @@ public class ModeloJuego extends java.util.Observable {
 		this.mAdminDeJugadores.addJugadorYPuntaje(jugador, puntaje);
 	}
 	
-	public List<Jugador> getListaDeJugadores() {
+	public ArrayList<Jugador> getListaDeJugadores() {
 		return this.mAdminDeJugadores.getListaDeJugadores();
 	}
 	

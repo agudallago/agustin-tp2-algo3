@@ -49,7 +49,7 @@ public class ControladorPantallas {
 	private class EscuchaBtnJugadorExistente implements ActionListener {
 		
 		public void actionPerformed(ActionEvent e) {
-			modeloPantalla.abrirPantallaJugadorExistente();
+			modeloPantalla.abrirPantallaJugadorExistente(modeloJuego);
 		}
 	}
 
