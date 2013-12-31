@@ -26,8 +26,9 @@ import java.awt.Font;
 
 public class PantallaMapa implements Observer{
 		
+		private static int OFFSET_X = 10; //ajuste en X del panelVehiculo
+	
 		private JFrame frameMapa; //marco que contendrá el mapa
-		//private PanelImagen panelMapa; //Panel que contiene la imagen del mapa
 		private PanelMascara panelMapa;
 		private TextField textoMapa = new TextField(); //texto que mostrara el Nivel
 		private JLabel txtMovimientos;
@@ -115,19 +116,19 @@ public class PantallaMapa implements Observer{
 			
 			panelVehiculo = new PanelImagen(imagenVehiculo);
 			frameMapa.getContentPane().add(panelVehiculo);
-			panelVehiculo.setLocation(100,60);
+			panelVehiculo.setLocation(control.getPosX(),control.getPosY());
 			panelVehiculo.setLayout(null);
 			panelVehiculo.setSize(59, 22);
 			
 			
 			//Creamos panel de Mapa y lo agregamos al frame
-			//panelMapa = new PanelImagen(imagenMapa); //Panel que contiene la imagen del mapa
 			panelMapa = new PanelMascara(imagenMapa); //Panel que contiene la imagen del mapa
 			panelMapa.setForeground(Color.WHITE);
 			panelMapa.setBounds(0, 22, 600, 600);
 			frameMapa.getContentPane().add(panelMapa);   //agregamos el panel con el mapa
 			panelMapa.setLayout(null);
 			panelMapa.setLocation(10, 10);
+			panelMapa.setUbicacion(control.getPosX(), control.getPosY());
 			
 			JLabel lblMovimientos = new JLabel("Movimientos:");
 			lblMovimientos.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -151,34 +152,37 @@ public class PantallaMapa implements Observer{
 			
 			frameMapa.getContentPane().add(lblTituloVehiculo);
 			
-			frameMapa.addKeyListener(control.getListenerTeclas());
-			frameMapa.setSize(600,600);  //seteamos las dimensiones del marco
-			frameMapa.setBounds(10, 10, 1000, 600);
+			frameMapa.addKeyListener(control.getListenerTeclas());  
+			frameMapa.setBounds(0, 0, 1000, 680); //seteamos la posición y las dimensiones del marco
 			frameMapa.setBackground(Color.black);
 			frameMapa.setVisible(true);  //mostramos el marco
 
 			//agregamos el listener del evento de cerrado de la ventana		
 			frameMapa.addWindowListener(new CloseListener());
-			 
+			this.update(new Observable(), new Object());
 			}
 		
 		//Metodo que es llamado por el modelo al actualizarse el mismo
-		public void update(Observable t, Object o) {	
-			panelVehiculo.setLocation(modelo.getPosX(), modelo.getPosY());
-			panelMapa.setUbicacion(modelo.getPosX(), modelo.getPosY());
-			this.frameMapa.repaint();
+		public void update(Observable t, Object o) {
+			controlador.transformarCoordModeloAVista();
+			panelMapa.setUbicacion(controlador.getPosX(), controlador.getPosY());
 			panelMapa.repaint();
-			lblVehiculo.updateImage(imagenVehiculo);
-			this.fldMovimientos.setText(Integer.toString(modelo.getMovimientos()));
-			//modelo.getTipoDeVehiculo()
-			this.lblVehiculo.updateImage(imagenVehiculo);
-			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
 			
+			this.fldMovimientos.setText(Integer.toString(modelo.getMovimientos()));
+			
+			this.lblVehiculo.updateImage(modelo.getImagenVehiculoGrande());
+			
+			panelVehiculo.setLocation(controlador.getPosX()- OFFSET_X,controlador.getPosY());
+			panelVehiculo.repaint();
+			controlador.transformarCoordModeloAVista();
+			this.frameMapa.repaint();
+			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
+		
 			//Eliminar, solo para pruebas
 			System.out.println("--------------------------------------");
-			System.out.printf("Modelo X: %d",  modelo.getPosXModelo());
+			System.out.printf("Modelo X: %d",  modelo.getPosX());
 			System.out.println();
-			System.out.printf("Modelo Y: %d", modelo.getPosYModelo() );
+			System.out.printf("Modelo Y: %d", modelo.getPosY() );
 			System.out.println();
 			System.out.printf("Vehiculo X: %d", panelVehiculo.getX());
 			System.out.println();
