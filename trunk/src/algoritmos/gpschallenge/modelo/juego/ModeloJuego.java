@@ -12,14 +12,10 @@ import algoritmos.gpschallenge.modelo.direccion.*;
 import algoritmos.gpschallenge.modelo.vehiculo.*;
 
 public class ModeloJuego extends java.util.Observable {
-
-    private int mPosX, mPosY;
-    private int mPosXModelo, mPosYModelo;
     
-    private final int POS_INICIAL_X = 0;
-    private final int POS_INICIAL_Y = 0;
-    private final int INCREMENTO = 38;
-    
+    //private final int POS_INICIAL_X = 0;
+    //private final int POS_INICIAL_Y = 0;
+        
     // Administradores de juego
     private AdminDeJugadores mAdminDeJugadores;   
     private AdminDePartida mAdminDePartida;
@@ -46,21 +42,16 @@ public class ModeloJuego extends java.util.Observable {
         sur   = new Sur();
         oeste = new Oeste();
         este  = new Este();
-
-        setPosX(POS_INICIAL_X);
-        setPosY(POS_INICIAL_Y);
         ActualizarObservadores();
 	}	
 
-    //TODO: refactorizar Métodos de Prueba
-    
-    public int getPosXModelo () {
-    	return mPosXModelo;
+    //La posición X e Y del modelo es la que posee su miembro vehículo
+    public int getPosX () {
+    	return mVehiculo.getPosX();
     }
-    public int getPosYModelo () {
-    	return mPosYModelo;
+    public int getPosY () {
+    	return mVehiculo.getPosY();
     }
-    
     
     //----------------------------------------------------------
     public void crearPartida (String nombre, String vehiculo, String dificultad) {
@@ -137,34 +128,21 @@ public class ModeloJuego extends java.util.Observable {
     
     public void moverNorte() {
         mJugador.moverVehiculoA(norte);
-        
-        setPosY(getPosY() - INCREMENTO);
-        this.mPosXModelo = mVehiculo.getPosX();
-    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();
     }
     
     public void moverSur() {
         mJugador.moverVehiculoA(sur);
-        setPosY(getPosY() + INCREMENTO);
-        this.mPosXModelo = mVehiculo.getPosX();
-    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();
     }
     
     public void moverEste() {
         mJugador.moverVehiculoA(este);
-        setPosX(getPosX() + INCREMENTO);
-        this.mPosXModelo = mVehiculo.getPosX();
-    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();
     }
     
     public void moverOeste() {
         mJugador.moverVehiculoA(oeste);
-        setPosX(getPosX() - INCREMENTO);
-        this.mPosXModelo = mVehiculo.getPosX();
-    	this.mPosYModelo = mVehiculo.getPosY();
         ActualizarObservadores();       
     }
 
@@ -172,23 +150,6 @@ public class ModeloJuego extends java.util.Observable {
     public void ActualizarObservadores() {
         setChanged();
         notifyObservers();              
-    }
-
-    public int getPosX() {
-        return mPosX;
-    }
-
-    public void setPosX(int posX) {
-        this.mPosX = posX;
-    }
-
-    public int getPosY() {
-        return mPosY;
-    }
-    
-
-    public void setPosY(int posY) {
-        this.mPosY = posY;
     }
 
 	public int getMovimientos() {

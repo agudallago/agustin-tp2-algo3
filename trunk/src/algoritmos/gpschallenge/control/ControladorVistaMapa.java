@@ -5,17 +5,39 @@ import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 
 public class ControladorVistaMapa {
 
+	private static final int INCREMENTO = 38;
+	private static final int POSICION_INICIAL = 38;
 	private ModeloJuego modelo;
+	private int posX, posY; //Coordenadas de la imagen del vehículo
 	
 	//Constructor de la clase Controlador
 		public ControladorVistaMapa(ModeloJuego modelo) {
-			this.modelo = modelo; 
+			this.modelo = modelo;
+			this.transformarCoordModeloAVista();
 		}
 	
+	//Setter y Getters de posY y posX
+		public int getPosY() {
+			return posY;
+		}
+
+		public int getPosX() {
+			return posX;
+		}
+
+		
+// Transformada entre coordenadas del modelo y la vista
+		
+		public void transformarCoordModeloAVista() {
+			this.posX = modelo.getPosX() * INCREMENTO + POSICION_INICIAL;
+			this.posY = modelo.getPosY() * INCREMENTO + POSICION_INICIAL;		
+		}
+		
 	//----------------------------------------------------------------------
 		private class EscuchaBotonNorte implements ActionListener {	
 			public void actionPerformed(ActionEvent e) {	
 				modelo.moverNorte();
+				transformarCoordModeloAVista();
 			}
 		}
 		
@@ -27,6 +49,7 @@ public class ControladorVistaMapa {
 		private class EscuchaBotonSur implements ActionListener	{
 			public void actionPerformed(ActionEvent e)	{
 				modelo.moverSur();
+				transformarCoordModeloAVista();
 			}
 		}
 
@@ -38,6 +61,7 @@ public class ControladorVistaMapa {
 		private class EscuchaBotonEste implements ActionListener {	
 			public void actionPerformed(ActionEvent e)	{
 				modelo.moverEste();
+				transformarCoordModeloAVista();
 			}
 		}
 			
@@ -49,6 +73,7 @@ public class ControladorVistaMapa {
 		private class EscuchaBotonOeste implements ActionListener {	
 			public void actionPerformed(ActionEvent e)	{
 				modelo.moverOeste();
+				transformarCoordModeloAVista();
 			}
 		}
 		
@@ -70,15 +95,19 @@ public class ControladorVistaMapa {
 		        switch (keyCode){
 		        	case 37: 
 		        		modelo.moverOeste();
+		        		transformarCoordModeloAVista();
 		        		break;
 		        	case 38: 
 		        		modelo.moverNorte();
+		        		transformarCoordModeloAVista();
 		        		break;
 		        	case 39:
 		        		modelo.moverEste();
+		        		transformarCoordModeloAVista();
 		        		break;
 		        	case 40:
 		        		modelo.moverSur();
+		        		transformarCoordModeloAVista();
 		        		break;
 		        }
 			}
@@ -93,13 +122,8 @@ public class ControladorVistaMapa {
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
 				
-			}
+			}			
 			
-			// Transformada entre coordenadas del modelo y la vista
-			/*
-			 * public point transformada(x,y){
-			 
-				}*/
 		}
 				
 }
