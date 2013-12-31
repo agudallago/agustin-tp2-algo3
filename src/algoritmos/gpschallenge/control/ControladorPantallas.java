@@ -105,7 +105,7 @@ public class ControladorPantallas {
 	
 	private class EscuchaBtnPuntajes implements ActionListener {	
 		public void actionPerformed(ActionEvent e) {
-			modeloPantalla.abrirPantallaPuntajes();
+			modeloPantalla.abrirPantallaPuntajes(modeloJuego);
 		}
 	}
 
