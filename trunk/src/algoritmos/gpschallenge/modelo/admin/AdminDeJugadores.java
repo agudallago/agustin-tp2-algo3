@@ -62,7 +62,7 @@ public class AdminDeJugadores extends AdminXML {
 		this.mPuntajeMaxPorJugador.put(jugador, puntajeMax);
 	}
 
-	public List<Jugador> getListaDeJugadores() {
+	public ArrayList<Jugador> getListaDeJugadores() {
 		Set<Jugador> setJugadores = mPuntajeMaxPorJugador.keySet();
 		Iterator<Jugador> it = setJugadores.iterator();
 		ArrayList<Jugador> lista = new ArrayList<Jugador>(setJugadores.size());		
