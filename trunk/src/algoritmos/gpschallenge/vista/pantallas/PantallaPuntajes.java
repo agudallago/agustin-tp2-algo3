@@ -11,7 +11,15 @@ import javax.swing.SwingConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
+import algoritmos.gpschallenge.modelo.admin.AdminDeJugadores;
+import algoritmos.gpschallenge.modelo.juego.Jugador;
+import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
+
 import java.awt.Component;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import javax.swing.border.LineBorder;
 import javax.swing.JList;
@@ -20,16 +28,15 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 
 	private JTextField txtBienvenido;
 	private JButton btnVolver;
-	private JList list;	
+	private JList<String> list;	
 	
 	/**
 	 * Constructor
 	 */
-	public PantallaPuntajes() {
+	public PantallaPuntajes(ModeloJuego modelo) {
 		super();
-		initialize();
+		initialize(modelo);
 		addListeners();
-
 	}
 
 	public void addListeners(){
@@ -39,7 +46,7 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {
+	private void initialize(ModeloJuego modelo) {
 		frame = new JFrame();
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
@@ -81,20 +88,23 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 		btnVolver.setBounds(330, 301, 89, 23);
 		frame.getContentPane().add(btnVolver);
 		
-		list = new JList();
+		// Carga ranking
+		Set<Entry<Jugador, Float>>ranking = modelo.getRankingComoSet();
+		Iterator<Entry<Jugador, Float>> iter = ranking.iterator();
+		ArrayList<String> listaJugadores = new ArrayList<String>();
+		while (iter.hasNext()) {
+			Entry<Jugador, Float> jugadorPuntaje = iter.next();
+			listaJugadores.add(
+					jugadorPuntaje.getKey().getNombre() +
+					"      Max puntaje: " +
+					jugadorPuntaje.getValue());				
+		}		
+		String[] arrayJugadores = listaJugadores.toArray(new String[listaJugadores.size()]);
+		list = new JList<String>(arrayJugadores);
 		list.setBorder(new LineBorder(new Color(0, 0, 0)));
 		list.setBounds(72, 63, 248, 261);
 		frame.getContentPane().add(list);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));
-		
-		//TODO cargar Ranking de puntajes
-	}
-	public static PantallaPuntajes getInstance(){
-		if (instance == null) { 
-				instance = new PantallaPuntajes(); 
-				} 
-		return (PantallaPuntajes) instance; 
-	}
-	
+		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));			
+	}	
 
 }

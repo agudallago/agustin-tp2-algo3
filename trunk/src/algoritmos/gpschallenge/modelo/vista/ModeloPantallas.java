@@ -26,7 +26,7 @@ public class ModeloPantallas {
                 ventanaActiva.dispose();
                 ventanaActiva = PantallaJugadorExistente.getInstance();
                 ventanaActiva.setVisible(true);
-                }
+        }
 
         public void abrirPantallaJugadorNuevo() {
                 ventanaActiva.dispose();
@@ -54,9 +54,9 @@ public class ModeloPantallas {
                 ventanaActiva.setVisible(true);
         }
 
-        public void abrirPantallaPuntajes() {
+        public void abrirPantallaPuntajes(ModeloJuego modelo) {
                 ventanaActiva.dispose();
-                ventanaActiva = PantallaPuntajes.getInstance();
+                ventanaActiva = new PantallaPuntajes(modelo);
                 ventanaActiva.setFieldNombre(nombreJugador);
                 ventanaActiva.setVisible(true);
         }
