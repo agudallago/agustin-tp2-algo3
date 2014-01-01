@@ -79,19 +79,19 @@ public class PantallaMapa implements Observer{
 			fldMovimientos.setLocation(frameMapa.getWidth() - txtMovimientos.getWidth(), 0);
 			
 			botonNorte.setBounds(753, 456, 66, 22);
-			botonNorte.setText("Norte");
+			botonNorte.setText("N");
 			frameMapa.getContentPane().add(botonNorte);
 						
 			botonEste.setBounds(822, 484, 61, 22);
-			botonEste.setText("Este");
+			botonEste.setText("E");
 			frameMapa.getContentPane().add(botonEste);
 			
 			botonOeste.setBounds(690, 484, 61, 22);
-			botonOeste.setText("Oeste");
+			botonOeste.setText("O");
 			frameMapa.getContentPane().add(botonOeste);
 			
 			botonSur.setBounds(753, 510, 66, 22);
-			botonSur.setText("Sur");
+			botonSur.setText("S");
 			frameMapa.getContentPane().add(botonSur);
 			
 			JButton botonCentral = new JButton("");
@@ -156,6 +156,7 @@ public class PantallaMapa implements Observer{
 			frameMapa.setBounds(0, 0, 1000, 680); //seteamos la posición y las dimensiones del marco
 			frameMapa.setBackground(Color.black);
 			frameMapa.setVisible(true);  //mostramos el marco
+			frameMapa.setResizable(false); //no permitimos que se cambie el tamaño.
 
 			//agregamos el listener del evento de cerrado de la ventana		
 			frameMapa.addWindowListener(new CloseListener());
@@ -177,17 +178,7 @@ public class PantallaMapa implements Observer{
 			controlador.transformarCoordModeloAVista();
 			this.frameMapa.repaint();
 			this.frameMapa.requestFocus(); //Le devuelve el focus al Frame
-		
-			//Eliminar, solo para pruebas
-			System.out.println("--------------------------------------");
-			System.out.printf("Modelo X: %d",  modelo.getPosX());
-			System.out.println();
-			System.out.printf("Modelo Y: %d", modelo.getPosY() );
-			System.out.println();
-			System.out.printf("Vehiculo X: %d", panelVehiculo.getX());
-			System.out.println();
-			System.out.printf("Vehiculo Y: %d", panelVehiculo.getY());
-			System.out.println("--------------------------------------");
+
 		}
 		
 		public void setVisible (boolean b) {

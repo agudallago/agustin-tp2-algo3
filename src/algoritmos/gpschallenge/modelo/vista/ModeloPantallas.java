@@ -10,7 +10,7 @@ public class ModeloPantallas {
         String nombreJugador;  //se utiliza como referencia rápida para las pantallas donde se muestra el nombre.
         
         public ModeloPantallas(){
-                ventanaActiva = PantallaBienvenida.getInstance();       
+                this.ventanaActiva = PantallaBienvenida.getInstance();       
         }
 
         public void setNombreJugador(String nombre) {
@@ -21,70 +21,66 @@ public class ModeloPantallas {
                 return this.nombreJugador;
         }
         
-        
         public void abrirPantallaJugadorExistente(ModeloJuego modelo) {
-                ventanaActiva.dispose();
-                ventanaActiva = new PantallaJugadorExistente(modelo);
-                ventanaActiva.setVisible(true);
+                this.ventanaActiva.dispose();
+                this.ventanaActiva = new PantallaJugadorExistente(modelo);
+                this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaJugadorNuevo() {
-                ventanaActiva.dispose();
-                ventanaActiva = PantallaJugadorNuevo.getInstance();
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = PantallaJugadorNuevo.getInstance();
+        	this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaBienvenida() {
-                ventanaActiva.dispose();
-                ventanaActiva = PantallaBienvenida.getInstance();
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = PantallaBienvenida.getInstance();
+        	this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaOpciones() {
-                ventanaActiva.dispose();
-                ventanaActiva = PantallaOpciones.getInstance();
-                ventanaActiva.setFieldNombre(nombreJugador);
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = PantallaOpciones.getInstance();
+        	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaNuevaPartida() {
-                ventanaActiva.dispose();
-                ventanaActiva = PantallaNuevaPartida.getInstance();
-                ventanaActiva.setFieldNombre(nombreJugador);
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = PantallaNuevaPartida.getInstance();
+        	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaPuntajes(ModeloJuego modelo) {
-                ventanaActiva.dispose();
-                ventanaActiva = new PantallaPuntajes(modelo);
-                ventanaActiva.setFieldNombre(nombreJugador);
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = new PantallaPuntajes(modelo);
+        	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaMapa(ModeloJuego modelo, ControladorVistaMapa controlador, String imagenMapa, String imagenVehiculo) {
-                ventanaActiva.dispose();
+        	this.ventanaActiva.dispose();
                 PantallaMapa pantallaMapa = new PantallaMapa(modelo, controlador, imagenMapa, imagenVehiculo);
                 pantallaMapa.setVisible(true);
         }
                 
         public void setVentanaActiva(PantallaGPSChallenge pantalla){
-                ventanaActiva = pantalla;
+        	this.ventanaActiva = pantalla;
         }
 
         public void abrirPantallaGanador() {
-                ventanaActiva.dispose();
-                ventanaActiva = PantallaGanador.getInstance();
-                ventanaActiva.setFieldNombre(nombreJugador);
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = PantallaGanador.getInstance();
+        	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setVisible(true);
         }
 
         public void abrirPantallaPerdedor() {
-                ventanaActiva.dispose();
-                ventanaActiva = PantallaPerdedor.getInstance();
-                ventanaActiva.setFieldNombre(nombreJugador);
-                ventanaActiva.setVisible(true);
+        	this.ventanaActiva.dispose();
+        	this.ventanaActiva = PantallaPerdedor.getInstance();
+        	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setVisible(true);
         }
-        
-
-        
 }

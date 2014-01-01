@@ -150,7 +150,6 @@ public class ControladorPantallas {
 			String nombre = modeloPantalla.getNombreJugador();
 			modeloJuego.crearPartida(nombre, vehiculo, dificultad);
 			modeloPantalla.abrirPantallaMapa(modeloJuego, new ControladorVistaMapa(modeloJuego), modeloJuego.getImagenMapa(), modeloJuego.getImagenVehiculo());
-			
 		}
 	}
 	
