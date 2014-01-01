@@ -35,6 +35,9 @@ public class PanelMascara extends JPanel {
 
 		  public void paintComponent(Graphics g) {
 			  Graphics2D g2 = (Graphics2D) g; 
+			  //Si se quiere hacer con un círculo, descomentar lo comentado y comentar la implementación de
+			  //del rectángulo
+			  
 			  //private Ellipse2D ellipse = new Ellipse2D.Float();
 			  //ellipse.setFrame(x, y, ew, eh);
 			  //g2.setClip(ellipse)
