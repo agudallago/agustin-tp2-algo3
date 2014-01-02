@@ -37,14 +37,16 @@ public class PantallaMapa implements Observer{
 		private JButton botonSur = new JButton("Sur", null);  //boton para ir al Sur
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
+		private JButton btnVolver;
 		private PanelImagen panelVehiculo;
 		private ModeloJuego modelo;
 		private ControladorVistaMapa controlador;
+		private ControladorPantallas controlPant;
 		private JTextField fldMovimientos;
 		private final LabelVehiculo lblVehiculo;
 		private final JLabel lblTituloVehiculo = new JLabel("Veh\u00EDculo utilizado");
-		
 		private String imagenVehiculo;
+		
 		//Clase auxiliar para escuchar el evento de cerrado de la ventana
 		public static class CloseListener extends WindowAdapter	{
 			
@@ -55,7 +57,7 @@ public class PantallaMapa implements Observer{
 		} //Fin de CloseListener
 
 
-//Constructor de la vista
+		//Constructor de la vista
 		public PantallaMapa(ModeloJuego modelo, ControladorVistaMapa control, String imagenMapa, String imagenVehiculo) {
 			
 			// Conectamos esta vista con el modelo y el controlador
@@ -63,6 +65,7 @@ public class PantallaMapa implements Observer{
 			this.modelo = modelo;
 			this.modelo.addObserver(this);
 			this.imagenVehiculo = imagenVehiculo;
+			this.controlPant = ControladorPantallas.getInstance();
 			
 			//armado de la ventana
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
@@ -98,14 +101,21 @@ public class PantallaMapa implements Observer{
 			botonCentral.setBounds(753, 484, 66, 22);
 			frameMapa.getContentPane().add(botonCentral);
 			frameMapa.getContentPane().setSize(1000, 600);
+			
+			btnVolver = new JButton("Volver a opciones");
+			btnVolver.setAlignmentX(0.5f);
+			btnVolver.setBounds(720, 560, 135, 40);
+			frameMapa.getContentPane().add(btnVolver);
 							
-			//agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
+			//Agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
 			//Notar que los listeners se los pedimos al controlador
 	
 			botonSur.addActionListener(control.getListenerBotonSur());
 			botonOeste.addActionListener(control.getListenerBotonOeste());
 			botonEste.addActionListener(control.getListenerBotonEste());			
 			botonNorte.addActionListener(control.getListenerBotonNorte());
+			btnVolver.addActionListener(controlPant.getListenerBtnCerrar());
+			
 			
 			Label label = new Label("Nivel");
 			frameMapa.getContentPane().add(label);  //agregamos un titulo
