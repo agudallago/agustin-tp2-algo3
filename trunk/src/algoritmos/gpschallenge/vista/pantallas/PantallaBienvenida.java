@@ -11,7 +11,7 @@ import javax.swing.SwingConstants;
 public class PantallaBienvenida extends PantallaGPSChallenge {
 
 	private JTextField txtBienvenido;
-	private JButton btnYaSoyJugador;
+	private JButton btnYaTengoUsuario;
 	private JButton btnNuevoJugador;
 
 
@@ -28,7 +28,7 @@ public class PantallaBienvenida extends PantallaGPSChallenge {
 	//Método para agregar los listeners de los botones del Frame
 		private void addListeners() {
 			btnNuevoJugador.addActionListener(control.getListenerBtnJugadorNuevo());
-			btnYaSoyJugador.addActionListener(control.getListenerBtnJugadorExistente());
+			btnYaTengoUsuario.addActionListener(control.getListenerBtnJugadorExistente());
 		}
 		
 	/**
@@ -61,9 +61,9 @@ public class PantallaBienvenida extends PantallaGPSChallenge {
 		btnNuevoJugador.setBounds(132, 109, 171, 49);
 		frame.getContentPane().add(btnNuevoJugador);
 		
-		btnYaSoyJugador = new JButton("Ya soy Jugador");
-		btnYaSoyJugador.setBounds(132, 169, 171, 49);
-		frame.getContentPane().add(btnYaSoyJugador);
+		btnYaTengoUsuario = new JButton("Ya tengo usuario");
+		btnYaTengoUsuario.setBounds(132, 169, 171, 49);
+		frame.getContentPane().add(btnYaTengoUsuario);
 	}
 	
 	public static PantallaBienvenida getInstance(){
