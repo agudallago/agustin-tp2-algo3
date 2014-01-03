@@ -6,7 +6,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.*;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -37,11 +36,11 @@ public class PantallaMapa implements Observer{
 		private JButton botonSur = new JButton("Sur", null);  //boton para ir al Sur
 		private JButton botonEste = new JButton("Este", null);  //boton para ir al Este
 		private JButton botonOeste = new JButton("Oeste", null);  //boton para ir al Oeste
-		private JButton btnVolver;
+		private JButton btnGuardarYVolver;
 		private PanelImagen panelVehiculo;
 		private ModeloJuego modelo;
 		private ControladorVistaMapa controlador;
-		private ControladorPantallas controlPant;
+		private ControladorPantallas controlPantallas;
 		private JTextField fldMovimientos;
 		private final LabelVehiculo lblVehiculo;
 		private final JLabel lblTituloVehiculo = new JLabel("Veh\u00EDculo utilizado");
@@ -65,7 +64,7 @@ public class PantallaMapa implements Observer{
 			this.modelo = modelo;
 			this.modelo.addObserver(this);
 			this.imagenVehiculo = imagenVehiculo;
-			this.controlPant = ControladorPantallas.getInstance();
+			this.controlPantallas = ControladorPantallas.getInstance();
 			
 			//armado de la ventana
 			frameMapa = new JFrame("GPS Challenge"); //creamos el marco
@@ -99,13 +98,14 @@ public class PantallaMapa implements Observer{
 			
 			JButton botonCentral = new JButton("");
 			botonCentral.setBounds(753, 484, 66, 22);
+			botonCentral.setText("+");
 			frameMapa.getContentPane().add(botonCentral);
 			frameMapa.getContentPane().setSize(1000, 600);
 			
-			btnVolver = new JButton("Volver a opciones");
-			btnVolver.setAlignmentX(0.5f);
-			btnVolver.setBounds(720, 560, 135, 40);
-			frameMapa.getContentPane().add(btnVolver);
+			btnGuardarYVolver = new JButton("Guardar partida y volver");
+			btnGuardarYVolver.setAlignmentX(0.5f);
+			btnGuardarYVolver.setBounds(690, 560, 193, 40);
+			frameMapa.getContentPane().add(btnGuardarYVolver);
 							
 			//Agregamos el listener de los botones "Norte", "Sur", "Este" y "Oeste"
 			//Notar que los listeners se los pedimos al controlador
@@ -114,7 +114,7 @@ public class PantallaMapa implements Observer{
 			botonOeste.addActionListener(control.getListenerBotonOeste());
 			botonEste.addActionListener(control.getListenerBotonEste());			
 			botonNorte.addActionListener(control.getListenerBotonNorte());
-			btnVolver.addActionListener(controlPant.getListenerBtnCerrar());
+			btnGuardarYVolver.addActionListener(controlPantallas.getListenerBtnGuardarPartida());
 			
 			
 			Label label = new Label("Nivel");
@@ -193,5 +193,9 @@ public class PantallaMapa implements Observer{
 		
 		public void setVisible (boolean b) {
 			this.frameMapa.setVisible(b);
+		}
+
+		public void dispose() {
+			this.frameMapa.dispose();
 		}
 	}

@@ -1,7 +1,6 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
 import javax.swing.JFrame;
-
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
@@ -11,6 +10,7 @@ import java.awt.Color;
 import javax.swing.SwingConstants;
 
 import java.awt.Component;
+
 
 
 
@@ -24,8 +24,6 @@ public class PantallaGanador extends PantallaGPSChallenge {
 	private JTextField txtBienvenido;
 	private JButton btnVolver;
 	private JButton btnJugarOtraVez;
-	private JLabel lblMovimientos;
-	private JLabel lblPuntaje;
 	
 	/**
 	 * Constructor.
@@ -41,6 +39,7 @@ public class PantallaGanador extends PantallaGPSChallenge {
 			btnVolver.addActionListener(control.getListenerBtnVolverAOpciones());
 			btnJugarOtraVez.addActionListener(control.getListenerBtnNuevaPartida());
 		}
+	
 		
 	/**
 	 * Inicializa el contenido del Frame.
@@ -70,7 +69,7 @@ public class PantallaGanador extends PantallaGPSChallenge {
 		
 		textFieldNombre = new JTextField();
 		textFieldNombre.setHorizontalAlignment(SwingConstants.CENTER);
-		textFieldNombre.setText("#Nombre");
+		//textFieldNombre.setText("#Nombre");
 		textFieldNombre.setRequestFocusEnabled(false);
 		textFieldNombre.setForeground(new Color(0, 0, 0));
 		textFieldNombre.setFont(new Font("Arial", Font.BOLD, 16));
@@ -79,8 +78,6 @@ public class PantallaGanador extends PantallaGPSChallenge {
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-		//TODO: cambiar la lectura del nombre 
-		//textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
@@ -99,13 +96,13 @@ public class PantallaGanador extends PantallaGPSChallenge {
 		lblGanaste.setBounds(76, 68, 278, 59);
 		frame.getContentPane().add(lblGanaste);
 		
-		lblMovimientos = new JLabel("Te sobraron X movimientos");
+		lblMovimientos = new JLabel("Realizaste X movimientos");
 		lblMovimientos.setFont(new Font("Arial", Font.BOLD, 16));
 		lblMovimientos.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMovimientos.setBounds(10, 138, 409, 14);
 		frame.getContentPane().add(lblMovimientos);
 		
-		lblPuntaje = new JLabel("Obtuviste un puntaje de X puntos");
+		lblPuntaje = new JLabel("Obtuviste un puntaje total de: X puntos.");
 		lblPuntaje.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPuntaje.setFont(new Font("Arial", Font.BOLD, 16));
 		lblPuntaje.setBounds(10, 182, 409, 14);
@@ -119,4 +116,19 @@ public class PantallaGanador extends PantallaGPSChallenge {
 		return (PantallaGanador) instance; 
 	}
 	
+	public void setLblMovimientos(int movimientos){
+		String sMovimientos = "Realizaste un total de: ";
+		sMovimientos += Integer.toString(movimientos);
+		sMovimientos += " movimientos.";
+		lblMovimientos.setText(sMovimientos);
+	
+	}
+	
+	public void setLblPuntaje(float puntaje){
+		String sPuntaje = "Obtuviste un total de: ";
+		sPuntaje += Float.toString(puntaje);
+		sPuntaje += " puntos.";
+		lblPuntaje.setText(sPuntaje);
+	}
+
 }

@@ -12,11 +12,10 @@ import algoritmos.gpschallenge.modelo.direccion.*;
 import algoritmos.gpschallenge.modelo.vehiculo.*;
 
 public class ModeloJuego extends java.util.Observable {
+            
+    private static final int CANT_MOV_MAXIMOS = 50; //Definimos arbirtrariamente un número máximo de movimientos
     
-    //private final int POS_INICIAL_X = 0;
-    //private final int POS_INICIAL_Y = 0;
-        
-    // Administradores de juego
+	// Administradores de juego
     private AdminDeJugadores mAdminDeJugadores;   
     private AdminDePartida mAdminDePartida;
 	private final String RUTA_JUGADORES_XML = "players.xml";
@@ -152,8 +151,16 @@ public class ModeloJuego extends java.util.Observable {
         notifyObservers();              
     }
 
+	public float getPuntaje() {
+		return mJugador.getPuntaje();
+	}
+
 	public int getMovimientos() {
 		return mVehiculo.getMovimientos();
+	}
+	
+	public boolean juegoTerminado(){
+		return mJugador.juegoTerminado();
 	}
 	
 	//////////////////Comunicacion con AdminJugadores ///////////////////
@@ -184,6 +191,18 @@ public class ModeloJuego extends java.util.Observable {
 	public void guardarPartida(Partida partida)
 	throws FileNotFoundException, IOException {
 		this.mAdminDePartida.guardarPartida(partida, RUTA_PARTIDA_XML);
+	}
+
+	public void actualizar() {
+		mJugador.actualizar();
+	}
+
+	public boolean movimientosMaximos() {
+		if (mVehiculo.getMovimientos() > CANT_MOV_MAXIMOS) {
+			return true;
+		} else { 
+			return false;
+		}
 	}
 
 }

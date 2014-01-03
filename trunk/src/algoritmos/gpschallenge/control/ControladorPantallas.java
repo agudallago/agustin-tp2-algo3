@@ -2,6 +2,8 @@ package algoritmos.gpschallenge.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JTextField;
 
@@ -9,7 +11,7 @@ import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 import algoritmos.gpschallenge.modelo.vista.*;
 import algoritmos.gpschallenge.vista.pantallas.PantallaNuevaPartida;
 
-public class ControladorPantallas {
+public class ControladorPantallas implements Observer {
 	
 	private static ControladorPantallas instance = null;
 	private ModeloPantallas modeloPantalla;
@@ -17,6 +19,7 @@ public class ControladorPantallas {
 	
 	protected ControladorPantallas () {
 		//Contructor protegido
+		
 		
 	}
 
@@ -38,6 +41,7 @@ public class ControladorPantallas {
 	//Método para setear el modelo de Juego
 	public void setModeloJuego (ModeloJuego modelo) {
 		this.modeloJuego = modelo;
+		modeloJuego.addObserver(this);
 	}
 	
 	
@@ -165,6 +169,33 @@ public class ControladorPantallas {
 		}
 	}
 	
+	//--------------------------------------------------------------------------------------------
+		public ActionListener getListenerBtnGuardarPartida() {
+			return new EscuchaBtnGuardarPartida();
+		}
+		
+		private class EscuchaBtnGuardarPartida implements ActionListener {	
+			public void actionPerformed(ActionEvent e) {
+				//Para esta versión vuelve a la pantalla opciones
+				modeloPantalla.guardarPartidaYVolverAOpciones();
+			}
+		}
 
+		@Override
+		public void update(Observable t, Object o) {
+			modeloJuego.actualizar();
+			
+			if (modeloJuego.movimientosMaximos()) {
+				modeloPantalla.abrirPantallaPerdedor(modeloJuego.getMovimientos());
+			}
+			
+			if (modeloJuego.juegoTerminado()) {
+				modeloPantalla.abrirPantallaGanador(modeloJuego.getPuntaje(), modeloJuego.getMovimientos());
+			}
+			
+		}
+
+	
+	
 }
 	
