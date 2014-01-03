@@ -1,6 +1,7 @@
 package algoritmos.gpschallenge.vista.pantallas;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import algoritmos.gpschallenge.control.ControladorPantallas;
@@ -14,6 +15,9 @@ public class PantallaGPSChallenge {
 	public ControladorPantallas control;
 	protected static PantallaGPSChallenge instance;
 	protected static JTextField textFieldNombre;
+	protected static JLabel lblMovimientos;
+	protected static JLabel lblPuntaje;
+
 	
 	/* Metodos */
 	
@@ -48,7 +52,18 @@ public class PantallaGPSChallenge {
 		frame.setVisible(b);
 	}
 	
+	//Estos métodos no deberían ser comunes a todas las pantallas "hijas". Pero de no ponerlos acá, no
+	//permite crearlos en las hijas
+	
 	public void setFieldNombre(String nombre) {
 		textFieldNombre.setText(nombre);
+	}
+	
+	public void setLblPuntaje(float puntaje){
+		lblPuntaje.setText(Float.toString(puntaje));
+	}
+	
+	public void setLblMovimientos(int movimientos){
+		lblPuntaje.setText(Integer.toString(movimientos));
 	}
 }

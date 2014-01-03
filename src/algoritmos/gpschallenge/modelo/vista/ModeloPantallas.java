@@ -7,6 +7,7 @@ import algoritmos.gpschallenge.vista.pantallas.*;
 public class ModeloPantallas {
 
         private PantallaGPSChallenge ventanaActiva;
+        private PantallaMapa pantallaMapa;
         String nombreJugador;  //se utiliza como referencia rápida para las pantallas donde se muestra el nombre.
         
         public ModeloPantallas(){
@@ -62,25 +63,36 @@ public class ModeloPantallas {
 
         public void abrirPantallaMapa(ModeloJuego modelo, ControladorVistaMapa controlador, String imagenMapa, String imagenVehiculo) {
         	this.ventanaActiva.dispose();
-                PantallaMapa pantallaMapa = new PantallaMapa(modelo, controlador, imagenMapa, imagenVehiculo);
-                pantallaMapa.setVisible(true);
+            this.pantallaMapa = new PantallaMapa(modelo, controlador, imagenMapa, imagenVehiculo);
+            this.pantallaMapa.setVisible(true);
         }
                 
         public void setVentanaActiva(PantallaGPSChallenge pantalla){
         	this.ventanaActiva = pantalla;
         }
 
-        public void abrirPantallaGanador() {
-        	this.ventanaActiva.dispose();
-        	this.ventanaActiva = PantallaGanador.getInstance();
+        public void abrirPantallaGanador(float puntaje, int movimientos) {
+        	this.pantallaMapa.dispose();
+        	this.ventanaActiva = (PantallaGanador) PantallaGanador.getInstance();
         	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setLblPuntaje(puntaje);
+        	this.ventanaActiva.setLblMovimientos(movimientos);
         	this.ventanaActiva.setVisible(true);
+        	//TODO: Guardar Puntaje
         }
 
-        public void abrirPantallaPerdedor() {
-        	this.ventanaActiva.dispose();
-        	this.ventanaActiva = PantallaPerdedor.getInstance();
+        public void abrirPantallaPerdedor(int movimientos) {
+        	this.pantallaMapa.dispose();
+        	this.ventanaActiva = (PantallaPerdedor) PantallaPerdedor.getInstance();
         	this.ventanaActiva.setFieldNombre(nombreJugador);
+        	this.ventanaActiva.setLblMovimientos(movimientos);
         	this.ventanaActiva.setVisible(true);
+        }
+        
+        public void guardarPartidaYVolverAOpciones() {
+        	//TODO guardar partida
+        	this.pantallaMapa.dispose();
+        	this.abrirPantallaOpciones();
+        	
         }
 }

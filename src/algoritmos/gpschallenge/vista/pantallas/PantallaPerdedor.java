@@ -84,12 +84,12 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 		btnJugarOtraVez.setBounds(30, 275, 171, 49);
 		frame.getContentPane().add(btnJugarOtraVez);
 		
-		JLabel lblGanaste = new JLabel("\u00A1 PERDISTE !");
-		lblGanaste.setFont(new Font("Arial", Font.BOLD, 24));
-		lblGanaste.setForeground(new Color(204, 51, 0));
-		lblGanaste.setHorizontalAlignment(SwingConstants.CENTER);
-		lblGanaste.setBounds(76, 68, 278, 59);
-		frame.getContentPane().add(lblGanaste);
+		lblMovimientos = new JLabel("\u00A1 PERDISTE ! \n Superaste el máximo de movimientos permitidos.");
+		lblMovimientos.setFont(new Font("Arial", Font.BOLD, 20));
+		lblMovimientos.setForeground(new Color(204, 51, 0));
+		lblMovimientos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblMovimientos.setBounds(76, 68, 278, 60);
+		frame.getContentPane().add(lblMovimientos);
 	}
 	
 	public static PantallaPerdedor getInstance(){
@@ -97,6 +97,15 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 				instance = new PantallaPerdedor(); 
 				} 
 		return (PantallaPerdedor) instance; 
+	}
+	
+	public void setLblMovimientos(int movimientos){
+		String sMovimientos = "\u00A1 PERDISTE ! \r\n";
+		sMovimientos += "Superaste el máximo de movimientos permitidos.\r\n";
+		sMovimientos += Integer.toString(movimientos);
+		sMovimientos += " fueron los movimientos realizados.";
+		lblMovimientos.setText(sMovimientos);
+	
 	}
 	
 }
