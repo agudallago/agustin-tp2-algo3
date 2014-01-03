@@ -33,12 +33,13 @@ public class PantallaJugadorExistente extends PantallaGPSChallenge {
 	private JButton btnAceptar;
 	private JButton btnVolver;
 	JComboBox<String> comboBox;
-	
+	private ModeloJuego modelo;
 	/**
 	 * Constructor
 	 */
 	public PantallaJugadorExistente(ModeloJuego modelo) {
 		super();
+		this.modelo = modelo;
 		initialize(modelo);
 		addListeners();
 	}
@@ -80,16 +81,8 @@ public class PantallaJugadorExistente extends PantallaGPSChallenge {
 		btnAceptar.setBounds(132, 169, 83, 49);
 		frame.getContentPane().add(btnAceptar);
 				
-		// Carga de jugaores preexistentes
-		ArrayList<Jugador> listaJugadores = modelo.getListaDeJugadores();
-		Iterator<Jugador> iter = listaJugadores.iterator();
-		ArrayList<String> listaNombreJugadores = new ArrayList<String>();
-		
-		while (iter.hasNext()) {
-			listaNombreJugadores.add(iter.next().getNombre());					
-		}		
-		String[] arrayJugadores = listaNombreJugadores.toArray(new String[listaNombreJugadores.size()]);
-
+		// Carga de jugadores preexistentes
+		String[] arrayJugadores = cargarJugadoresExistentes();	
 		comboBox = new JComboBox<String>(arrayJugadores);
 		comboBox.setBounds(132, 89, 171, 29);
 		frame.getContentPane().add(comboBox);		
@@ -100,4 +93,16 @@ public class PantallaJugadorExistente extends PantallaGPSChallenge {
 		frame.getContentPane().add(btnVolver);
 	}
 		
+	//Metodo para carga de jugadores Existentes
+	private String[] cargarJugadoresExistentes() {
+		ArrayList<Jugador> listaJugadores = modelo.getListaDeJugadores();
+		Iterator<Jugador> iter = listaJugadores.iterator();
+		ArrayList<String> listaNombreJugadores = new ArrayList<String>();
+		
+		while (iter.hasNext()) {
+			listaNombreJugadores.add(iter.next().getNombre());					
+		}		
+		String[] arrayJugadores = listaNombreJugadores.toArray(new String[listaNombreJugadores.size()]);
+		return arrayJugadores;
+	}
 }

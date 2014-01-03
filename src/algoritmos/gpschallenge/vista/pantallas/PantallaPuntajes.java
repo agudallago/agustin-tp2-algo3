@@ -3,15 +3,10 @@ package algoritmos.gpschallenge.vista.pantallas;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-
 import java.awt.Font;
 import java.awt.Color;
-
 import javax.swing.SwingConstants;
 
-import org.eclipse.wb.swing.FocusTraversalOnArray;
-
-import algoritmos.gpschallenge.modelo.admin.AdminDeJugadores;
 import algoritmos.gpschallenge.modelo.juego.Jugador;
 import algoritmos.gpschallenge.modelo.juego.ModeloJuego;
 
@@ -30,6 +25,7 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 	private JButton btnVolver;
 	private JList<String> list;	
 	
+	private ModeloJuego modelo;
 	/**
 	 * Constructor
 	 */
@@ -47,6 +43,7 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(ModeloJuego modelo) {
+		this.modelo = modelo;
 		frame = new JFrame();
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
@@ -89,22 +86,29 @@ public class PantallaPuntajes extends PantallaGPSChallenge{
 		frame.getContentPane().add(btnVolver);
 		
 		// Carga ranking
-		Set<Entry<Jugador, Float>>ranking = modelo.getRankingComoSet();
-		Iterator<Entry<Jugador, Float>> iter = ranking.iterator();
-		ArrayList<String> listaJugadores = new ArrayList<String>();
-		while (iter.hasNext()) {
-			Entry<Jugador, Float> jugadorPuntaje = iter.next();
-			listaJugadores.add(
-					jugadorPuntaje.getKey().getNombre() +
-					"      Max puntaje: " +
-					jugadorPuntaje.getValue());				
-		}		
-		String[] arrayJugadores = listaJugadores.toArray(new String[listaJugadores.size()]);
+		String[] arrayJugadores = cargarRanking(); //listaJugadores.toArray(new String[listaJugadores.size()]);
 		list = new JList<String>(arrayJugadores);
 		list.setBorder(new LineBorder(new Color(0, 0, 0)));
 		list.setBounds(72, 63, 248, 261);
-		frame.getContentPane().add(list);
-		frame.getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[]{txtBienvenido}));			
+		frame.getContentPane().add(list);			
 	}	
+	
+	// Método para Cargar ranking
+	private String[] cargarRanking() {
+	
+		final String[] arrayJugadores;
+			Set<Entry<Jugador, Float>>ranking = modelo.getRankingComoSet();
+			Iterator<Entry<Jugador, Float>> iter = ranking.iterator();
+			ArrayList<String> listaJugadores = new ArrayList<String>();
+			while (iter.hasNext()) {
+				Entry<Jugador, Float> jugadorPuntaje = iter.next();
+				listaJugadores.add(
+						jugadorPuntaje.getKey().getNombre() +
+						"      Max puntaje: " +
+						jugadorPuntaje.getValue());
+				}
+			arrayJugadores = listaJugadores.toArray(new String[listaJugadores.size()]);
+			return arrayJugadores;
+	}
 
 }

@@ -78,7 +78,6 @@ public class ModeloPantallas {
         	this.ventanaActiva.setLblPuntaje(puntaje);
         	this.ventanaActiva.setLblMovimientos(movimientos);
         	this.ventanaActiva.setVisible(true);
-        	//TODO: Guardar Puntaje
         }
 
         public void abrirPantallaPerdedor(int movimientos) {
