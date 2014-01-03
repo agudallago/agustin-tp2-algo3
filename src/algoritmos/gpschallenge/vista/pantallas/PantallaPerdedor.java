@@ -19,7 +19,8 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 	private JTextField txtBienvenido;
 	private JButton btnVolver;
 	private JButton btnJugarOtraVez;
-
+	private JLabel lblTitulo1;
+	private JLabel lblTitulo2;
 	/**
 	 * Constructor
 	 */
@@ -40,6 +41,9 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.getContentPane().setLayout(null);
+		
+		frame.getContentPane().setLayout(null);
 		frame.setTitle("GPS Challenge");
 		frame.setName("frameBienvenida");
 		frame.getContentPane().setBackground(new Color(255, 255, 255));
@@ -72,7 +76,6 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 		textFieldNombre.setBorder(null);
 		textFieldNombre.setBackground(new Color(255, 255, 255));
 		textFieldNombre.setBounds(0, 28, 131, 29);
-//		textFieldNombre.setText(jugador.getNombre());
 		frame.getContentPane().add(textFieldNombre);
 		
 		btnVolver = new JButton("Volver");
@@ -84,12 +87,27 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 		btnJugarOtraVez.setBounds(30, 275, 171, 49);
 		frame.getContentPane().add(btnJugarOtraVez);
 		
-		lblMovimientos = new JLabel("\u00A1 PERDISTE ! \n Superaste el máximo de movimientos permitidos.");
-		lblMovimientos.setFont(new Font("Arial", Font.BOLD, 20));
-		lblMovimientos.setForeground(new Color(204, 51, 0));
+		lblTitulo1 = new JLabel("\u00A1 PERDISTE !"); 
+		lblTitulo1.setFont(new Font("Arial", Font.BOLD, 20));
+		lblTitulo1.setForeground(new Color(204, 51, 0));
+		lblTitulo1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo1.setBounds(80, 50, 278, 60);
+		frame.getContentPane().add(lblTitulo1);
+		
+		lblTitulo2 = new JLabel("Superaste el máximo de movimientos permitidos");
+		lblTitulo2.setFont(new Font("Arial", Font.BOLD, 14));
+		lblTitulo2.setForeground(new Color(204, 51, 0));
+		lblTitulo2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitulo2.setBounds(30, 80, 400, 60);
+		frame.getContentPane().add(lblTitulo2);
+		
+		lblMovimientos = new JLabel("");
+		lblMovimientos.setFont(new Font("Arial", Font.BOLD, 12));
+		lblMovimientos.setForeground(new Color(0, 0, 0));
 		lblMovimientos.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMovimientos.setBounds(76, 68, 278, 60);
+		lblMovimientos.setBounds(30, 100, 400, 100);
 		frame.getContentPane().add(lblMovimientos);
+		
 	}
 	
 	public static PantallaPerdedor getInstance(){
@@ -100,13 +118,11 @@ public class PantallaPerdedor extends PantallaGPSChallenge{
 	}
 	
 	public void setLblMovimientos(int movimientos){
-		String sMovimientos = "\u00A1 PERDISTE ! \r\n";
-		sMovimientos += "Superaste el máximo de movimientos permitidos.\r\n";
+		String sMovimientos = new String();
 		sMovimientos += Integer.toString(movimientos);
 		sMovimientos += " fueron los movimientos realizados.";
 		lblMovimientos.setText(sMovimientos);
 	
 	}
-	
 }
 
