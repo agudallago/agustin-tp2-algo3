@@ -2,6 +2,8 @@ package algoritmos.gpschallenge.control;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -123,7 +125,6 @@ public class ControladorPantallas implements Observer {
 		private JTextField campo;
 		
 		public EscuchaBtnGuardar(JTextField campoNombre) {
-			// TODO Auto-generated constructor stub
 			this.campo = campoNombre;
 		}
 
@@ -177,10 +178,49 @@ public class ControladorPantallas implements Observer {
 		private class EscuchaBtnGuardarPartida implements ActionListener {	
 			public void actionPerformed(ActionEvent e) {
 				//Para esta versión vuelve a la pantalla opciones
+				try {
+					modeloJuego.guardarPartida();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				modeloPantalla.guardarPartidaYVolverAOpciones();
 			}
 		}
 
+	//--------------------------------------------------------------------------------------------
+		public ActionListener getListenerBtnRecuperarPartida() {
+			return new EscuchaBtnRecuperarPartida();
+		}
+
+		private class EscuchaBtnRecuperarPartida implements ActionListener {	
+			public void actionPerformed(ActionEvent e) {
+				//TODO: Revisar carga de Partida
+				try {
+					modeloJuego.cargarPartida();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				//TODO: abrir Pantalla Mapa con partida cargada
+				//Faltan más referencias: ImagenMapa, imagenVehiculo, etc., para poder recuperar la partida completa.
+				//Hay que guardar la instanacia de ModeloJuego completa y no solo la de Partida.
+				//modeloPantalla.abrirPantallaMapa(modeloJuego, new ControladorVistaMapa(modeloJuego), modeloJuego.getImagenMapa(), modeloJuego.getImagenVehiculo());	
+			}
+		}
+		
+		
+
+	//--------------------------------------------------------------------------------------------	
 		@Override
 		public void update(Observable t, Object o) {
 			modeloJuego.actualizar();
@@ -191,11 +231,10 @@ public class ControladorPantallas implements Observer {
 			
 			if (modeloJuego.juegoTerminado()) {
 				modeloPantalla.abrirPantallaGanador(modeloJuego.getPuntaje(), modeloJuego.getMovimientos());
+				modeloJuego.addJugadorYPuntaje();
 			}
 			
-		}
-
-	
+		}	
 	
 }
 	

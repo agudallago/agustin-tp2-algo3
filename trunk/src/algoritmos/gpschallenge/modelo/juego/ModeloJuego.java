@@ -169,8 +169,8 @@ public class ModeloJuego extends java.util.Observable {
 		mAdminDeJugadores.guardarJugadoresYPuntajes(RUTA_JUGADORES_XML);
 	}
 	
-	public void addJugadorYPuntaje(Jugador jugador, float puntaje) {
-		this.mAdminDeJugadores.addJugadorYPuntaje(jugador, puntaje);
+	public void addJugadorYPuntaje(){ //Jugador jugador, float puntaje) {
+		this.mAdminDeJugadores.addJugadorYPuntaje(mJugador, this.getPuntaje());
 	}
 	
 	public ArrayList<Jugador> getListaDeJugadores() {
@@ -183,14 +183,18 @@ public class ModeloJuego extends java.util.Observable {
 	
 	////////////// Comunicacion con AdminPartida ///////////////////
 	
-	public Partida cargarPartida()
+	public void cargarPartida() //Partida cargarPartida()
 	throws FileNotFoundException, IOException, ClassNotFoundException {		
-		return this.mAdminDePartida.cargarPartida(RUTA_PARTIDA_XML);		
+		//return this.mAdminDePartida.cargarPartida(RUTA_PARTIDA_XML);
+		this.mPartida = this.mAdminDePartida.cargarPartida(RUTA_PARTIDA_XML);
+		mJugador = mPartida.getJugador();
+		mMapa = mPartida.getMapa();
+		//mVehiculo = mJugador.getVehiculo();  //Este método no existe. Haría falta para conectarlo con la vista Mapa
 	}
 	
-	public void guardarPartida(Partida partida)
+	public void guardarPartida() //Partida partida)
 	throws FileNotFoundException, IOException {
-		this.mAdminDePartida.guardarPartida(partida, RUTA_PARTIDA_XML);
+		this.mAdminDePartida.guardarPartida(this.mPartida, RUTA_PARTIDA_XML);
 	}
 
 	public void actualizar() {
